@@ -1,0 +1,210 @@
+/** FOOTER **/
+body {
+	/*position: relative;*/
+	padding-top: 60px;
+}
+
+.event_form fieldset>legend{
+	padding-top: 50px;
+}
+.footer {
+	margin:20px 0;
+}
+
+.patient_attribute .control-group {
+	float:left;
+	
+}
+
+.treatment {
+	margin-bottom: 0 !important;
+}
+
+.t_recommended {
+	margin-left: 100px !important;
+}
+
+
+.margin-bottom {
+	margin-bottom: 20px;
+}
+
+.margin-left {
+	margin-left: 10px;
+}
+
+.margin-right {
+	margin-right: 10px;
+}
+
+.margin-top {
+	margin-top: 10px;
+}
+
+.border-bottom {
+	border-bottom: 1px solid #EEE;
+}
+
+.error-message {
+	color:red;
+}
+
+
+
+.agent_remove {
+	margin-top: -34px;
+	margin-right: 10px;
+	padding: 7px;
+}
+
+.agent_fields {
+	margin-bottom: 20px;
+}
+
+.antidote_fields label{
+	float:left;
+}
+
+#busy-indicator {
+	width:50px;
+	height: 50px;
+	position: fixed;
+	top:50%;
+	left:50%;
+	margin-left: -25px;
+	margin-top: -25px;
+	background-image: url(../img/ajax-loader.gif);
+	display:none;
+	z-index: 99999;
+}
+
+
+@media (min-width: 768px) and (max-width: 979px) {
+	body {
+		padding-top: 0;
+	}
+}
+
+@media (max-height: 500px) {
+	.modal-body {
+		max-height: 300px;
+	}
+}
+
+@media (max-height: 400px) {
+	.modal-body {
+		max-height: 200px;
+	}
+}
+
+@media (min-width: 979px) {
+	body .modal {
+		width: 960px;
+		margin-left: -480px;
+	}
+
+	
+}
+
+@media (max-width: 767px) {
+	/* Remove any padding from the body */
+	body {
+		padding-top: 0;
+	}
+	.sidebar-nav.affix {
+		position: static;
+		width: auto;
+		top: 0;
+	}
+
+	.modal-body {
+		max-height: 300px;
+	}
+
+}
+
+@media all {
+  .page-break  { display: none; }
+}
+
+
+@media print {
+
+	.page-break  { display: block; page-break-before: always; }
+	h3 {
+		font-size: 16px;
+	}
+
+   .navbar, .noprint {
+   		display: none;
+   }
+   .print-event {
+   		font-size: 0.75em;
+   		margin-left: 30px;
+   }
+   .collumn-print {
+   	width: 300px;
+   	float:left !important;
+   }
+   .alert {
+   	display: none;
+   }
+
+   ul {
+   	margin: 0;
+   	margin-left: 25px;
+   	padding: 0;
+   }
+   li,dd,dt {
+   	line-height: 14px;
+   }
+
+   audio {
+   	display: none;
+   }
+}
+
+.mceContentBody {
+  padding: 10px;
+}
+
+/** timepicker **/
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+/** Combobox **/
+.ui-combobox {
+	position: relative;
+	display: inline-block;
+}
+.ui-combobox .ui-button {
+	position: absolute !important;
+	top: 0;
+	bottom: 0;
+	margin-left: -1px;
+	padding: 0;
+	/* adjust styles for IE 6/7 */
+	*height: 1.7em;
+	*top: 0.1em;
+}
+.ui-combobox .ui-autocomplete-input {
+	margin: 0;
+	padding: 0.3em;
+}
+
+.unknown_value {
+	z-index: 999;
+	position: relative;
+}
+
+.actions {
+	min-width: 114px;	
+}
