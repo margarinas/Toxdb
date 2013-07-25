@@ -5,6 +5,9 @@ app/[Cc]onfig/database.php
 toxdb.sublime-project
 toxdb.sublime-workspace
 sftp-config.json
+Plugin/Cms/
+Vendor/autoload.php
+Vendor/composer/
 .DS_Store
 .DS_Store?
 ._*
