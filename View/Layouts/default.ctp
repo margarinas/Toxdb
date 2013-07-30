@@ -42,17 +42,17 @@
 	echo $this->fetch('meta');
 	echo $this->fetch('css');
 	
-	echo $this->Html->script(array(
-		'lib/jquery-1.9.1.min',
-		'lib/bootstrap.min',
-		'lib/jquery-ui.min',
-		'lib/jquery-ui-timepicker-addon',
-		'lib/jquery-ui-timepicker-lt',
-		'lib/jquery.ui.datepicker-lt',
-		'lib/tiny_mce/tiny_mce',
-		'lib/jquery.incrementInput',
-		// 'main'
-		));
+	// echo $this->Html->script(array(
+	// 	'lib/jquery-1.9.1.min',
+	// 	'lib/bootstrap.min',
+	// 	'lib/jquery-ui.min',
+	// 	'lib/jquery-ui-timepicker-addon',
+	// 	'lib/jquery-ui-timepicker-lt',
+	// 	'lib/jquery.ui.datepicker-lt',
+	// 	'lib/tiny_mce/tiny_mce',
+	// 	'lib/jquery.incrementInput',
+	// 	// 'main'
+	// 	));
 
 
 	

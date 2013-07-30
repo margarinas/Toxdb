@@ -380,7 +380,7 @@ class Event extends AppModel {
     }
 
     public function getEventTypes() {
-    	$this->EventAttribute->find('list',array(
+    	return $this->EventAttribute->find('list',array(
     		'fields'=>array('id','name','subgroup'),
     		'conditions'=>array('group' =>'type')
     		));

@@ -17,11 +17,6 @@ class EventsController extends AppController {
  * @return void
  */
 
-public function beforeFilter() 
-{
-	$this->helpers[] = 'Js';
-}
-
 
 public function index() {
 

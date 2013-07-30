@@ -483,7 +483,7 @@ echo $this->Form->input('Patient.0.verified',array('label'=>'Laboratorinis patvi
                 'label_class'=>'radio inline'
                 ));
 
-
+pr($eventAttributes);
                 // EVENT ATTRIBUTES
                 echo $this->Form->input('Event.EventAttribute',array('label'=>'Užklausimo būdas',
                     'multiple'=>'checkbox',
