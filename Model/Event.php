@@ -379,6 +379,13 @@ class Event extends AppModel {
     	return $event;
     }
 
+    public function getEventTypes() {
+    	$this->EventAttribute->find('list',array(
+    		'fields'=>array('id','name','subgroup'),
+    		'conditions'=>array('group' =>'type')
+    		));
+    }
+
 	public function beforeValidate($options = array()) {;
 		if(empty($this->data[$this->alias]['Call']['id']))
 			unset($this->data[$this->alias]['Call']);

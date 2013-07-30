@@ -53,10 +53,7 @@ public function index() {
 	$this->set('events', $events);
 
 
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
+	$eventTypes =  $this->Event->getEventTypes();
 	$this->set('eventType',$eventTypes['main']);
 	$this->set('poison_group',$this->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null),'order'=>'PoisonGroup.order ASC')));
 
@@ -68,7 +65,7 @@ public function find()
 
 	$this->Prg->commonProcess();
 	$parsedParams = $this->Prg->parsedParams();
-	pr($this->Prg->parsedParams());
+
 	$limit = $this->params['named']['event_per_page'];
 	$this->request->data['Event']['event_per_page'] = $limit;
 	$this->paginate = array(
@@ -91,10 +88,7 @@ public function find()
 	//$this->request->data['Event'] += $this->passedArgs;
 
 
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
+	$eventTypes = $this->Event->getEventTypes();
 
 	$this->set('showSearch','in');
 	$this->set('eventType',$eventTypes['main']);
@@ -195,10 +189,7 @@ public function add() {
 		'conditions'=>array('group !=' =>'type')
 		));
 
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
+	$eventTypes = $this->Event->getEventTypes();
 
 	$patientAttributes = $this->PatientAttribute->find('group');
 
@@ -237,8 +228,6 @@ public function edit($id = null) {
 		exit;
 	};
 
-	$this->Event->id = $id;
-	$this->Event->recursive = -1;
 	$this->Event->contain(array(
 		'Patient' => array(
 			'AgentsPatient' => array('Agent'),
@@ -265,10 +254,7 @@ public function edit($id = null) {
 		'conditions'=>array('group !=' =>'type')
 		));
 
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
+	$eventTypes = $this->Event->getEventTypes();
 
 	$patientAttributes = $this->PatientAttribute->find('group');
 	$evaluations = $this->Event->Patient->Evaluation->groupList();
