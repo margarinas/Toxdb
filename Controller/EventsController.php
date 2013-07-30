@@ -45,8 +45,12 @@ public function index() {
 		'conditions' => array('Event.created >'=>date('Y-m-d',strtotime('-1 week')))
 		);
 
-	
-	$this->set('events', $this->paginate());
+
+	$events = $this->paginate();
+		
+	$showSearch = (!empty($this->data['Event']) || empty($events))?:false;
+	$this->set('showSearch','in');
+	$this->set('events', $events);
 
 
 	$eventTypes = $this->Event->EventAttribute->find('list',array(
@@ -62,14 +66,11 @@ public function find()
 {
 
 
-	$checkbox_fields = array('medical_request','invalid_request','patient_request','feedback');
-	foreach ($checkbox_fields as $field) {
-		if(isset($this->passedArgs[$field]) && $this->passedArgs[$field]==0)
-			unset($this->passedArgs[$field]);
-	}
-
-
 	$this->Prg->commonProcess();
+	$parsedParams = $this->Prg->parsedParams();
+	pr($this->Prg->parsedParams());
+	$limit = $this->params['named']['event_per_page'];
+	$this->request->data['Event']['event_per_page'] = $limit;
 	$this->paginate = array(
 		'order' => 'Event.created DESC',
 		'contain' => array(
@@ -82,18 +83,20 @@ public function find()
 				),
 			'User'=>array('fields'=>array('id','name'))
 			),
-		'conditions' => $this->Event->parseCriteria($this->passedArgs),
-		'limit' => !empty($this->passedArgs['event_per_page'])?$this->passedArgs['event_per_page']:20
+		'conditions' => $this->Event->parseCriteria($this->Prg->parsedParams()),
+		'limit' => !empty($limit)?$limit:20
 		);
 
 
-	$this->request->data['Event'] += $this->passedArgs;
+	//$this->request->data['Event'] += $this->passedArgs;
 
 
 	$eventTypes = $this->Event->EventAttribute->find('list',array(
 		'fields'=>array('id','name','subgroup'),
 		'conditions'=>array('group' =>'type')
 		));
+
+	$this->set('showSearch','in');
 	$this->set('eventType',$eventTypes['main']);
 	$this->set('poison_group',$this->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null),'order'=>'PoisonGroup.order ASC')));
 	$this->set('events',$this->paginate());

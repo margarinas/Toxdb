@@ -1,4 +1,4 @@
-<div class="event_search_form row collapse <?php if(!empty($this->data['Event']) && empty($this->data['Event']['agent_id']) && empty($this->data['Event']['substance_id']) || empty($events)) echo 'in' ?>">
+<div class="event_search_form row collapse <?php  echo $showSearch ?>">
 	<?php
 //pr($events);
 	//pr($this->request->data);
@@ -32,9 +32,9 @@
 					))
 			));
 		echo $this->Form->input('requester_name', array('label'=>'Kreipiasi','required'=>false,'class'=>'autocomplete'));
-		echo $this->Form->input('medical_request', array('label'=>'Kreipiasi medikas?'));
-		echo $this->Form->input('invalid_request', array('label'=>'Klaidingos konsultacijos'));
-		echo $this->Form->input('feedback', array('label'=>'Užklausimas dėl apsinuodijimo baigties'));
+		echo $this->Form->input('medical_request', array('label'=>'Kreipiasi medikas?','default'=>false,'hiddenField'=>false));
+		echo $this->Form->input('invalid_request', array('label'=>'Klaidingos konsultacijos', 'default'=>false,'hiddenField'=>false));
+		echo $this->Form->input('feedback', array('label'=>'Užklausimas dėl apsinuodijimo baigties', 'default'=>false,'hiddenField'=>false));
 		
 		
 		?>
@@ -44,7 +44,7 @@
 		echo $this->Form->input('patient_name', array('label'=>'Pacientas','id'=>'PatientName','class'=>'autocomplete')); 
 		echo $this->Form->input('patient_age_group', array('label'=>'Amžiaus grupė','options'=>array('child'=>'Vaikas','adult'=>'Suaugęs'),'empty'=>'...Pasirinkite...'));
 		echo $this->Form->input('username', array('label'=>'Vartotojas','id'=>'UserName','class'=>'autocomplete'));
-		echo $this->Form->input('patient_request', array('label'=>'Kreipiasi pacientas?'));
+		echo $this->Form->input('patient_request', array('label'=>'Kreipiasi pacientas?','default'=>false,'hiddenField'=>false));
 		echo $this->Form->input('event_type',array('label'=>false,
                 'options'=>$eventType,
                 'multiple'=>'checkbox',
