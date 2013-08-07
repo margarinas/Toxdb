@@ -142,7 +142,7 @@ public function add() {
 	$this->set('title_for_layout', 'Naujas atvejis');
 
 	if(!empty($this->request->query) && !$this->request->is('post')) {
-		pr($this->request->query);
+		// pr($this->request->query);
 		$this->request->data = Hash::expand($this->request->query,'$');
 		// pr($this->request->data);
 	}
