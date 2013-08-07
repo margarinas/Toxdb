@@ -90,6 +90,52 @@ public function fetchCalls($date = array()) {
 
 }
 
+public function importCalls() {
+	App::uses('Folder', 'Utility');
+	$dir = new Folder(WWW_ROOT.'files'.DS.'new_calls');
+
+	$files = $dir->find('.*\.wav');
+	foreach ($files as $key => $file) {
+
+		$file = new File($dir->pwd() . DS . $file);
+
+		$file_info = explode('-', $file->name());
+		$date = strtotime($file_info[1]);
+
+		// Get call duration
+		$file->open();
+		$file->offset(20);
+		$rawheader = $file->read(16);
+		$header = unpack('vtype/vchannels/Vsamplerate/Vbytespersec/valignment/vbits',$rawheader);
+		$sec = ceil($file->size()/$header['bytespersec']);
+		$file->close();
+
+		
+
+		$data = array(
+					'created' => date('Y-m-d H:i:s',$date),
+					'duration' => $sec,
+					'number' => $file_info[0],
+					'file' => $file->name,
+					'user_id' => 1
+					);
+
+		$destDir = Configure::read('CallsPath');
+
+		if($file->copy($destDir.$file->name,false)) {
+			$this->create();
+			if($this->save($data)) {
+				$file->delete();
+			}
+			pr($data);
+		}
+
+
+		
+		
+	}
+}
+
 public function beforeDelete($cascade=true)
 {
 	$dir = Configure::read('CallsPath');

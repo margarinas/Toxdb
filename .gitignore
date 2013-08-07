@@ -6,6 +6,7 @@ toxdb.sublime-project
 toxdb.sublime-workspace
 sftp-config.json
 Plugin/*
+webroot/files/calls/*
 Vendor/autoload.php
 Vendor/composer/
 composer.lock

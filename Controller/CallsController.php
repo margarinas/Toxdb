@@ -16,7 +16,7 @@ class CallsController extends AppController {
 public $layout = 'user';
 
 public function beforeFilter() {
-	$this->Auth->allow('getCalls');
+	$this->Auth->allow('importCalls');
 }
 
 public function index() {
@@ -33,6 +33,14 @@ public function getCalls() {
 	if($this->Call->fetchCalls())
 		$this->redirect(array('action' => 'index'));
 }
+
+public function importCalls() {
+
+	// if($this->Call->fetchCalls())
+	// 	$this->redirect(array('action' => 'index'));
+	$this->Call->importCalls();
+}
+
 
 /**
  * view method
