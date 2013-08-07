@@ -28,67 +28,67 @@ public $belongsTo = array(
 
 
 
-public function fetchCalls($date = array()) {
-	set_time_limit('120');
-	$callsDir = Configure::read('CallsPath');
+// public function fetchCalls($date = array()) {
+// 	set_time_limit('120');
+// 	$callsDir = Configure::read('CallsPath');
 
 
-	App::import('Vendor', 'Zend/Loader/StandardAutoloader');
-	$autoLoader = new Zend\Loader\StandardAutoloader(array('autoregister_zf' => true));;
-	$autoLoader->register(); 
+// 	App::import('Vendor', 'Zend/Loader/StandardAutoloader');
+// 	$autoLoader = new Zend\Loader\StandardAutoloader(array('autoregister_zf' => true));;
+// 	$autoLoader->register(); 
 
-		//App::import('Vendor', 'Imap', true, false, 'Zend/Mail/Storage/Imap.php');
-		//$zend = new Imap();
-	$mail = new Zend\Mail\Storage\Imap(array(
-		'host'     => 'smtp.gmail.com',
-		'user'     => 'esscitcentras@gmail.com',
-		'password' => '2002Akibtele',
-		'ssl'      => 'SSL'));
-	// $new = $mail->seek(array('NEW'));
-	$allMsg = $mail->countMessages();
+// 		//App::import('Vendor', 'Imap', true, false, 'Zend/Mail/Storage/Imap.php');
+// 		//$zend = new Imap();
+// 	$mail = new Zend\Mail\Storage\Imap(array(
+// 		'host'     => 'smtp.gmail.com',
+// 		'user'     => 'esscitcentras@gmail.com',
+// 		'password' => '2002Akibtele',
+// 		'ssl'      => 'SSL'));
+// 	// $new = $mail->seek(array('NEW'));
+// 	$allMsg = $mail->countMessages();
 
-	for ($i = $allMsg; $i >= 1; $i--)
-	{
-		$message = $mail->getMessage($i);
-		 // pr($message->getHeaders());
-    //new message found!
-		if (!$message->hasFlag(Zend\Mail\Storage::FLAG_SEEN) && $message->isMultipart()) {
-			$part = $message->getPart(2);
-			$number = $message->getHeader('xcallingtelephonenumber','string');
-			if ($part->getHeaderField('Content-Type') == 'audio/wav') {
+// 	for ($i = $allMsg; $i >= 1; $i--)
+// 	{
+// 		$message = $mail->getMessage($i);
+// 		 // pr($message->getHeaders());
+//     //new message found!
+// 		if (!$message->hasFlag(Zend\Mail\Storage::FLAG_SEEN) && $message->isMultipart()) {
+// 			$part = $message->getPart(2);
+// 			$number = $message->getHeader('xcallingtelephonenumber','string');
+// 			if ($part->getHeaderField('Content-Type') == 'audio/wav') {
 
-				$date = $message->getHeader('date','string');
-				$file_name = date('Ymd_His_',strtotime($date)).$part->getHeaderField('Content-Type','name');
+// 				$date = $message->getHeader('date','string');
+// 				$file_name = date('Ymd_His_',strtotime($date)).$part->getHeaderField('Content-Type','name');
 				
-				$file = new File($callsDir.$file_name);
+// 				$file = new File($callsDir.$file_name);
 				
-				$data = array(
-					'created' => date('Y-m-d H:i:s',strtotime($date)),
-					'duration' => $message->getHeader('xvoicemessageduration','string'),
-					'number' => $message->getHeader('xcallingtelephonenumber','string'),
-					'file' => $file_name,
-					'user_id' => 1
-					);
-				if(!$file->exists()) {
-					$this->create();
-					$this->save($data);
+// 				$data = array(
+// 					'created' => date('Y-m-d H:i:s',strtotime($date)),
+// 					'duration' => $message->getHeader('xvoicemessageduration','string'),
+// 					'number' => $message->getHeader('xcallingtelephonenumber','string'),
+// 					'file' => $file_name,
+// 					'user_id' => 1
+// 					);
+// 				if(!$file->exists()) {
+// 					$this->create();
+// 					$this->save($data);
 
-					$file_content = base64_decode($part);
-					$file->create();
-				// $file = new File($callsDir.$file_name, true, 0644);
-					$file->write($file_content);
+// 					$file_content = base64_decode($part);
+// 					$file->create();
+// 				// $file = new File($callsDir.$file_name, true, 0644);
+// 					$file->write($file_content);
 
-					$file->close();
-				}
+// 					$file->close();
+// 				}
 
-			}
+// 			}
 			
-		}
+// 		}
 
-	}
-	return true;
+// 	}
+// 	return true;
 
-}
+// }
 
 public function importCalls() {
 	App::uses('Folder', 'Utility');
@@ -127,7 +127,7 @@ public function importCalls() {
 			if($this->save($data)) {
 				$file->delete();
 			}
-			pr($data);
+			
 		}
 
 
