@@ -91,6 +91,7 @@ public $belongsTo = array(
 // }
 
 public function importCalls() {
+	set_time_limit('120');
 	App::uses('Folder', 'Utility');
 	$dir = new Folder(WWW_ROOT.'files'.DS.'new_calls');
 
@@ -134,6 +135,7 @@ public function importCalls() {
 		
 		
 	}
+	return true;
 }
 
 public function beforeDelete($cascade=true)
