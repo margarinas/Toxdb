@@ -173,7 +173,7 @@
 
 
 		tinyMCE.execCommand('mceFocus', false, 'Agent0Description');                    
-		tinyMCE.execCommand('mceRemoveControl', false, 'Agent0Description');
+		tinyMCE.execCommand('mceRemoveEditor', false, 'Agent0Description');
 	
 		var clonedAgent = $('.substance_create .agent').first().clone();
 		
@@ -183,14 +183,14 @@
 		.incrementInput({num:num});
 		
 		$('.substance_create .agents').append(clonedAgent.find('.agent_remove').show().end());
-		tinyMCE.execCommand('mceAddControl', false, 'Agent0Description');
-		tinyMCE.execCommand('mceAddControl', false, 'Agent'+num+'Description');
+		tinyMCE.execCommand('mceAddEditor', false, 'Agent0Description');
+		tinyMCE.execCommand('mceAddEditor', false, 'Agent'+num+'Description');
 		$('.substance_create .agent').last().find('.accordion-body').collapse('show');
 		$('.substance_create .agent').last().find('.poison_subgroup').empty().hide();
 
 		$('.substance_create .agent').last().find('.agent_remove').click(function(event) {
 			$(this).parents('.agent').slideUp(200,function(){
-				tinyMCE.execCommand('mceRemoveControl', false, $(this).find('textarea').attr('id'));
+				tinyMCE.execCommand('mceRemoveEditor', false, $(this).find('textarea').attr('id'));
 				$(this).remove();
 			});
 			
@@ -212,7 +212,7 @@
 
 	$('.agent_remove').click(function(event) {
 			$(this).parents('.agent').slideUp(200,function(){
-				tinyMCE.execCommand('mceRemoveControl', false, $(this).find('textarea').attr('id'));
+				tinyMCE.execCommand('mceRemoveEditor', false, $(this).find('textarea').attr('id'));
 				// $.post(baseUrl+'substances/deleteAssocAgents',{'id':$(this).data('assoc-id')});
 				$(this).remove();
 			});
@@ -265,14 +265,14 @@
 			<script type="text/javascript">
 			$(document).ready(function() {
 				$('.modal-body textarea').each(function(event){                 
-					tinyMCE.execCommand('mceRemoveControl', false, this.id);
-					tinyMCE.execCommand('mceAddControl', false, this.id);
+					tinyMCE.execCommand('mceRemoveEditor', false, this.id);
+					tinyMCE.execCommand('mceAddEditor', false, this.id);
 				})
 			});
 			
 			$('.substance_form_submit').click(function(event) {
 				$('.modal-body textarea').each(function(event){                 
-					tinyMCE.execCommand('mceRemoveControl', false, this.id);
+					tinyMCE.execCommand('mceRemoveEditor', false, this.id);
 					
 				})
 				$('.modal-body').scrollTop(0);
