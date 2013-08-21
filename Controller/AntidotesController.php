@@ -14,8 +14,10 @@ class AntidotesController extends AppController {
  */public $paginate = array('Antidote');
 	public function index($term=null) {
 		
-		if($this->request->is('ajax'))
-			$this->paginate['Antidote']['limit']=7;
+		if(!empty($this->request->query['limit']))
+			$this->paginate['Antidote']['limit']=$this->request->query['limit'];
+		else if($this->request->is('ajax'))
+			$this->paginate['Antidote']['limit']=25;
 
 		$conditions = array();
 		if(!empty($term)) {

@@ -80,13 +80,13 @@ if (!$this->params['isAjax']):
 	<?php echo $this->Paginator->pagination(); ?>
 
 	<script type="text/javascript">
-	require(['utils/tableRow'],function(row){
-		row.init('.call_row',function(){
-			$('.attach_call').removeClass('disabled');
-		});
-	});
-	$('#calls-get').click(function(event) {
-		$('.container').fadeTo('fast', 0.5);
-		$('#busy-indicator').show('fast');
-	});
+	// require(['utils/tableRow'],function(row){
+	// 	row.init('.call_row',function(){
+	// 		$('.attach_call').removeClass('disabled');
+	// 	});
+	// });
+	// $('#calls-get').click(function(event) {
+	// 	$('.container').fadeTo('fast', 0.5);
+	// 	$('#busy-indicator').show('fast');
+	// });
 	</script>

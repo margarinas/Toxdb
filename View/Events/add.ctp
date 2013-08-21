@@ -1,7 +1,8 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event.add']); });",array('inline'=>false)); ?>
 <div class="row">
     <div class="span2" id="sidebar_nav">
         <ul class="nav nav-pills nav-stacked sidebar-nav affix" >
-            <li class="event_main_section_link"><a href="#event_main">Kreipiasi</a></li>
+            <li class="event_main_section_link active"><a href="#event_main">Kreipiasi</a></li>
             <li class="patient_section_link"><a href="#patient_info">Pacientas</a></li>
             <li class="patient_section_link"><a href="#patient_history">Lydinčios ligos/būklės</a></li>
             <li class="patient_section_link"><a href="#poison_attach_button">Pridėti medžiagą</a></li>
@@ -22,7 +23,7 @@
         <?php //pr($this->data) ?>
         <?php echo $this->Form->create('Event',array('class'=>'form-horizontal')); ?>
         <fieldset id="event_main">
-        <legend >Naujas atvejis</legend>
+        <legend style="position:relative;top:-50px">Naujas atvejis</legend>
         <?php
 
         if (!empty($this->request->data['Event']['id']))
@@ -551,40 +552,12 @@ pr($eventAttributes);
 </div>
 
 <?php
-$this->assign('modalId', 'add_substance');
-$this->assign('modalTitle', 'Ieškoti nuodingosios medžiagos');
-$this->start('modalFooter');?>
-<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>   
-<button class="btn btn-primary disabled attach_substance">Priskirti medžiagą pacientui</button>   
-<?php
-$this->end();
-echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); 
-?>
-
-<?php
-$this->assign('modalId', 'add-related-event');
-$this->assign('modalTitle', 'Ieškoti atvejo');
+$this->assign('modalId', '');
+$this->assign('modalTitle', '');
 $this->assign('modalFooter', '');
-echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); 
-?>
-
-<?php
-$this->assign('modalId', 'add_call');
-$this->assign('modalTitle', 'Ieškoti konsultacijos įrašo');
 $this->start('modalFooter');?>
-<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>   
-<button class="btn btn-primary disabled attach_call">Priskirti įrašą</button>   
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 <?php
 $this->end();
 echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); 
 ?>
-
-
-<?php //echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); ?>
-
-<?php $this->Html->script('event/add',array('inline'=>false)); ?>
-<!-- 
-<script type="text/javascript">
-    //require(["event/add"]);
-</script>
- -->

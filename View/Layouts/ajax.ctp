@@ -17,6 +17,7 @@
  */
 ?>
 <?php 
+ echo $this->Session->flash();
 echo $content_for_layout;
-echo $this->Js->writeBuffer();
+// echo $this->Js->writeBuffer();
 ?>

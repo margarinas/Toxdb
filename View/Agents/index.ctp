@@ -1,22 +1,12 @@
-<?php if (!$this->params['isAjax']): ?>
-	<h3><?php echo __('Medžiagos');?></h3>
-	<?php echo $this->element('substance/actions') ?>
-<?php else: ?>
-	<h4>Pagrindinės nuodingos medžiagos</h4>
-<?php endif; ?>
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.index']); });",array('inline'=>false)); ?>
 <?php 
-if ($this->params['isAjax']) {
-	$this->Paginator->options(array(
-		'update' => '#agents',
-		'evalScripts' => true,
-		'before' => $this->Js->get('#busy-indicator')->effect('fadeIn', array('buffer' => false)),
-    	'complete' => $this->Js->get('#busy-indicator')->effect('fadeOut', array('buffer' => false))
-		));
-}
+//if (!$this->params['isAjax'])
+	// echo $this->element('substance/actions');
 ?>
+
 <?php 
-if(!$this->params['isAjax'])
-	echo $this->Html->link("Pridėti naują medžiaga",array('controller'=>'agents', 'action'=>'add'),array('class'=>'btn btn-success margin-bottom')); 
+// if(!$this->params['isAjax'])
+// 	echo $this->Html->link("Pridėti naują medžiaga",array('controller'=>'agents', 'action'=>'add'),array('class'=>'btn btn-success margin-bottom')); 
 ?>
 <table class="table" cellpadding="0" cellspacing="0">
 	<tr>
@@ -31,7 +21,7 @@ if(!$this->params['isAjax'])
 	</tr>
 	<?php
 	foreach ($agents as $key => $agent): ?>
-	<tr class="agent_row <?php echo $agent['Agent']['default']?:'error'; ?>">
+	<tr class="agent_row <?php echo $agent['Agent']['default']?'':'error'; ?>">
 		<td><?php echo $this->Html->link($agent['Agent']['name'], array('action' => 'view', $agent['Agent']['id'])) ?>&nbsp;</td>
 		<td><?php echo $agent['PoisonGroup']['name']; ?>&nbsp;</td>
 		<?php if (!$this->params['isAjax']): ?>
@@ -90,21 +80,21 @@ if(!$this->params['isAjax'])
 <?php echo $this->Paginator->pagination(array('modulus'=>'6')); ?>
 
 <script type="text/javascript">
-	require(['utils/tableRow'],function(row){
-		row.init('.agent_row',function(){
-			$('.attach_substance').removeClass('disabled');
-		});
-	});
+	// require(['utils/tableRow'],function(row){
+	// 	row.init('.agent_row',function(){
+	// 		$('.attach_substance').removeClass('disabled');
+	// 	});
+	// });
 	// $('.select_agent').change(function(event) {
 	// 	$('.attach_substance').removeClass('disabled');
 	// });
 
 	<?php if($this->params['isAjax']): ?>
-		$('.agent_row a').click( function() {
-			window.open( $(this).attr('href') );
-			return false;
-		});
-		$('.modal-body .actions').hide();
+		// $('.agent_row a').click( function() {
+		// 	window.open( $(this).attr('href') );
+		// 	return false;
+		// });
+		// $('.modal-body .actions').hide();
 	<?php endif; ?>
 
 	// $('.agent_row').click(function(event) {

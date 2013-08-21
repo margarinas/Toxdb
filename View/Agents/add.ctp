@@ -1,5 +1,5 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.add']); });",array('inline'=>false)); ?>
 <div class="agent_create">
-	<?php echo $this->element('substance/actions') ?>
 	<h3>Medžiaga</h3>
 	
 	<?php
@@ -25,11 +25,13 @@
 	//echo $this->Form->input('group',array('label'=>'Medžiagos grupė','class'=>'autocomplete'));
 
 
-
 	$subgroups_options = array(
-		'class'=>!empty($poison_subgroups)?:'hide'
+		'class'=>'poison_subgroup'
 		);
-	if(!empty($poison_subgroups))
+
+	if(empty($poison_subgroups))
+		$subgroups_options['class'] .= ' hide';
+	elseif(!empty($poison_subgroups))
 		$subgroups_options['empty'] = 'Pasirinkite...';
 
 	echo $this->Form->input('poison_group_id',array(
@@ -59,44 +61,11 @@
 	?>
 	<div class="form-actions">
 		<?php 
-		if ($this->params['isAjax']):
-			echo $this->Js->submit('Pateikti', array('update' => '#add_substance .modal-body', 'class'=>'btn btn-primary agent_form_submit'));
-		?>
-			<script>
-			$('.modal-body textarea').each(function(event){                 
-					tinyMCE.execCommand('mceRemoveControl', false, this.id);
-					tinyMCE.execCommand('mceAddControl', false, this.id);
-			});
-			$('.agent_form_submit').click(function(event) {
-				$('.modal-body').scrollTop(0);
-				$('.modal-body textarea').each(function(event){                 
-					tinyMCE.execCommand('mceRemoveControl', false, this.id);
-					
-				});
-				
-			});
-			</script>
-		<?php
-		else:
 			echo $this->Form->submit('Pateikti', array(
 					'class' => 'btn btn-primary',
 					));
-		endif;
+
 		?>
 	</div>
 	<?php echo $this->Form->end();?>
 </div>
-<script>
-	<?php $this->start('add_agent_script'); ?>
-	$('.main_group').change(function(){
-		$.post(baseUrl+'agents/findSubgroups',$(this).serialize(),function(data){
-			if(data) {
-				$('#AgentPoisonSubgroupId').html(data).show();
-			} else {
-				$('#AgentPoisonSubgroupId').empty().hide();
-			}
-		});
-		//$('#AgentPoisonSubgroupId').load(baseUrl+'agents/findSubgroups','group_id='+$(this).val());
-	});
-	<?php $this->end(); $this->Js->buffer($this->fetch('add_agent_script')); ?>
-</script>

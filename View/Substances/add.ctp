@@ -1,5 +1,5 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.add']); });",array('inline'=>false)); ?>
 <div class="substance_create">
-	<?php echo $this->element('substance/actions') ?>
 	<h3>Produktas</h3>
 	<?php
 	
@@ -12,8 +12,8 @@
 
 	echo $this->Form->create('Substance');
 	echo $this->Form->input('id');
-	echo $this->Form->input('name',array('label'=>'Pavadinimas','class'=>'autocomplete'));
-	echo $this->Form->input('generic_name',array('label'=>'Patikslintas pavadinimas','class'=>'autocomplete'));
+	echo $this->Form->input('name',array('label'=>'Pavadinimas'));
+	echo $this->Form->input('generic_name',array('label'=>'Patikslintas pavadinimas'));
 	echo $this->Form->input('manufacturer',array('label'=>'Gamintojas/importuotojas','class'=>'autocomplete'));
 
 	
@@ -49,6 +49,8 @@
 		}
 	}
 	?>
+
+	<div id="substance-add-agents">
 	<legend>Pagrindinės sudedamosios medžiagos</legend>
 
 	
@@ -112,8 +114,7 @@
 
 					if(empty($agent_poison_subgroups[$key]))
 						$agent_subgroups_options['class'] .= ' hide';
-
-					if(!empty($agent_poison_subgroups[$key]))
+					elseif (!empty($agent_poison_subgroups[$key]))
 						$agent_subgroups_options['empty'] = 'Pasirinkite...';
 
 					echo $this->Form->input('Agent.'.$key.'.poison_group_id',array(
@@ -141,182 +142,17 @@
 	<?php endforeach; ?>
 </div>
 
-<script type="text/javascript">
-<?php $this->start('add_script'); ?>
-// function incrementInput(input, num) {
-// 	optArray = new Array('id','name','for','href');
-// 	console.log(num);
-// 	for(i=0; i<optArray.length; i++) {
-// 		if(input.attr(optArray[i])) {
-// 			strArray = input.attr(optArray[i]).split('0');
-// 			input.attr(optArray[i],strArray[0]+num+strArray.pop());
-// 				//console.log(strArray.shift()+num+strArray);
-// 			}
-
-
-			
-// 		}
-// 		if(input.is('a')) {
-// 			input.text(input.text().slice(0,-1)+(num+1));
-// 		}
-// 		if(input.is('select'))
-// 			input.find('option:selected').prop("selected", false);
-// 		//console.log(input.html());
-		
-// 		return input;
-// 	}
-
-	//require(["utils/incrementInput"]);
-	$('.substance_create .add_agent').click(function(event) {
-		var num = $('.substance_create .agent').length;
-		$('.substance_create .accordion-body').collapse('hide');
-
-
-		tinyMCE.execCommand('mceFocus', false, 'Agent0Description');                    
-		tinyMCE.execCommand('mceRemoveEditor', false, 'Agent0Description');
-	
-		var clonedAgent = $('.substance_create .agent').first().clone();
-		
-
-		clonedAgent.find('input:not(.clone-with-value), textarea').val(null).end()
-		.find('label, input, a.accordion-toggle, div.accordion-body, textarea, select')
-		.incrementInput({num:num});
-		
-		$('.substance_create .agents').append(clonedAgent.find('.agent_remove').show().end());
-		tinyMCE.execCommand('mceAddEditor', false, 'Agent0Description');
-		tinyMCE.execCommand('mceAddEditor', false, 'Agent'+num+'Description');
-		$('.substance_create .agent').last().find('.accordion-body').collapse('show');
-		$('.substance_create .agent').last().find('.poison_subgroup').empty().hide();
-
-		$('.substance_create .agent').last().find('.agent_remove').click(function(event) {
-			$(this).parents('.agent').slideUp(200,function(){
-				tinyMCE.execCommand('mceRemoveEditor', false, $(this).find('textarea').attr('id'));
-				$(this).remove();
-			});
-			
-		});
-		$('.main_group').change(function(){
-			subgroup = $(this).siblings('.poison_subgroup');
-			$.post(baseUrl+'agents/findSubgroups',$(this).serialize(),function(data){
-				if(data) {
-
-					subgroup.html(data).show();
-				} else {
-					subgroup.empty().hide();
-				}
-			});
-			//$('#AgentPoisonSubgroupId').load(baseUrl+'agents/findSubgroups','group_id='+$(this).val());
-		});
-
-	});
-
-	$('.agent_remove').click(function(event) {
-			$(this).parents('.agent').slideUp(200,function(){
-				tinyMCE.execCommand('mceRemoveEditor', false, $(this).find('textarea').attr('id'));
-				// $.post(baseUrl+'substances/deleteAssocAgents',{'id':$(this).data('assoc-id')});
-				$(this).remove();
-			});
-			
-	});
-	
-	$('.search_agent').click(function(event) {
-		$('.agent_search_results').load(baseUrl+'agents/index/',{'term':$(this).prev().val()});
-		$('#agent_to_substance').show();
-		$('.substance_create .accordion-body').collapse('hide');
-	});
-	$('#agent_to_substance').click(function(event) {
-		$('.agents_attached').append($('.select_agent:checked').next().find('input:checkbox').prop('checked','checked').end().find('.agent_dose_field, .agent-main-group').remove().end().show());
-		$('.agent_search_results').empty();
-		$(this).hide();
-	});
-
-	$('.substance_form_submit').click(function(event) {
-		$('.agent_search_results').empty();
-	});
-
-	$('#SubstanceNoagents').change(function(event) {
-		$('#agents_create').toggle();
-	});
-	//console.log(tinyMCE);
-	//if (tinyMCE != undefined) {
-		//tinyMCE.add()
-	//}
-	$('.main_group').change(function(){
-		subgroup = $(this).siblings('.poison_subgroup');
-		$.post(baseUrl+'agents/findSubgroups',$(this).serialize(),function(data){
-			if(data) {
-
-				subgroup.html(data).show();
-			} else {
-				subgroup.empty().hide();
-			}
-		});
-		//$('#AgentPoisonSubgroupId').load(baseUrl+'agents/findSubgroups','group_id='+$(this).val());
-	});
-	<?php $this->end(); $this->Js->buffer($this->fetch('add_script')); ?>
-	</script>
 	<button type="button" class="btn add_agent ">Pridėti nuodingą medžiagą +</button>
+	</div>
 	<div class="form-actions">
 
-		<?php 
-		if ($this->params['isAjax']):
-			echo $this->Js->submit('Išsaugoti', array('update' => '#add_substance .modal-body','type' => 'json','class'=>'btn btn-primary substance_form_submit'));
-		?>
-			<script type="text/javascript">
-			$(document).ready(function() {
-				$('.modal-body textarea').each(function(event){                 
-					tinyMCE.execCommand('mceRemoveEditor', false, this.id);
-					tinyMCE.execCommand('mceAddEditor', false, this.id);
-				})
-			});
-			
-			$('.substance_form_submit').click(function(event) {
-				$('.modal-body textarea').each(function(event){                 
-					tinyMCE.execCommand('mceRemoveEditor', false, this.id);
-					
-				})
-				$('.modal-body').scrollTop(0);
-			});
-
-			$('.agent-search-input').typeahead({
-				minLength: 3,
-				source: function (query, process) {
-
-
-				input_id = $(this.$element).attr('id')
-				.toDash()
-				.split('-');
-
-				input_id.shift();
-
-				controller = input_id.shift()+'s'; //need to pluralize
-				needle = input_id.join('_');
-
-				return $.getJSON(
-					baseUrl+controller+'/autocomplete/'+needle,
-					{ term: query },
-					function (data) {
-						return process(data);
-					});
-				}
-
-			});
-		</script>
+		
 		<?php
-		else:
 			echo $this->Form->submit('Pateikti', array(
 				'div' => false,
-				'class' => 'btn btn-primary',
+				'class' => 'btn btn-primary substance_form_submit',
 				));
-
-    //echo $this->Html->link("Atšaukti",array('action'=>'index'),array('class'=>'btn pull-right'),'ar tikrai norite atšaukti?');
-
-				?>
-				<!-- <button class="btn">Cancel</button> -->
-
-
-
-		<?php endif; ?>
+		?>
 
 	</div>
 	<?php echo $this->Form->end(); ?>

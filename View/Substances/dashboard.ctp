@@ -1,5 +1,5 @@
 <?php
-echo $this->element('substance/actions');
+// echo $this->element('substance/actions');
 
 if ($this->params['isAjax'] && (!empty($this->data['Substance']) || !empty($this->data['Agent']))): ?>
 	

@@ -59,6 +59,3 @@ echo $this->Form->end();
 	<?php echo $report['invalid_requests'] ?> klaidingi skambučiai.<br>
 	<?php echo $report['not_poisoning'] ?> skambučiai dėl gydymo konsultacijos nesusijusios su apsinuodijimu.<br>
 <?php endif ?>
-<script>
-	$('.report_date').datepicker();
-</script>

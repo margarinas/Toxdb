@@ -1,4 +1,5 @@
- <?php 
+<?php //$this->Html->scriptBlock("require(['main'], function (main) { require(['app/login']); });",array('inline'=>false)); ?>
+<?php 
 echo $this->Form->create(null,array('url'=>'http://www.toxinz.com/Login','target'=>'_blank','id'=>'toxinz_login'));
 ?>
 <input id="LoginUserName" name="LoginUserName" type="hidden" value="lithuaniapcc" />
@@ -16,12 +17,3 @@ echo $this->Form->create(null,array('url'=>'http://www.toxbase.org/Util/login.as
 <?php
 echo $this->Form->end();
 ?>
-  <script type="text/javascript">
-  $(document).ready(function() {
-		$('#toxinz_login').submit();
-		//$('#toxbase_login').submit();
-		$('#busy-indicator').show();
-		setTimeout(function(){window.location.replace("<?php echo $this->Html->url('/users/dashboard') ?>")},1000);
-
-	});
- </script>

@@ -67,9 +67,6 @@
 			
 			<div class="span2">
 				<?php 
-				if ($this->params['isAjax'])
-					echo $this->Js->submit('Ieškoti', array('update' => '#add-related-event .modal-body','url' => '/events/find','class'=>'btn btn-primary'));
-				else
 					echo $this->Form->submit('Ieškoti', array('class' => 'btn btn-inverse'));
 				?>
 			</div>

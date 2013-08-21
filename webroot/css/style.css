@@ -24,6 +24,13 @@ body {
 	margin-left: 100px !important;
 }
 
+.margin10 {
+	margin: 10px 10px 5px 10px;
+}
+
+.margin10 form {
+	margin: 0;
+}
 
 .margin-bottom {
 	margin-bottom: 20px;
@@ -66,16 +73,16 @@ body {
 }
 
 #busy-indicator {
-	width:50px;
-	height: 50px;
+	width:100%;
+	height: 100%;
 	position: fixed;
-	top:50%;
-	left:50%;
-	margin-left: -25px;
-	margin-top: -25px;
-	background-image: url(../img/ajax-loader.gif);
+	top:0;
+	/*background-color: rgba(255,255,255,0.5);*/
 	display:none;
 	z-index: 99999;
+	background-image: url(../img/ajax-loader.gif);
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 

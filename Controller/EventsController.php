@@ -43,8 +43,8 @@ public function index() {
 
 	$events = $this->paginate();
 		
-	$showSearch = (!empty($this->data['Event']) || empty($events))?:false;
-	$this->set('showSearch','in');
+	$showSearch = (!empty($this->data['Event']) || empty($events))?'in':false;
+	$this->set('showSearch',$showSearch);
 	$this->set('events', $events);
 
 
@@ -397,7 +397,8 @@ public function report() {
 
 public function draft() {
 	if($this->request->is('post')) {
-		//$this->
+		
+		$this->render(false);
 	}
 }
 

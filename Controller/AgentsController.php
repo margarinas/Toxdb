@@ -10,6 +10,7 @@ class AgentsController extends AppController {
 	public $uses = array('Agent','Unit');
 	public $paginate = array('Agent');
 	public $autocomplete = true;
+	public $layout = 'poison';
 
 	public function index() {
 
@@ -31,8 +32,10 @@ class AgentsController extends AppController {
 			$conditions['OR']['Agent.user_id']=$this->Auth->user('id');
 		}
 
-		if($this->request->is('ajax'))
-			$this->paginate['Agent']['limit']=7;
+		if(!empty($this->request->query['limit']))
+			$this->paginate['Agent']['limit']=$this->request->query['limit'];
+		else if($this->request->is('ajax'))
+			$this->paginate['Agent']['limit']=25;
 
 		$this->paginate['Agent']['order']='default ASC, Agent.name ASC';
 		$this->paginate['Agent']['contain']=array('PoisonGroup','Substance');
@@ -93,7 +96,7 @@ class AgentsController extends AppController {
 			if($this->Agent->saveAll($this->request->data)) {
 				$this->Session->setFlash(__('Įrašas išsaugotas'),'success');
 				
-				if($this->RequestHandler->isAjax()) {
+				if($this->RequestHandler->isAjax() && $this->data['query'] == "dashboard") {
 					$this->set('units',$this->Unit->find('list',array('id','name','group')));
 					$savedAgents = array();
 					$this->request->data['Agent']['id'] = $this->Agent->id;

@@ -42,48 +42,16 @@
 	echo $this->fetch('meta');
 	echo $this->fetch('css');
 	
-	echo $this->Html->script(array(
-		'lib/jquery-1.9.1.min',
-		'lib/bootstrap.min',
-		'lib/jquery-ui.min',
-		'lib/jquery-ui-timepicker-addon',
-		'lib/jquery-ui-timepicker-lt',
-		'lib/jquery.ui.datepicker-lt',
-		'lib/tiny_mce/tiny_mce',
-		'lib/jquery.incrementInput',
-		// 'main'
-		));
 
-
-	
-		?>
-
-		<script>
+	?>
+	<script>
 		var baseUrl = "<?php echo $this->Html->url('/') ?>";
-		// tinyMCE.init({
-		// 	mode : "textareas",
-		// 	theme : "advanced",
-		// 	theme_advanced_toolbar_location : "top",
-		// 	theme_advanced_buttons1 : "bold,italic,underline,bullist,numlist,undo,redo",
-		// 	plugins: 'paste',
-		// 	paste_auto_cleanup_on_paste : true,
-		// 	paste_remove_styles: true,
-		// 	paste_remove_styles_if_webkit: true,
-		// 	paste_strip_class_attributes: true,
-		// 	theme_advanced_resizing : true,
-		// 	   language : "lt",
-		// 	   height:'200',
-		// 	 //content_css:baseUrl+"css/bootstrap.css"
+	</script>
 
-
-		// });
-</script>
-
-
-<?php 
-echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js"));
-echo $this->fetch('script');
-?>
+	<?php 
+	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js"));
+	echo $this->fetch('script');
+	?>
 
 
 </head>
@@ -95,7 +63,7 @@ echo $this->fetch('script');
 			<div class="span2">
 				<?php echo $this->element('user/menu') ?>
 			</div>
-			<div class="span10">
+			<div class="span10" id="container">
 				<?php echo $this->Session->flash(); ?>
 
 				<?php echo $this->fetch('content'); ?>
@@ -106,14 +74,17 @@ echo $this->fetch('script');
 		</footer>
 	</div>
 	<?php
-	$this->assign('modalId', 'add_substance');
-	$this->assign('modalTitle', 'Medžiagų paieška');
+	$this->assign('modalId', '');
+	$this->assign('modalTitle', '');
+	$this->assign('modalFooter', '');
+	$this->start('modalFooter');?>
+	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	<?php
+	$this->end();
 	echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); 
 	?>
-	<?php echo $this->Html->script('user/dashboard'); ?>
-	<?php echo $this->fetch('scriptBottom'); ?>
-	<?php echo $this->Js->writeBuffer(); ?>
+	
 	<div id="busy-indicator"></div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>

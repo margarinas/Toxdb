@@ -1,15 +1,8 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event.index']); });",array('inline'=>false)); ?>
 <?php 
-if ($this->params['isAjax']) {
-	$this->Paginator->options(array(
-		'update' => '#add-related-event .modal-body',
-		'evalScripts' => true,
-		'before' => $this->Js->get('#busy-indicator')->effect('fadeIn', array('buffer' => false)),
-    	'complete' => $this->Js->get('#busy-indicator')->effect('fadeOut', array('buffer' => false))
-		));
-}
-if (!$this->params['isAjax']):
+if (!$this->params['isAjax']&& $this->action=='index'):
 ?>
-<h3><?php echo __('Atvejai'); if ($this->action=='index') echo ' nuo '.date('Y-m-d',strtotime('-1 week')); ?></h3>
+<h4><?php echo __('Atvejai').' nuo '.date('Y-m-d',strtotime('-1 week')); ?></h4>
 <?php endif; ?>
 <button type="button" class="btn btn-danger margin-bottom" data-toggle="collapse" data-target=".event_search_form">
   Paieška <i class="icon-arrow-down icon-white"></i>
@@ -106,51 +99,51 @@ if(!$this->params['isAjax'])
 
 <?php endif; ?>
 <script>
-require(['lib/bootstrap.min','utils/tableRow'],function(require,row) {
-	row.init('.event_row')
+// require(['lib/bootstrap.min','utils/tableRow'],function(require,row) {
+// 	row.init('.event_row')
 
 
-$('#poison_autocomplete').typeahead({
-	minLength: 3,
-	source: function (query, process) {
+// $('#poison_autocomplete').typeahead({
+// 	minLength: 3,
+// 	source: function (query, process) {
 
-			return $.getJSON(
-				baseUrl+'substances/find_poison/',
-				{ term: query },
-				function (data) {
-					console.log(data);
-					return process(data);
-				});
-		}
+// 			return $.getJSON(
+// 				baseUrl+'substances/find_poison/',
+// 				{ term: query },
+// 				function (data) {
+// 					console.log(data);
+// 					return process(data);
+// 				});
+// 		}
 
-	});
+// 	});
 
-	$('.clear-search').click(function() {
-		$('#EventFindForm input').val('').prop('checked',false);;
-		$('#EventFindForm select').val([0]);	
-	});
+// 	$('.clear-search').click(function() {
+// 		$('#EventFindForm input').val('').prop('checked',false);;
+// 		$('#EventFindForm select').val([0]);	
+// 	});
 
-	// $('.event_row').click(function(event) {
-	// 	var checkbox = $(this).find('.select_event');
-	// 	if(checkbox.prop('checked') && $(this).hasClass('success'))
-	// 		checkbox.prop('checked',false);
-	// 	else if(!$(this).hasClass('success'))
-	// 		checkbox.prop('checked','checked');
-	// 	$(this).toggleClass('success');
+// 	// $('.event_row').click(function(event) {
+// 	// 	var checkbox = $(this).find('.select_event');
+// 	// 	if(checkbox.prop('checked') && $(this).hasClass('success'))
+// 	// 		checkbox.prop('checked',false);
+// 	// 	else if(!$(this).hasClass('success'))
+// 	// 		checkbox.prop('checked','checked');
+// 	// 	$(this).toggleClass('success');
 
-	// });
-	var events_selected = false;
-	$('.event-select-all').click(function(event) {
-		if(events_selected) {
-			$('.event_row').removeClass('success').find('.select_event').prop('checked','');
-			events_selected = false;
-		}
-		else {
-			$('.event_row').addClass('success').find('.select_event').prop('checked','checked');
-			events_selected = true;
-		}
-		return false;
-	});
+// 	// });
+// 	var events_selected = false;
+// 	$('.event-select-all').click(function(event) {
+// 		if(events_selected) {
+// 			$('.event_row').removeClass('success').find('.select_event').prop('checked','');
+// 			events_selected = false;
+// 		}
+// 		else {
+// 			$('.event_row').addClass('success').find('.select_event').prop('checked','checked');
+// 			events_selected = true;
+// 		}
+// 		return false;
+// 	});
 
-});
+// });
 </script>

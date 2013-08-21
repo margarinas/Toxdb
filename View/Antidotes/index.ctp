@@ -1,19 +1,7 @@
-<?php if (!$this->params['isAjax']): ?>
-	<h3>Antidotai</h3>
-	<?php echo $this->element('substance/actions') ?>
-<?php else: ?>
-	<h4>Antidotai</h4>
-<?php endif; ?>
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.index']); });",array('inline'=>false)); ?>
 <?php 
-if ($this->params['isAjax']) {
-	$this->Paginator->options(array(
-		'update' => '.antidote_search_results',
-		'evalScripts' => true,
-		'before' => $this->Js->get('#busy-indicator')->effect('fadeIn', array('buffer' => false)),
-    	'complete' => $this->Js->get('#busy-indicator')->effect('fadeOut', array('buffer' => false))
-		));
-}
-?>
+ //echo $this->element('substance/actions') ?>
+
 <?php 
 if(!$this->params['isAjax'])
 	echo $this->Html->link("Pridėti naują priešnuodį",array('controller'=>'antidotes', 'action'=>'add'),array('class'=>'btn btn-success margin-bottom')); 
@@ -42,7 +30,7 @@ if(!$this->params['isAjax'])
 		<td>
 			
 			<?php 
-			echo $this->OldForm->input('Antidote.',array('value'=>$antidote['Antidote']['id'],'type'=>'checkbox','div'=>false,'label'=>false, 'class'=>'select_antidote'));
+			echo $this->OldForm->input('Antidote.',array('value'=>$antidote['Antidote']['id'],'type'=>'checkbox','div'=>false,'label'=>false, 'class'=>'select_antidote select-element'));
 			
 			echo $this->element('antidote/attach_antidote',array('key'=>$key,'antidote'=>$antidote['Antidote'],'units'=>$units,'hide'=>true));
 			?>
@@ -60,23 +48,3 @@ if(!$this->params['isAjax'])
 		?>	
 	</p>
 	<?php echo $this->Paginator->pagination(); ?>
-
-<script type="text/javascript">
-$('.antidote_row').click(function(event) {
-	var checkbox = $(this).find('.select_antidote');
-	if(checkbox.prop('checked') && $(this).hasClass('success'))
-		checkbox.prop('checked',false);
-	else if(!$(this).hasClass('success'))
-		checkbox.prop('checked','checked');
-	$(this).toggleClass('success');
-});
-
-<?php if($this->params['isAjax']): ?>
-$('.antidote_row a').click( function() {
-	window.open( $(this).attr('href') );
-	return false;
-});
-
-$('.modal-body .actions').hide();
-<?php endif; ?>
-</script>
