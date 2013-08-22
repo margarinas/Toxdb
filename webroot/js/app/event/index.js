@@ -1,13 +1,17 @@
 define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomplete","utils/poisonAutocomplete"], function(row,pagination,element,autocomplete,poisonAutocomplete) {
 
 	function init(options) {
-		defaults = {container:"#container",rowCallback:null};
+		defaults = {container:"#container",rowCallback:null,hideControls:false};
 		var settings = $.extend(defaults, options);
 
 		row.init(".event_row",function(){
 			if(typeof settings.rowCallback === "function")
 				settings.rowCallback();
 		});
+
+		if(settings.hideControls === true) {
+			$(settings.container+" .control-hide").hide();
+		}
 
 		pagination.init({container:settings.container,callback:init});
 		$('.datepicker').datepicker();
@@ -40,17 +44,19 @@ define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomple
 		$("#EventFindForm").submit(function(event) {
 			url = $(this).attr('action');
 			data = $(this).serialize();
+
 			$.ajax({
 				method:"post",
 				beforeSend: function (XMLHttpRequest) {
 					$("#busy-indicator").fadeIn();
 				},
-				complete:function(XMLHttpRequest, textStatus) {
+				complete:function(jqXHR, textStatus) {
 					$("#busy-indicator").fadeOut();
 				},
-				success: function (data, textStatus) {
+				success: function (data, textStatus,jqXHR ) {
 					$(settings.container).html(data);
 					init(settings);
+					history.pushState(null,null,$(data).find('#EventCurrentUrl').val())
 				},
 				data:data,
 				url:url

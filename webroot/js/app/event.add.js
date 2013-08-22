@@ -97,7 +97,7 @@ $('.event_invalid_request').change(function(event) {
     } else {
         $('.event_attr_section_link').show();
         $('.event_attributes').show();
-        $('.event_attr_section_link').appendTo('.sidebar-nav');
+        event_attr_section_link.insertAfter('.patient_section_link:last');
         event_attr_section_link  = null;
     }
     refreshScrollSpy();
@@ -145,8 +145,10 @@ $('.related-events-toggle').click(function(event) {
 
 $('.save-draft').click(function(event) {
     $.post(baseUrl+'events/draft', $('#EventAddForm').serialize(), function(data, textStatus, xhr) {
-        if(data.success) {
-            console.log($('#EventAddForm').serialize());
+         console.log(xhr);
+        if(textStatus === "success") {
+
+            console.log(data);
         }
     });
     

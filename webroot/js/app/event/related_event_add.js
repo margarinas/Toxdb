@@ -16,7 +16,7 @@ define(["jquery","utils/pagination","utils/tableRow","utils/getElement","utils/m
 		// });
 		$('.add-related-event-btn').click(function(event) {
 			modal.set(options, function() {
-				events.init({container:".modal-body"});
+				events.init({container:".modal-body",hideControls:true});
 				row.init(".event_row",".modal-body", function(target) {
 					new_related_event = related_event.clone();
 					$('.events-related').append(new_related_event);

@@ -4,7 +4,7 @@
 	//pr($this->request->data);
 	echo $this->Form->create('Event',array('url' => array_merge(array('action' => 'find'), $this->params['pass']),'id'=>'EventFindForm'));
 	?>
-
+	<?php echo $this->Form->hidden('current_url',array('value'=>$this->here,'name'=>false)); ?>
 	<div class="span4">
 		<?php
 		echo $this->Form->input('id', array('label'=>'Protokolo nr.','type'=>'text'));

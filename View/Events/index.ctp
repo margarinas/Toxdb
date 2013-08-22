@@ -1,4 +1,5 @@
 <?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event.index']); });",array('inline'=>false)); ?>
+
 <?php 
 if (!$this->params['isAjax']&& $this->action=='index'):
 ?>
@@ -67,12 +68,12 @@ echo $this->Form->create('Event',array('action'=>'multiplePrint','target'=>'_bla
 			<div class="btn-group">
 				<?php 
 				echo $this->Html->link('<i class="icon-zoom-in"></i>', array('action' => 'view', $event['Event']['id']),array('class'=>'btn btn-mini','escape'=>false));
-				if(!$this->params['isAjax']) {
+				
 					if($this->Session->read('Auth.User.id')==$event['User']['id'] || $this->Session->read('Auth.User.Group.name')=='admin')
-						echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit',$event['Event']['id']),array('class'=>'btn btn-mini','escape'=>false ));
+						echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit',$event['Event']['id']),array('class'=>'btn btn-mini control-hide','escape'=>false ));
 					if($this->Session->read('Auth.User.Group.name')=='admin')
-						echo $this->Form->postLink('<i class="icon-trash icon-white"></i>', array('action' => 'delete', $event['Event']['id']), array('class'=>'btn btn-mini btn-danger','escape'=>false), __('Ar tikrai norite ištrinti # %s?', $event['Event']['id']));
-				}
+						echo $this->Form->postLink('<i class="icon-trash icon-white"></i>', array('action' => 'delete', $event['Event']['id']), array('class'=>'btn btn-mini btn-danger control-hide','escape'=>false), __('Ar tikrai norite ištrinti # %s?', $event['Event']['id']));
+				
 				?>
 			</div>
 		</td>

@@ -379,11 +379,42 @@ class Event extends AppModel {
     	return $event;
     }
 
-    public function getEventTypes() {
-    	return $this->EventAttribute->find('list',array(
-    		'fields'=>array('id','name','subgroup'),
-    		'conditions'=>array('group' =>'type')
-    		));
+    // public function getEventTypes() {
+    // 	return $this->EventAttribute->find('list',array(
+    // 		'fields'=>array('id','name','subgroup'),
+    // 		'conditions'=>array('group' =>'type')
+    // 		));
+    // }
+
+
+    public function getFormLists() {
+
+    	$formLists = array(
+    		'eventTypes' => $this->EventAttribute->find('list',array(
+    			'fields'=>array('id','name','subgroup'),
+    			'conditions'=>array('group' =>'type')
+    			)),
+    		'eventAttributes' => $this->EventAttribute->find('list',array(
+    			'fields'=>array('id','name','group'),
+    			'conditions'=>array('group !=' =>'type')
+    			)),
+    		'patientAttributes' => $this->Patient->PatientAttributeValue->PatientAttribute->find('group'),
+    		'evaluations' => $this->Patient->Evaluation->groupList(),
+    		'poisoning_attributes' => $this->Patient->PoisoningAttribute->groupList(),
+    		'poisoning_cause' => $this->Patient->PoisoningAttribute->groupList('p_cause'),
+    		'poisoning_place' => $this->Patient->PoisoningAttribute->groupList('p_place'),
+    		'treatments' => $this->Patient->PatientTreatment->Treatment->find('list',array(
+    			'fields'=>array('id','description'),
+    			'conditions'=>array('group'=>'basic')
+    			)),
+    		'treatment_places' => $this->Patient->PatientsTreatmentPlace->TreatmentPlace->find('list'),
+    		'users' => $this->User->find('list',array('fields'=>array('id','name')))
+
+    		);
+
+
+		return $formLists;
+
     }
 
 	public function beforeValidate($options = array()) {;

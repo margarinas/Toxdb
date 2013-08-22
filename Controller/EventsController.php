@@ -61,7 +61,8 @@ public function find()
 	$this->Prg->commonProcess();
 	$parsedParams = $this->Prg->parsedParams();
 
-	$limit = $this->params['named']['event_per_page'];
+	$limit = !empty($this->params['named']['event_per_page'])?$this->params['named']['event_per_page']:20;
+
 	$this->request->data['Event']['event_per_page'] = $limit;
 	$this->paginate = array(
 		'order' => 'Event.created DESC',
@@ -76,7 +77,7 @@ public function find()
 			'User'=>array('fields'=>array('id','name'))
 			),
 		'conditions' => $this->Event->parseCriteria($this->Prg->parsedParams()),
-		'limit' => !empty($limit)?$limit:20
+		'limit' => $limit
 		);
 
 
@@ -134,7 +135,7 @@ public function add() {
 	$this->set('title_for_layout', 'Naujas atvejis');
 
 	if(!empty($this->request->query) && !$this->request->is('post')) {
-		pr($this->request->query);
+		// pr($this->request->query);
 		$this->request->data = Hash::expand($this->request->query,'$');
 		// pr($this->request->data);
 	}
@@ -179,31 +180,12 @@ public function add() {
 			$this->request->data['Event']['created'] = date('Y-m-d H:i');
 	}
 
-	$eventAttributes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','group'),
-		'conditions'=>array('group !=' =>'type')
-		));
 
-	$eventTypes = $this->Event->getEventTypes();
-
-	$patientAttributes = $this->PatientAttribute->find('group');
-
-	$evaluations = $this->Event->Patient->Evaluation->groupList();
-	$poisoning_attributes = $this->Event->Patient->PoisoningAttribute->groupList();
-	$poisoning_cause = $this->Event->Patient->PoisoningAttribute->groupList('p_cause');;
-	$poisoning_place = $this->Event->Patient->PoisoningAttribute->groupList('p_place');
-
-	$treatments = $this->Event->Patient->PatientTreatment->Treatment->find('list',array(
-		'fields'=>array('id','description'),
-		'conditions'=>array('group'=>'basic')
-		));
-
-	$treatment_places = $this->Event->Patient->PatientsTreatmentPlace->TreatmentPlace->find('list');
-
-	$users = $this->Event->User->find('list',array('fields'=>array('id','name')));
 	$units = $this->Unit->groupList();
-
-	$this->set(compact('users','eventAttributes','eventTypes','patientAttributes','evaluations','poisoning_attributes','poisoning_cause','poisoning_place','treatments','treatment_places','units','substances','agents','antidotes'));
+	$formLists = $this->Event->getFormLists();
+	extract($formLists);
+	//pr($eventTypes);
+	$this->set(compact('units','substances','agents','antidotes',array_keys($formLists)));
 
 }
 
@@ -244,25 +226,7 @@ public function edit($id = null) {
 		throw new NotFoundException(__('Invalid event'));
 	}
 
-	$eventAttributes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','group'),
-		'conditions'=>array('group !=' =>'type')
-		));
-
-	$eventTypes = $this->Event->getEventTypes();
-
-	$patientAttributes = $this->PatientAttribute->find('group');
-	$evaluations = $this->Event->Patient->Evaluation->groupList();
-	$poisoning_attributes = $this->Event->Patient->PoisoningAttribute->groupList();
-	$poisoning_cause = $this->Event->Patient->PoisoningAttribute->groupList('p_cause');;
-	$poisoning_place = $this->Event->Patient->PoisoningAttribute->groupList('p_place');
-
-
-	$treatments = $this->Event->Patient->PatientTreatment->Treatment->find('list',array(
-		'fields'=>array('id','description'),
-		'conditions'=>array('group'=>'basic')
-		));
-	$treatment_places = $this->Event->Patient->PatientsTreatmentPlace->TreatmentPlace->find('list');
+	
 
 	if ($this->request->is('post') || $this->request->is('put')) {
 
@@ -346,12 +310,11 @@ public function edit($id = null) {
 
 
 
-
-
-	$users = $this->Event->User->find('list',array('fields'=>array('id','name')));
 	$units = $this->Unit->find('list',array('fields'=>array('id','name','group')));
 	
-	$this->set(compact('users','eventAttributes','eventTypes','patientAttributes','evaluations','poisoning_attributes','poisoning_cause','poisoning_place','treatments','treatment_places','units','substances','agents','antidotes'));
+	$formLists = $this->Event->getFormLists();
+	extract($formLists);
+	$this->set(compact('units','substances','agents','antidotes',array_keys($formLists)));
 	$this->render('/Events/add');
 }
 
@@ -397,7 +360,7 @@ public function report() {
 
 public function draft() {
 	if($this->request->is('post')) {
-		
+		pr($this->data);
 		$this->render(false);
 	}
 }
