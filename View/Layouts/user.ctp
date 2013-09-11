@@ -49,7 +49,7 @@
 	</script>
 
 	<?php 
-	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js"));
+	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js?v=1.02"));
 	echo $this->fetch('script');
 	?>
 

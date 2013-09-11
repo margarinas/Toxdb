@@ -5,7 +5,7 @@ define(["utils/tableRow","utils/pagination"],function(row, pagination){
 		row.init(" .call_row",settings.container);
 		pagination.init({container:settings.container});
 		if(settings.updateButton)
-			("#calls-get").show();
+			$("#calls-get").show();
 	};
 
 	return {

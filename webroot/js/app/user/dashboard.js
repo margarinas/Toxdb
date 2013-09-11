@@ -83,7 +83,7 @@ define(["utils/poisonAutocomplete","utils/modal","app/substance/actions","utils/
                         report.init();
                         break;
                     case "calls":
-                        call.init();
+                        call.init({updateButton:true});
                 }
 
                 history.pushState(null,null,url);
