@@ -1,3 +1,6 @@
+<button type="button" class="btn btn-danger margin-bottom" data-toggle="collapse" data-target=".event_search_form">
+  Paieška <i class="icon-arrow-down icon-white"></i>
+</button>
 <div class="event_search_form row collapse <?php  echo $showSearch ?>">
 	<?php
 //pr($events);

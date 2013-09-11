@@ -27,6 +27,7 @@
  */
 	Router::connect('/', Configure::read('Route.default'));
 	Router::connect('/getElement', array('controller'=>'App','action'=>'getElement'));
+	Router::parseExtensions('json');
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
@@ -37,6 +38,7 @@
  * how to customize the loading of plugin routes.
  */
 	CakePlugin::routes();
+
 
 /**
  * Load the CakePHP default routes. Remove this if you do not want to use

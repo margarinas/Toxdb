@@ -21,7 +21,7 @@
     </div>
     <div class="span10 event_form">
         <?php //pr($this->data) ?>
-        <?php echo $this->Form->create('Event',array('class'=>'form-horizontal')); ?>
+        <?php echo $this->Form->create('Event',array('class'=>'form-horizontal','id'=>'EventAddForm')); ?>
         <fieldset id="event_main">
         <legend style="position:relative;top:-50px">Naujas atvejis</legend>
         <?php
@@ -536,6 +536,7 @@ pr($eventAttributes);
     </fieldset>
     <?php echo $this->Form->input('Event.extra', array('label'=>'PASTABOS')); ?>
     <?php echo $this->Form->input('Event.created', array('label'=>'Data','type'=>'text','class'=>'datetimepicker')); ?>
+    <?php echo $this->Form->hidden('Draft.id'); ?>
     <div class="form-actions">
         <?php echo $this->Form->submit('Pateikti', array(
             'div' => false,

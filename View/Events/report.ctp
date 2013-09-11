@@ -1,3 +1,4 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event/report'], function(report) {report.init()}); });",array('inline'=>false)); ?>
 <?php
 echo $this->Form->create('Event',array('action'=>'report'));
 echo $this->Form->input('begin_date', array('label'=>'Laikotarpis',

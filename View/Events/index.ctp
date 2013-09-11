@@ -1,26 +1,27 @@
 <?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event.index']); });",array('inline'=>false)); ?>
 
 <?php 
-if (!$this->params['isAjax']&& $this->action=='index'):
+if (!$this->params['isAjax'] && $this->action=='index'):
 ?>
 <h4><?php echo __('Atvejai').' nuo '.date('Y-m-d',strtotime('-1 week')); ?></h4>
 <?php endif; ?>
-<button type="button" class="btn btn-danger margin-bottom" data-toggle="collapse" data-target=".event_search_form">
-  Paieška <i class="icon-arrow-down icon-white"></i>
-</button>
-<?php echo $this->element('event/search'); ?>
+
+<?php 
+if(empty($noSearchForm))
+	echo $this->element('event/search');
+ ?>
 <?php 
 
 if(!empty($events)):
 echo $this->Form->create('Event',array('action'=>'multiplePrint','target'=>'_blank')); ?>
 <table class="table">
-	<tr>
+	<tr class="pagination">
 		<th><?php echo $this->Paginator->sort('id','Nr.');?></th>
 		<th><?php echo $this->Paginator->sort('created','data');?></th>
 		<th>Medžiaga</th>
-		<th><?php echo $this->Paginator->sort('user_id','Vartotojas');?></th>
+		<th class="event-user-collum"><?php echo $this->Paginator->sort('user_id','Vartotojas');?></th>
 		<th class="actions"><?php echo __('Veiksmai');?></th>
-		<th><a href="#" class="event-select-all"><i class="icon-check"></i></a></th>
+		<th class="event-select-collum"><a href="#" class="event-select-all"><i class="icon-check"></i></a></th>
 	</tr>
 	<?php
 	foreach ($events as $event): ?>
@@ -61,7 +62,7 @@ echo $this->Form->create('Event',array('action'=>'multiplePrint','target'=>'_bla
 			?>
 
 		</td>
-		<td>
+		<td class="event-user-collum">
 			<?php echo $this->Html->link($event['User']['name'], array('controller' => 'users', 'action' => 'view', $event['User']['id'])); ?>
 		</td>
 		<td class="actions">
@@ -72,18 +73,20 @@ echo $this->Form->create('Event',array('action'=>'multiplePrint','target'=>'_bla
 					if($this->Session->read('Auth.User.id')==$event['User']['id'] || $this->Session->read('Auth.User.Group.name')=='admin')
 						echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit',$event['Event']['id']),array('class'=>'btn btn-mini control-hide','escape'=>false ));
 					if($this->Session->read('Auth.User.Group.name')=='admin')
-						echo $this->Form->postLink('<i class="icon-trash icon-white"></i>', array('action' => 'delete', $event['Event']['id']), array('class'=>'btn btn-mini btn-danger control-hide','escape'=>false), __('Ar tikrai norite ištrinti # %s?', $event['Event']['id']));
+						echo $this->Html->link('<i class="icon-trash icon-white"></i>', array('action' => 'delete', 'ext'=>'json','?'=>array('id'=>$event['Event']['id'])),
+							array('class'=>'btn btn-mini btn-danger control-hide event-delete post-link','escape'=>false));
 				
 				?>
 			</div>
 		</td>
-		<td><?php	echo $this->OldForm->input('Event.',array('value'=>$event['Event']['id'],'type'=>'checkbox','div'=>false,'label'=>false, 'class'=>'select_event select-element','hiddenField'=>false)); ?>
+		<td class="event-select-collum">
+		<?php	echo $this->OldForm->input('Event.',array('value'=>$event['Event']['id'],'type'=>'checkbox','div'=>false,'label'=>false, 'class'=>'select_event select-element','hiddenField'=>false)); ?>
 		</td>
 	</tr>
 <?php endforeach;?>
 </table>
 
-<p>
+<p class="paginator-summary">
 <?php
 echo $this->Paginator->counter(array(
 	'format' => __('Puslapis {:page} / {:pages}')

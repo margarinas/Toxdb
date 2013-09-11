@@ -1,12 +1,6 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/call.index']); });",array('inline'=>false)); ?>
 <?php 
-if ($this->params['isAjax']) {
-	$this->Paginator->options(array(
-		'update' => '#add_call .modal-body',
-		'evalScripts' => true,
-		'before' => $this->Js->get('#busy-indicator')->effect('fadeIn', array('buffer' => false)),
-		'complete' => $this->Js->get('#busy-indicator')->effect('fadeOut', array('buffer' => false))
-		));
-}
+
 
 if (!$this->params['isAjax']):
 	echo $this->Html->link("Atnaujinti",array('action'=>'getCalls'),array('class'=>'btn btn-info pull-right', 'id'=>'calls-get'));
@@ -66,8 +60,7 @@ if (!$this->params['isAjax']):
 	</tr>
 <?php endforeach; ?>
 </table>
-<?php if (!$this->params['isAjax']): ?>
-	
+
 
 	<p>
 		<?php
@@ -76,17 +69,6 @@ if (!$this->params['isAjax']):
 			));
 			?>	
 		</p>
-	<?php endif ?>
+
 	<?php echo $this->Paginator->pagination(); ?>
 
-	<script type="text/javascript">
-	// require(['utils/tableRow'],function(row){
-	// 	row.init('.call_row',function(){
-	// 		$('.attach_call').removeClass('disabled');
-	// 	});
-	// });
-	// $('#calls-get').click(function(event) {
-	// 	$('.container').fadeTo('fast', 0.5);
-	// 	$('#busy-indicator').show('fast');
-	// });
-	</script>

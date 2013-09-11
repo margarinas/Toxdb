@@ -4,6 +4,130 @@
 		"selected_items":
 		[
 			[
+				"co",
+				"console"
+			],
+			[
+				"de",
+				"draft-delete"
+			],
+			[
+				"evet",
+				"eventSearch"
+			],
+			[
+				"h",
+				"history"
+			],
+			[
+				"dr",
+				"draft"
+			],
+			[
+				"draf",
+				"draft_row"
+			],
+			[
+				"subs",
+				"substance_count"
+			],
+			[
+				"dra",
+				"drafts"
+			],
+			[
+				"eve",
+				"event-list"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"jso",
+				"json_decode"
+			],
+			[
+				"afterF",
+				"afterFind"
+			],
+			[
+				"crea",
+				"created"
+			],
+			[
+				"jsno",
+				"json_encode"
+			],
+			[
+				"sae",
+				"saveDraft"
+			],
+			[
+				"dar",
+				"draft_id"
+			],
+			[
+				"Draf",
+				"DraftId"
+			],
+			[
+				"EventA",
+				"EventAddForm"
+			],
+			[
+				"res",
+				"result"
+			],
+			[
+				"Eve",
+				"Event"
+			],
+			[
+				"save",
+				"saveData"
+			],
+			[
+				"getE",
+				"getEventTypes"
+			],
+			[
+				"for",
+				"formLists"
+			],
+			[
+				"user",
+				"users"
+			],
+			[
+				"trea",
+				"treatment_places"
+			],
+			[
+				"poisonin",
+				"poisoning_place"
+			],
+			[
+				"poiso",
+				"poisoning_cause"
+			],
+			[
+				"pat",
+				"patientAttributes"
+			],
+			[
+				"tre",
+				"TreatmentBefore"
+			],
+			[
+				"Tr",
+				"TreatmentBefore"
+			],
+			[
+				"Pa",
+				"Patient"
+			],
+			[
 				"re",
 				"report"
 			],
@@ -72,10 +196,6 @@
 				"container"
 			],
 			[
-				"co",
-				"console"
-			],
-			[
 				"antidote",
 				"antidote_search_results"
 			],
@@ -112,10 +232,6 @@
 				"substances"
 			],
 			[
-				"subs",
-				"substance"
-			],
-			[
 				"mar",
 				"margin-bottom"
 			],
@@ -130,10 +246,6 @@
 			[
 				"btn",
 				"btn-primary"
-			],
-			[
-				"fun",
-				"function"
 			],
 			[
 				"app",
@@ -166,10 +278,6 @@
 			[
 				"ref",
 				"refreshScrollSpy"
-			],
-			[
-				"Eve",
-				"EventAttribute"
 			],
 			[
 				"Even",
@@ -268,20 +376,8 @@
 				"poison_group_id"
 			],
 			[
-				"tre",
-				"treatment_place"
-			],
-			[
-				"trea",
-				"treatment"
-			],
-			[
 				"tra",
 				"treatment"
-			],
-			[
-				"Pa",
-				"PatientTreatment"
 			],
 			[
 				"Age",
@@ -340,10 +436,6 @@
 				"event_agents"
 			],
 			[
-				"pat",
-				"patient_substances"
-			],
-			[
 				"q",
 				"query_vars"
 			],
@@ -358,10 +450,6 @@
 			[
 				"Ev",
 				"Event"
-			],
-			[
-				"for",
-				"foreach	foreach …"
 			],
 			[
 				"remove",
@@ -382,14 +470,6 @@
 			[
 				"remo",
 				"removeCall"
-			],
-			[
-				"jso",
-				"json_encode"
-			],
-			[
-				"eve",
-				"event"
 			],
 			[
 				"pre",
@@ -434,104 +514,24 @@
 			[
 				"sele",
 				"select_call"
-			],
-			[
-				"prop",
-				"props"
-			],
-			[
-				"inp",
-				"input	CakePHP: $this->Form->input()"
-			],
-			[
-				"fu",
-				"function"
-			],
-			[
-				"load",
-				"loadElement"
-			],
-			[
-				"ele",
-				"element"
-			],
-			[
-				"lo",
-				"log"
-			],
-			[
-				"print",
-				"print_r"
-			],
-			[
-				"prin",
-				"print_r"
-			],
-			[
-				"event_at",
-				"event_attr_section_link"
-			],
-			[
-				"clone",
-				"clone-with-value"
-			],
-			[
-				"tr",
-				"true"
-			],
-			[
-				"Agen",
-				"AgentsSubstance"
-			],
-			[
-				"apsi",
-				"apsinuodijimu"
-			],
-			[
-				"crea",
-				"create"
-			],
-			[
-				"cal",
-				"calls-get"
-			],
-			[
-				"fil",
-				"file_name"
-			],
-			[
-				"control",
-				"controls"
-			],
-			[
-				"fou",
-				"foundPart"
-			],
-			[
-				"auto",
-				"autoLoader"
-			],
-			[
-				"H",
-				"Hash"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "View/Events/index.ctp",
+			"file": "View/Users/dashboard.ctp",
 			"settings":
 			{
-				"buffer_size": 5682,
+				"buffer_size": 797,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "webroot/js/app/event.index.js",
+			"file": "webroot/js/app/user/dashboard.js",
 			"settings":
 			{
-				"buffer_size": 71,
+				"buffer_size": 3536,
 				"line_ending": "Windows"
 			}
 		},
@@ -539,39 +539,63 @@
 			"file": "webroot/js/app/event/index.js",
 			"settings":
 			{
-				"buffer_size": 1728,
+				"buffer_size": 3191,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "View/Substances/dashboard.ctp",
+			"file": "webroot/js/app/call/index.js",
 			"settings":
 			{
-				"buffer_size": 2844,
+				"buffer_size": 317,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "webroot/js/app/substance/actions.js",
+			"file": "webroot/js/app/draft/index.js",
 			"settings":
 			{
-				"buffer_size": 3073,
+				"buffer_size": 910,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "webroot/js/app/event/substance_add.js",
+			"file": "View/Drafts/index.ctp",
 			"settings":
 			{
-				"buffer_size": 3486,
+				"buffer_size": 1321,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "webroot/js/app/event.add.js",
+			"file": "Controller/DraftsController.php",
 			"settings":
 			{
-				"buffer_size": 5062,
+				"buffer_size": 1018,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "webroot/js/utils/pagination.js",
+			"settings":
+			{
+				"buffer_size": 1547,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "webroot/js/utils/tableRow.js",
+			"settings":
+			{
+				"buffer_size": 970,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "View/Events/index.ctp",
+			"settings":
+			{
+				"buffer_size": 5681,
 				"line_ending": "Windows"
 			}
 		},
@@ -579,47 +603,26 @@
 			"file": "Controller/EventsController.php",
 			"settings":
 			{
-				"buffer_size": 15558,
+				"buffer_size": 15033,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "Config/core.php",
+			"file": "Controller/CallsController.php",
 			"settings":
 			{
-				"buffer_size": 12077,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "Controller/UsersController.php",
-			"settings":
-			{
-				"buffer_size": 1731,
+				"buffer_size": 3661,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "View/Users/login_other_db.ctp",
+			"contents": "({\n   baseUrl: '.',\n	paths: {\n		'main': 'main',\n		//'domReady':'lib/domReady',\n		'purl':'lib/purl',\n		'common' : 'app/common',\n		'jquery': 'lib/jquery',\n		'jquery-ui':'lib/jquery-ui.min',\n		'jquery-ui-timepicker':'lib/jquery-ui-timepicker-addon',\n		'jquery-ui-datepicker-lt':'lib/jquery.ui.datepicker-lt',\n		'jquery-ui-timepicker-lt':'lib/jquery-ui-timepicker-lt',\n		'bootstrap':'lib/bootstrap.min',\n		'tinymce':'lib/tinymce/jquery.tinymce.min'\n	},\n	appDir:\".\",\n	dir: \"../www-built\",\n	optimizeCss:'none',\n	// mainConfigFile: 'main.js',\n    // name: \"main\",\n    // out: \"main-built.js\",\n    modules: [\n		{name:'app/index'},\n		{name:'app/call.index'},\n		{name:'app/event.add'},\n		{name:'app/event.index'},\n		{name:'app/login'},\n		{name:'app/poison.add'},\n		{name:'app/poison.index'},\n		{name:'app/substance.search'}\n    ]\n})",
+			"file": "webroot/js/build.js",
+			"file_size": 850,
+			"file_write_time": 130234006523213889,
 			"settings":
 			{
-				"buffer_size": 963,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "View/Events/add.ctp",
-			"settings":
-			{
-				"buffer_size": 25848,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Model/Event.php",
-			"settings":
-			{
-				"buffer_size": 18599,
+				"buffer_size": 822,
 				"line_ending": "Windows"
 			}
 		}
@@ -763,6 +766,81 @@
 	},
 	"file_history":
 	[
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/main.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/app/index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/search.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/main.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/build.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/app/event.index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event.index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/common.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/utils/message.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/build.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/utils/getElement.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/app/call.index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/app/common.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/app/event/related_event_add.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/www-built/utils/autocomplete.js",
+		"/C/Users/LZ/AppData/Local/Temp/scp42995/public_html/templates/pages/index.htm",
+		"/C/Users/LZ/AppData/Local/Temp/scp41633/public_html/index.php",
+		"/C/Users/LZ/AppData/Local/Temp/scp42353/public_html/src_standard/main.php",
+		"/C/Users/LZ/AppData/Local/Temp/scp21028/domains/tauja.lt/autos.sql",
+		"/C/Users/LZ/AppData/Local/Temp/scp15269/domains/tauja.lt/backup_20130203.zip",
+		"/E/wamp/www/toxdb-dev/Model/Event.php",
+		"/C/Program Files/mintty-quake-console/mintty-quake-console.ini",
+		"/C/Users/LZ/AppData/Local/Temp/7zO7D9B.tmp/mintty-quake-console.ini",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event/related_event_add.js",
+		"/E/wamp/www/toxdb-dev/View/Events/index.ctp",
+		"/E/wamp/www/toxdb-dev/View/Events/report.ctp",
+		"/E/wamp/www/toxdb-dev/Controller/EventsController.php",
+		"/E/wamp/www/toxdb-dev/View/Events/add.ctp",
+		"/E/wamp/www/toxdb-dev/Model/Draft.php",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event/substance_add.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/modal.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event/call_add.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event.add.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/message.js",
+		"/E/wamp/www/toxdb-dev/Model/Call.php",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/actions.js",
+		"/E/wamp/www/toxdb-dev/Controller/AgentsController.php",
+		"/E/wamp/www/toxdb-js/Model/Call.php",
+		"/E/wamp/www/toxdb-dev/Vendor/autoload.php",
+		"/E/wamp/www/toxdb-dev/Controller/AppController.php",
+		"/E/wamp/www/toxdb-dev/View/Elements/event/search.ctp",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/pagination.js",
+		"/E/wamp/www/toxdb-dev/View/Elements/user/menu.ctp",
+		"/E/wamp/www/toxdb-dev/View/Calls/index.ctp",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/call.index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/tableRow.js",
+		"/E/wamp/www/toxdb-dev/View/Substances/index.ctp",
+		"/E/wamp/www/toxdb-dev/View/Agents/index.ctp",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/stopReload.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/draft/index.txt",
+		"/E/wamp/www/toxdb-dev/View/Helper/MenuHelper.php",
+		"/E/wamp/www/toxdb-dev/Model/User.php",
+		"/E/wamp/www/toxdb-dev/Controller/UsersController.php",
+		"/E/wamp/www/toxdb-dev/webroot/css/style.css",
+		"/E/wamp/www/toxdb-dev/Controller/DraftsController.php",
+		"/E/wamp/www/toxdb-dev/Model/Patient.php",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event/add_related_event.js",
+		"/E/wamp/www/toxdb-dev/View/Substances/dashboard.ctp",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/alert.js",
+		"/E/wamp/www/toxdb-dev/View/Users/login_other_db.ctp",
+		"/E/wamp/www/toxdb-dev/Config/routes.php",
+		"/E/wamp/www/toxdb-dev/Plugin/Utility/Model/Behavior/CacheableBehavior.php",
+		"/E/wamp/www/toxdb-dev/Model/PatientAttribute.php",
+		"/E/wamp/www/toxdb-dev/View/Layouts/default.ctp",
+		"/E/wamp/www/toxdb-dev/Config/core.php",
+		"/C/Users/LZ/AppData/Local/Temp/scp53486/docroot/tpl/index.htm",
+		"/C/Users/LZ/AppData/Local/Temp/scp54027/docroot/index.htm",
+		"/C/Users/LZ/AppData/Local/Temp/scp55579/docroot/includes/content_loader.php",
+		"/C/Users/LZ/AppData/Local/Temp/scp55806/docroot/hydrocms/index.php",
+		"/C/Users/LZ/AppData/Local/Temp/scp35217/docroot/index.php",
+		"/E/wamp/www/toxdb-dev/Config/database.php",
+		"/E/wamp/www/toxdb-dev/Test/Fixture/PatientFixture.php",
+		"/E/wamp/www/toxdb-dev/Test/Case/Controller/EventsControllerTest.php",
+		"/E/wamp/www/toxdb-dev/Test/Case/Model/EventTest.php",
+		"/E/wamp/www/toxdb-dev/Test/Fixture/EventFixture.php",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/login.js",
 		"/E/wamp/www/toxdb-dev/View/Elements/substance/attach_substance.ctp",
 		"/E/wamp/www/aw-api/README",
@@ -770,127 +848,52 @@
 		"/C/Users/LZ/AppData/Local/Temp/scp02437/domains/zdanaviciai.lt/public_html/index.html",
 		"/E/wamp/www/toxdb-dev/View/Substances/add.ctp",
 		"/E/wamp/www/toxdb-dev/View/Events/view.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/js/utils/pagination.js",
-		"/E/wamp/www/toxdb-dev/View/Events/report.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/report.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/event.add.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/index.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/user/dashboard.js",
 		"/E/wamp/www/toxdb-dev/View/Users/dashboard.ctp",
-		"/E/wamp/www/toxdb-dev/View/Elements/event/search.ctp",
-		"/E/wamp/www/toxdb-dev/View/Events/add.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/event/substance_add.js",
 		"/E/wamp/www/toxdb-dev/View/Layouts/user.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/common.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/user/menu.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/actions.js",
-		"/E/wamp/www/toxdb-dev/View/Elements/user/menu.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/autocomplete.js",
-		"/E/wamp/www/toxdb-dev/View/Layouts/default.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/agent/add.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/poisonAutocomplete.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/event/related_event_add.js",
-		"/E/wamp/www/toxdb-dev/Model/Call.php",
 		"/E/wamp/www/toxdb-dev/View/Layouts/search.ctp",
 		"/E/wamp/www/toxdb-dev/View/Elements/substance/actions.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/add.js",
 		"/E/wamp/www/toxdb-dev/Controller/SubstancesController.php",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/listGroups.js",
-		"/E/wamp/www/toxdb-dev/Controller/AgentsController.php",
 		"/E/wamp/www/toxdb-dev/View/Agents/add.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/addEditor.js",
-		"/E/wamp/www/toxdb-dev/View/Substances/dashboard.ctp",
-		"/E/wamp/www/toxdb-dev/View/Agents/index.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/substance.add.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/incrementInput.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/lib/jquery.incrementInput.js",
 		"/E/wamp/www/toxdb-dev/View/Layouts/poison.ctp",
 		"/E/wamp/www/toxdb-dev/View/Layouts/ajax.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/search.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/utils/modal.js",
-		"/E/wamp/www/toxdb-dev/Controller/EventsController.php",
-		"/E/wamp/www/toxdb-dev/View/Events/index.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/js/utils/tableRow.js",
-		"/E/wamp/www/toxdb-dev/webroot/css/style.css",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/event/add_related_event.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/event/call_add.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/antidote_add.js",
 		"/E/wamp/www/toxdb-dev/View/Substances/search.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/substance.search.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/poison.index.js",
 		"/E/wamp/www/toxdb-dev/View/Antidotes/index.ctp",
-		"/E/wamp/www/toxdb-dev/View/Substances/index.ctp",
 		"/E/wamp/www/toxdb-dev/View/Elements/menu.ctp",
-		"/E/wamp/www/toxdb-dev/View/Helper/MenuHelper.php",
 		"/E/wamp/www/toxdb-dev/View/Elements/antidote/attach_antidote.ctp",
 		"/E/wamp/www/toxdb-dev/View/Elements/agent/attach_agent.ctp",
 		"/E/wamp/www/toxdb-dev/Controller/AntidotesController.php",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/agent.index.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/main.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/utils/stopReload.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/substance.search.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/add.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/getElement.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/poisionAutocomplete.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/dashboard.js",
-		"/E/wamp/www/toxdb-dev/View/Calls/index.ctp",
 		"/E/wamp/www/toxdb-dev/View/Elements/modal.ctp",
 		"/C/Users/LZ/AppData/Local/Temp/scp24288/domains/zdanaviciai.lt/public_html/index.html",
-		"/E/wamp/www/toxdb-dev/Controller/AppController.php",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/add_call.js",
 		"/C/cygwin/home/LZ/.bashrc",
 		"/C/cygwin/home/LZ/.bash_profile",
 		"/E/wamp/www/ambulance/index.html",
 		"/E/wamp/www/toxdb-dev/webroot/js/main-built.js",
-		"/E/wamp/www/toxdb-dev/Config/routes.php",
-		"/E/wamp/www/toxdb-dev/webroot/js/build.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/node_modules/requirejs/bin/r.js",
 		"/C/Users/LZ/AppData/Local/Temp/scp17945/domains/e-projektai.eu/public_html/work/toxdb.bak/index.php",
-		"/C/Users/LZ/AppData/Local/Temp/scp20623/domains/e-projektai.eu/public_html/work/toxdb/webroot/index.php",
-		"/E/Downloads/localhost.sql",
-		"/E/wamp/www/toxdb-js/Config/database.php",
-		"/C/Users/LZ/AppData/Local/Temp/scp31922/domains/zdanaviciai.lt/public_html/index.html",
-		"/E/wamp/www/toxdb-dev/View/Pages/home.ctp",
-		"/E/wamp/www/toxdb-dev/Model/Event.php",
-		"/E/wamp/www/toxdb-dev/View/Agents/edit.ctp",
-		"/E/wamp/www/toxdb-dev/View/Agents/view.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/index.php",
-		"/E/wamp/www/toxdb-dev/webroot/js/require.js",
-		"/E/wamp/www/webcard/index.html",
-		"/E/wamp/www/webcard/bootstrap.min.css",
-		"/C/Users/LZ/AppData/Roaming/Sublime Text 3/Packages/User/Package Control.sublime-settings",
-		"/C/Users/LZ/AppData/Roaming/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
-		"/C/Users/LZ/AppData/Roaming/Sublime Text 3/Packages/User/JavaScript.sublime-settings",
-		"/C/Users/LZ/AppData/Local/Temp/scp58004/domains/zdanaviciai.lt/public_html/index.html",
-		"/E/wamp/www/toxdb-dev/webroot/js/lib/jquery.ui.datepicker-lt.js",
-		"/E/wamp/www/toxdb-dev/.gitignore",
-		"/E/wamp/www/toxdb-dev/webroot/js/event/add.js",
-		"/C/Users/LZ/AppData/Local/Temp/scp26185/domains/e-projektai.eu/public_html/work/v2/wp-config.php",
-		"/E/wamp/www/toxdb-dev/.git/config",
-		"/E/wamp/www/toxdb2/View/Elements/substance/attach_substance.ctp",
-		"/E/wamp/www/toxdb2/View/Elements/antidote/attach_antidote.ctp",
-		"/E/wamp/www/toxdb2/View/Elements/agent/attach_agent.ctp",
-		"/E/wamp/www/toxdb2/View/Calls/view.ctp",
-		"/E/wamp/www/toxdb2/View/Calls/edit.ctp",
-		"/E/wamp/www/toxdb2/View/Calls/add.ctp",
-		"/E/wamp/www/toxdb2/View/Antidotes/edit.ctp",
-		"/E/wamp/www/toxdb2/Plugin/TwitterBootstrap/View/TwitterBootstrap/index.ctp",
-		"/E/wamp/www/toxdb2/Plugin/TwitterBootstrap/Console/Templates/bootstrap/views/view.ctp",
-		"/E/wamp/www/toxdb2/Plugin/TwitterBootstrap/Console/Templates/bootstrap/views/index.ctp",
-		"/E/wamp/www/toxdb2/Plugin/TwitterBootstrap/Console/Templates/bootstrap/views/form.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Taxonomies/view.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Taxonomies/index.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Taxonomies/edit.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Taxonomies/add.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Posts/view.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Posts/index.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Posts/edit.ctp",
-		"/E/wamp/www/toxdb2/Plugin/Cms/View/Posts/add.ctp",
-		"/E/wamp/www/toxdb2/Plugin/BoostCake/View/BoostCake/bootstrap2.ctp",
-		"/E/wamp/www/toxdb2/webroot/js/main.js",
-		"/E/wamp/www/toxdb2/webroot/js/utils/stopReload.js",
-		"/E/wamp/www/toxdb2/View/Events/add.ctp",
-		"/E/wamp/www/toxdb2/webroot/js/event/add.js"
+		"/C/Users/LZ/AppData/Local/Temp/scp20623/domains/e-projektai.eu/public_html/work/toxdb/webroot/index.php"
 	],
 	"find":
 	{
@@ -909,6 +912,40 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"name",
+			"',",
+			"Draft",
+			"elseif",
+			"callback",
+			"console",
+			"sear",
+			"callback",
+			"Flas",
+			"failure",
+			"Flash",
+			"flash",
+			"location",
+			"seen",
+			"unbind",
+			"asso",
+			"saveAllFields",
+			"unset",
+			"row.",
+			"event_",
+			"Event",
+			"$event[",
+			"$event",
+			">\n",
+			"BootstrapPaginator",
+			"();\n",
+			"myDate",
+			"messageContainer",
+			"['Agent']",
+			"Cache",
+			"cache",
+			"',",
+			"vent->",
+			"');\n",
 			"timeo",
 			"event.target.href",
 			"');\n",
@@ -1002,41 +1039,7 @@
 			"::",
 			"32",
 			"64",
-			"remove-cal",
-			"remove",
-			"MailPressF",
-			"font-family",
-			"Geor",
-			"hasPo",
-			"__",
-			"['Event']",
-			"events",
-			"Patient.id",
-			"))",
-			"$taxonomy['Taxonomy']",
-			"__(",
-			");",
-			"patient_poison_group_id",
-			"poison",
-			"patient_poi",
-			"data-",
-			"sdfsdsdfsdfsdfsdf",
-			"drug",
-			"repo",
-			"$substance",
-			"PatientsTreatmentPlace",
-			"substance",
-			"subs",
-			"Treatment",
-			"treatment",
-			"poison_group",
-			"poison",
-			"poiso",
-			"incre",
-			"add-rela",
-			"clear",
-			"sear",
-			"cause"
+			"remove-cal"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1081,24 +1084,24 @@
 	"groups":
 	[
 		{
-			"selected": 7,
+			"selected": 12,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "View/Events/index.ctp",
+					"file": "View/Users/dashboard.ctp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5682,
+						"buffer_size": 797,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								130,
-								0
+								746,
+								746
 							]
 						],
 						"settings":
@@ -1175,19 +1178,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "webroot/js/app/event.index.js",
+					"file": "webroot/js/app/user/dashboard.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 71,
+						"buffer_size": 3536,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								71,
-								71
+								2669,
+								2669
 							]
 						],
 						"settings":
@@ -1253,10 +1256,12 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 405.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1267,15 +1272,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1728,
+						"buffer_size": 3191,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								987,
-								987
+								1415,
+								1415
 							]
 						],
 						"settings":
@@ -1351,19 +1356,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "View/Substances/dashboard.ctp",
+					"file": "webroot/js/app/call/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2844,
+						"buffer_size": 317,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1782,
-								1782
+								317,
+								317
 							]
 						],
 						"settings":
@@ -1429,8 +1434,7 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1440,19 +1444,19 @@
 				},
 				{
 					"buffer": 4,
-					"file": "webroot/js/app/substance/actions.js",
+					"file": "webroot/js/app/draft/index.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3073,
+						"buffer_size": 910,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1316,
-								1381
+								392,
+								874
 							]
 						],
 						"settings":
@@ -1529,19 +1533,19 @@
 				},
 				{
 					"buffer": 5,
-					"file": "webroot/js/app/event/substance_add.js",
+					"file": "View/Drafts/index.ctp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3486,
+						"buffer_size": 1321,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								588,
-								588
+								955,
+								1008
 							]
 						],
 						"settings":
@@ -1607,9 +1611,8 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1619,19 +1622,108 @@
 				},
 				{
 					"buffer": 6,
-					"file": "webroot/js/app/event.add.js",
+					"file": "Controller/DraftsController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5062,
+						"buffer_size": 1018,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5027,
-								5027
+								546,
+								546
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"empty-rules": false
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+								"ctp": "php",
+								"javascript": "C:/Program Files/nodejs/node.exe"
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "webroot/js/utils/pagination.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1547,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								779,
+								779
 							]
 						],
 						"settings":
@@ -1698,119 +1790,29 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1710.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "Controller/EventsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15558,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4243,
-								4243
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3596.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 8,
-					"file": "Config/core.php",
+					"file": "webroot/js/utils/tableRow.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 12077,
+						"buffer_size": 970,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6631,
-								6631
+								383,
+								399
 							]
 						],
 						"settings":
@@ -1876,30 +1878,30 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2098.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 9,
-					"file": "Controller/UsersController.php",
+					"file": "View/Events/index.ctp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1731,
+						"buffer_size": 5681,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								3887,
+								3887
 							]
 						],
 						"settings":
@@ -1969,114 +1971,26 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 630.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 10,
-					"file": "View/Users/login_other_db.ctp",
+					"file": "Controller/EventsController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 963,
+						"buffer_size": 15033,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								963,
-								963
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "View/Events/add.ctp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 25848,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1324,
-								1344
+								10715,
+								10715
 							]
 						],
 						"settings":
@@ -2143,30 +2057,29 @@
 							},
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 4843.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "Model/Event.php",
+					"buffer": 11,
+					"file": "Controller/CallsController.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 18599,
+						"buffer_size": 3661,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								2565,
+								2565
 							]
 						],
 						"settings":
@@ -2232,10 +2145,38 @@
 								"Ruby on Rails": "ruby"
 							},
 							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 5895.0,
+						"translation.y": 1432.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "webroot/js/build.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 822,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								472,
+								472
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -2294,24 +2235,272 @@
 				"Model\\Event.php"
 			],
 			[
+				"sear",
+				"webroot\\js\\app\\substance\\search.js"
+			],
+			[
+				"cal",
+				"Controller\\CallsController.php"
+			],
+			[
+				"eventind",
+				"View\\Events\\index.ctp"
+			],
+			[
+				"draftin",
+				"View\\Drafts\\index.ctp"
+			],
+			[
+				"pagi",
+				"webroot\\js\\utils\\pagination.js"
+			],
+			[
+				"index.",
+				"webroot\\js\\app\\draft\\index.js"
+			],
+			[
+				"inde",
+				"View\\Drafts\\index.ctp"
+			],
+			[
+				"subsa",
+				"webroot\\js\\app\\event\\substance_add.js"
+			],
+			[
+				"action",
+				"webroot\\js\\app\\substance\\actions.js"
+			],
+			[
+				"substance_ad",
+				"webroot\\js\\app\\event\\substance_add.js"
+			],
+			[
+				"tabl",
+				"webroot\\js\\utils\\tableRow.js"
+			],
+			[
+				"pag",
+				"webroot\\js\\utils\\pagination.js"
+			],
+			[
+				"draindex",
+				"View\\Drafts\\index.ctp"
+			],
+			[
+				"rela",
+				"webroot\\js\\app\\event\\related_event_add.js"
+			],
+			[
+				"relat",
+				"webroot\\js\\app\\event\\related_event_add.js"
+			],
+			[
+				"agent",
+				"Controller\\AgentsController.php"
+			],
+			[
+				"eventinde",
+				"webroot\\js\\app\\event\\index.js"
+			],
+			[
+				"eventin",
+				"View\\Events\\index.ctp"
+			],
+			[
+				"call",
+				"Model\\Call.php"
+			],
+			[
+				"message.js",
+				"webroot\\js\\utils\\message.js"
+			],
+			[
+				"eventadd",
+				"webroot\\js\\app\\event.add.js"
+			],
+			[
+				"ro",
+				"webroot\\js\\utils\\tableRow.js"
+			],
+			[
+				"app",
+				"Controller\\AppController.php"
+			],
+			[
+				"call_ad",
+				"webroot\\js\\app\\event\\call_add.js"
+			],
+			[
+				"modal",
+				"webroot\\js\\utils\\modal.js"
+			],
+			[
+				"substa",
+				"webroot\\js\\app\\event\\substance_add.js"
+			],
+			[
+				"darf",
+				"Model\\Draft.php"
+			],
+			[
 				"add",
 				"View\\Events\\add.ctp"
 			],
 			[
-				"other",
-				"View\\Users\\login_other_db.ctp"
+				"index",
+				"View\\Substances\\index.ctp"
+			],
+			[
+				"ind",
+				"View\\Agents\\index.ctp"
+			],
+			[
+				"pa",
+				"webroot\\js\\utils\\pagination.js"
+			],
+			[
+				"index.js",
+				"webroot\\js\\app\\call\\index.js"
+			],
+			[
+				"indes",
+				"webroot\\js\\app\\event\\index.js"
+			],
+			[
+				"row",
+				"webroot\\js\\utils\\tableRow.js"
+			],
+			[
+				"relo",
+				"webroot\\js\\utils\\stopReload.js"
+			],
+			[
+				"table",
+				"webroot\\js\\utils\\tableRow.js"
+			],
+			[
+				"event",
+				"Controller\\EventsController.php"
+			],
+			[
+				"dr",
+				"Controller\\DraftsController.php"
+			],
+			[
+				"pagin",
+				"webroot\\js\\utils\\pagination.js"
+			],
+			[
+				"repo",
+				"View\\Events\\report.ctp"
+			],
+			[
+				"event.i",
+				"webroot\\js\\app\\event.index.js"
+			],
+			[
+				"menu",
+				"View\\Helper\\MenuHelper.php"
 			],
 			[
 				"user",
 				"Controller\\UsersController.php"
 			],
 			[
+				"callinde",
+				"View\\Calls\\index.ctp"
+			],
+			[
+				"add_re",
+				"webroot\\js\\app\\event\\add_related_event.js"
+			],
+			[
+				"dash",
+				"webroot\\js\\app\\user\\dashboard.js"
+			],
+			[
+				"u",
+				"Controller\\UsersController.php"
+			],
+			[
+				"reloa",
+				"webroot\\js\\utils\\stopReload.js"
+			],
+			[
+				"even",
+				"Model\\Event.php"
+			],
+			[
+				"draf",
+				"Model\\Draft.php"
+			],
+			[
+				"styl",
+				"webroot\\css\\style.css"
+			],
+			[
+				"route",
+				"Config\\routes.php"
+			],
+			[
+				"agen",
+				"Controller\\AgentsController.php"
+			],
+			[
+				"draft",
+				"Controller\\DraftsController.php"
+			],
+			[
 				"core",
 				"Config\\core.php"
 			],
 			[
-				"event",
-				"Controller\\EventsController.php"
+				"cache",
+				"Plugin\\Utility\\Model\\Behavior\\CacheableBehavior.php"
+			],
+			[
+				"def",
+				"View\\Layouts\\default.ctp"
+			],
+			[
+				"patien",
+				"Model\\Patient.php"
+			],
+			[
+				"call_",
+				"webroot\\js\\app\\event\\call_add.js"
+			],
+			[
+				"event.in",
+				"webroot\\js\\app\\event.index.js"
+			],
+			[
+				"patient",
+				"Model\\Patient.php"
+			],
+			[
+				"patientf",
+				"Test\\Fixture\\PatientFixture.php"
+			],
+			[
+				"eventcon",
+				"Test\\Case\\Controller\\EventsControllerTest.php"
+			],
+			[
+				"testevent",
+				"Test\\Case\\Model\\EventTest.php"
+			],
+			[
+				"fix",
+				"Test\\Fixture\\EventFixture.php"
+			],
+			[
+				"data",
+				"Config\\database.php"
+			],
+			[
+				"other",
+				"View\\Users\\login_other_db.ctp"
 			],
 			[
 				"event.ad",
@@ -2326,24 +2515,12 @@
 				"View\\Elements\\substance\\attach_substance.ctp"
 			],
 			[
-				"action",
-				"webroot\\js\\app\\substance\\actions.js"
-			],
-			[
-				"dash",
-				"View\\Substances\\dashboard.ctp"
-			],
-			[
 				"add.js",
 				"webroot\\js\\app\\event.add.js"
 			],
 			[
 				"report",
 				"View\\Events\\report.ctp"
-			],
-			[
-				"menu",
-				"View\\Elements\\user\\menu.ctp"
 			],
 			[
 				"auto",
@@ -2356,10 +2533,6 @@
 			[
 				"userda",
 				"View\\Users\\dashboard.ctp"
-			],
-			[
-				"call",
-				"Model\\Call.php"
 			],
 			[
 				"related",
@@ -2378,14 +2551,6 @@
 				"webroot\\js\\app\\event\\substance_add.js"
 			],
 			[
-				"sear",
-				"View\\Elements\\event\\search.ctp"
-			],
-			[
-				"pagin",
-				"webroot\\js\\utils\\pagination.js"
-			],
-			[
 				"vie",
 				"View\\Events\\view.ctp"
 			],
@@ -2398,10 +2563,6 @@
 				"View\\Events\\index.ctp"
 			],
 			[
-				"agent",
-				"Controller\\AgentsController.php"
-			],
-			[
 				"agentadd",
 				"View\\Agents\\add.ctp"
 			],
@@ -2412,10 +2573,6 @@
 			[
 				"subs",
 				"Controller\\SubstancesController.php"
-			],
-			[
-				"pag",
-				"webroot\\js\\utils\\pagination.js"
 			],
 			[
 				"adde",
@@ -2450,20 +2607,12 @@
 				"webroot\\js\\app\\common.js"
 			],
 			[
-				"pagi",
-				"webroot\\js\\utils\\pagination.js"
-			],
-			[
 				"defau",
 				"View\\Layouts\\default.ctp"
 			],
 			[
 				"tablr",
 				"webroot\\js\\utils\\tableRow.js"
-			],
-			[
-				"eventinde",
-				"View\\Events\\index.ctp"
 			],
 			[
 				"sty",
@@ -2474,28 +2623,12 @@
 				"View\\Layouts\\default.ctp"
 			],
 			[
-				"inde",
-				"View\\Events\\index.ctp"
-			],
-			[
 				"events",
 				"Controller\\EventsController.php"
 			],
 			[
-				"modal",
-				"webroot\\js\\utils\\modal.js"
-			],
-			[
-				"call_",
-				"webroot\\js\\app\\event\\call_add.js"
-			],
-			[
 				"antidotead",
 				"webroot\\js\\app\\event\\antidote_add.js"
-			],
-			[
-				"table",
-				"webroot\\js\\utils\\tableRow.js"
 			],
 			[
 				"atta",
@@ -2508,10 +2641,6 @@
 			[
 				"antid",
 				"Controller\\AntidotesController.php"
-			],
-			[
-				"index",
-				"View\\Antidotes\\index.ctp"
 			],
 			[
 				"substancein",
@@ -2538,20 +2667,8 @@
 				"Controller\\AgentsController.php"
 			],
 			[
-				"substa",
-				"webroot\\js\\app\\event\\substance_add.js"
-			],
-			[
 				"sun",
 				"Controller\\SubstancesController.php"
-			],
-			[
-				"pa",
-				"webroot\\js\\utils\\pagination.js"
-			],
-			[
-				"tabl",
-				"webroot\\js\\utils\\tableRow.js"
 			],
 			[
 				"searc",
@@ -2624,182 +2741,6 @@
 			[
 				"das",
 				"View\\Substances\\dashboard.ctp"
-			],
-			[
-				"mo",
-				"webroot\\js\\utils\\modal.js"
-			],
-			[
-				"callide",
-				"View\\Calls\\index.ctp"
-			],
-			[
-				"ind",
-				"View\\Events\\index.ctp"
-			],
-			[
-				"route",
-				"Config\\routes.php"
-			],
-			[
-				"app",
-				"Controller\\AppController.php"
-			],
-			[
-				"eleme",
-				"webroot\\js\\utils\\getElement.js"
-			],
-			[
-				"stop",
-				"webroot\\js\\utils\\stopReload.js"
-			],
-			[
-				"style",
-				"webroot\\css\\style.css"
-			],
-			[
-				"main",
-				"webroot/js/main.js"
-			],
-			[
-				"styl",
-				"webroot/css/style.css"
-			],
-			[
-				"ap",
-				"Controller/AppController.php"
-			],
-			[
-				"boo",
-				"Config/bootstrap.php"
-			],
-			[
-				"compo",
-				"composer.json"
-			],
-			[
-				"tab",
-				"webroot/js/utils/tableRow.js"
-			],
-			[
-				"userin",
-				"View/Users/index.ctp"
-			],
-			[
-				"jq",
-				"webroot/js/lib/jquery.incrementInput.js"
-			],
-			[
-				"mai",
-				"webroot/js/main.js"
-			],
-			[
-				"appmo",
-				"Model/AppModel.php"
-			],
-			[
-				"rou",
-				"Config/routes.php"
-			],
-			[
-				"cont",
-				"Controller/AppController.php"
-			],
-			[
-				"addjs",
-				"webroot/js/event/add.js"
-			],
-			[
-				"substain",
-				"View/Substances/index.ctp"
-			],
-			[
-				"ageninde",
-				"View/Agents/index.ctp"
-			],
-			[
-				"vi",
-				"View/Events/view.ctp"
-			],
-			[
-				"ev",
-				"Model/Event.php"
-			],
-			[
-				"userme",
-				"View/Elements/user/menu.ctp"
-			],
-			[
-				"layou",
-				"View/Layouts/user.ctp"
-			],
-			[
-				"att",
-				"View/Elements/call/attach_call.ctp"
-			],
-			[
-				"callsi",
-				"View/Calls/index.ctp"
-			],
-			[
-				"ro",
-				"Config/routes.php"
-			],
-			[
-				"men",
-				"View/Elements/menu.ctp"
-			],
-			[
-				"pos",
-				"Plugin/Cms/Model/Post.php"
-			],
-			[
-				"cmsadd",
-				"Plugin/Cms/View/Posts/add.ctp"
-			],
-			[
-				"antidoteind",
-				"View/Antidotes/index.ctp"
-			],
-			[
-				"e",
-				"Controller/EventsController.php"
-			],
-			[
-				"pat",
-				"Model/PatientAttribute.php"
-			],
-			[
-				"co",
-				"Config/core.php"
-			],
-			[
-				"boot",
-				"Config/bootstrap.php"
-			],
-			[
-				"rot",
-				"Config/routes.php"
-			],
-			[
-				"callsinde",
-				"View/Calls/index.ctp"
-			],
-			[
-				"view",
-				"View/Events/view.ctp"
-			],
-			[
-				"calls",
-				"View/Calls/index.ctp"
-			],
-			[
-				"login",
-				"View/Users/login_other_db.ctp"
-			],
-			[
-				"contr",
-				"Controller/AppController.php"
 			]
 		],
 		"width": 0.0

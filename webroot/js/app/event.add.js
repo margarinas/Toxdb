@@ -1,4 +1,4 @@
-define(['utils/addEditor',"common","utils/stopReload","lib/jquery.incrementInput",'app/event/substance_add','app/event/call_add',"app/event/antidote_add","app/event/related_event_add"], function(editor){
+define(['utils/addEditor',"utils/message","common","utils/stopReload","lib/jquery.incrementInput",'app/event/substance_add','app/event/call_add',"app/event/antidote_add","app/event/related_event_add"], function(editor,message){
 
 
     editor.init();
@@ -143,13 +143,28 @@ $('.related-events-toggle').click(function(event) {
 
 // *** SAVE DRAFT
 
-$('.save-draft').click(function(event) {
-    $.post(baseUrl+'events/draft', $('#EventAddForm').serialize(), function(data, textStatus, xhr) {
-         console.log(xhr);
-        if(textStatus === "success") {
-
-            console.log(data);
+function saveDraft(callback) {
+    $.post(baseUrl+'events/saveDraft.json', $('#EventAddForm').serialize(), function(data, textStatus) {
+        if(data.result === "created") {
+            $("#DraftId").val(data.draft_id);
         }
+        if(data.result !== "failed")
+            message.init("Juodraštis išsaugotas");
+        if(typeof callback === "function")
+            callback(data);
+    });
+}
+var autoSaveDraft = false;
+$('input, textarea, select, checkbox, radio').one("change",function() {
+    if(!autoSaveDraft)
+        autoSaveDraft = setInterval(function(){saveDraft();},60000);
+});
+
+
+$('.save-draft').click(function(event) {
+    $("#busy-indicator").fadeIn();
+    saveDraft(function(data){
+        $("#busy-indicator").fadeOut();
     });
     
 

@@ -15,7 +15,7 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 		var settings = $.extend(defaults, options);
 
 		autocomplete.init('#SubstanceTerm');
-
+		
 		$("#search_db").click(function(event) {
 			$("#toxinz_term").val($("#SubstanceTerm").val());
 			$("#toxinz_form").submit();
@@ -38,26 +38,21 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 			search.init(data,function(){
 				settings.searchCallback();
 				pagination.init({
-					element:"#substances .pagination",
+					element:".pagination",
 					container:"#substances",
 					history:settings.history,
 					limit:settings.rowLimit,
-					callback:function() {
+					callback:settings.searchCallback
 					
-						settings.searchCallback();
-						row.init('.substance_row',settings.container,settings.rowClickCallback);
-					}
 				});
 
 				pagination.init({
-					element:"#agents .pagination",
+					element:".pagination",
 					container:"#agents",
 					history:settings.history,
 					limit:settings.rowLimit,
-					callback:function() {
-						settings.searchCallback();
-						row.init('.agent_row',settings.container,settings.rowClickCallback);
-					}
+					callback:settings.searchCallback
+
 				});
 			});
 			if(settings.history)

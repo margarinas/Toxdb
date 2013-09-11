@@ -1,8 +1,9 @@
 ({
-    baseUrl: '.',
-   paths: {
+   baseUrl: '.',
+	paths: {
 		'main': 'main',
 		//'domReady':'lib/domReady',
+		'purl':'lib/purl',
 		'common' : 'app/common',
 		'jquery': 'lib/jquery',
 		'jquery-ui':'lib/jquery-ui.min',
@@ -12,6 +13,20 @@
 		'bootstrap':'lib/bootstrap.min',
 		'tinymce':'lib/tinymce/jquery.tinymce.min'
 	},
-    name: "main",
-    out: "main-built.js"
+	appDir:".",
+	dir: "../js-built",
+	optimizeCss:'none',
+	// mainConfigFile: 'main.js',
+    // name: "main",
+    // out: "main-built.js",
+    modules: [
+		{name:'app/index'},
+		{name:'app/call.index'},
+		{name:'app/event.add'},
+		{name:'app/event.index'},
+		{name:'app/login'},
+		{name:'app/poison.add'},
+		{name:'app/poison.index'},
+		{name:'app/substance.search'}
+    ]
 })

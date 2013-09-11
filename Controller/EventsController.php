@@ -22,7 +22,10 @@ public function index() {
 
 
 
-	$limit = $this->request->is('ajax')?7:20;
+	if(!empty($this->request->query['limit']))
+		$limit=$this->request->query['limit'];
+	else
+		$limit = 20;
 
 	$this->paginate = array(
 		'limit'=>$limit,
@@ -42,7 +45,7 @@ public function index() {
 
 
 	$events = $this->paginate();
-		
+
 	$showSearch = (!empty($this->data['Event']) || empty($events))?'in':false;
 	$this->set('showSearch',$showSearch);
 	$this->set('events', $events);
@@ -57,9 +60,11 @@ public function index() {
 public function find()
 {
 
-
 	$this->Prg->commonProcess();
 	$parsedParams = $this->Prg->parsedParams();
+
+	if(!empty($this->params['named']['current_user']))
+		$parsedParams['user_id']=$this->Auth->user('id');
 
 	$limit = !empty($this->params['named']['event_per_page'])?$this->params['named']['event_per_page']:20;
 
@@ -76,7 +81,7 @@ public function find()
 				),
 			'User'=>array('fields'=>array('id','name'))
 			),
-		'conditions' => $this->Event->parseCriteria($this->Prg->parsedParams()),
+		'conditions' => $this->Event->parseCriteria($parsedParams),
 		'limit' => $limit
 		);
 
@@ -86,6 +91,8 @@ public function find()
 
 	$eventTypes = $this->Event->getEventTypes();
 
+	if(!empty($this->params['named']['noSearchForm']))
+		$this->set('noSearchForm',true);
 	$this->set('showSearch','in');
 	$this->set('eventType',$eventTypes['main']);
 	$this->set('poison_group',$this->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null),'order'=>'PoisonGroup.order ASC')));
@@ -189,6 +196,7 @@ public function add() {
 
 }
 
+
 /**
  * edit method
  *
@@ -217,7 +225,8 @@ public function edit($id = null) {
 		'EventAttribute',
 		'Call',
 		'Substance',
-		'Agent'
+		'Agent',
+		'Draft'=>array('fields'=>array('id'))
 		));
 
 
@@ -326,20 +335,25 @@ public function edit($id = null) {
  * @param string $id
  * @return void
  */
-public function delete($id = null) {
+public function delete() {
 	if (!$this->request->is('post')) {
 		throw new MethodNotAllowedException();
 	}
-	$this->Event->id = $id;
+	$this->Event->id = $this->request->query['id'];
 	if (!$this->Event->exists()) {
-		throw new NotFoundException(__('Invalid event'));
+		throw new NotFoundException(__('Invalid draft'));
 	}
 	if ($this->Event->delete()) {
-		$this->Session->setFlash(__('Event deleted'));
-		$this->redirect(array('action' => 'index'));
+		$message = "Atvejis ištrintas";
+		$result = "success";
+	} else {
+		$message = "Atvejo ištrinti nepavyko";
+		$result = "failed";
 	}
-	$this->Session->setFlash(__('Event was not deleted'));
-	$this->redirect(array('action' => 'index'));
+
+	$this->set(compact('message','result'));
+	$this->set('_serialize',array('message','result'));
+	
 }
 
 public function report() {
@@ -358,12 +372,65 @@ public function report() {
 	}
 }
 
-public function draft() {
-	if($this->request->is('post')) {
-		pr($this->data);
-		$this->render(false);
+public function saveDraft() {
+
+
+
+	if($this->request->is('post') || $this->request->is('put')) {
+
+		$saveData = array(
+			'model' => 'Event',
+			'user_id' => $this->Auth->user('id'),
+			'content' => $this->data,
+			);
+
+		
+		if(!empty($this->data['Event']['id'])) {
+			$saveData['assoc_id'] = $this->data['Event']['id'];
+		}
+
+		if(!empty($this->data['Draft']['id'])) {		
+			$this->Event->Draft->id = $this->data['Draft']['id'];
+		} else {
+			$this->Event->Draft->create();
+		}
+
+		if($this->Event->Draft->save($saveData)) {
+			$draft_id = $this->Event->Draft->id;
+			
+			if(empty($this->data['Draft']['id']))
+				$result = 'created';
+			else
+				$result = 'saved';
+		} else {
+			$result = 'failed';
+			$draft_id = false;
+		}
+		
+		
 	}
+
+	$this->set('draft_id',$draft_id);
+	$this->set('result',$result);
+	$this->set('_serialize',array('draft_id','result'));
 }
+
+public function restoreDraft($id = null) {
+
+	$this->Event->Draft->id = $id;
+	if (!$this->Event->Draft->exists()) {
+		throw new NotFoundException(__('Invalid draft'));
+	}
+	$draft = $this->Event->Draft->read(null,$id);
+	$this->request->data = $draft['Draft']['content'];
+	if(!empty($this->data['Event']['id']))
+		$this->edit();
+	else
+		$this->add();
+	
+	$this->render('add');
+}
+
 
 public function _correct_patient()
 {
@@ -419,9 +486,9 @@ public function _correct_patient()
 		//$result_substances = Hash::combine($result,'{n}.Patient.0.id','{n}.Patient.0.Substance.0.poison_group_id');
 		//$result = Hash::extract($result,'{n}.Patient.AgentsPatient.0.Agent.poison_group_id');
 		//pr($result2);
-		$final_result = array();
+	$final_result = array();
 		// foreach ($result as $key => $event) {
-		
+
 		// 	if(!empty($event['Patient'])) {
 		// 		$patient = $event['Patient'][0];
 		// 		$this->Event->Patient->id = $patient['id'];
@@ -442,9 +509,9 @@ public function _correct_patient()
 
 		// }
 
-		
+
 		//$save = $this->Event->Patient->saveMany($final_result);
-		pr($final_result);
+	pr($final_result);
 
 }
 }

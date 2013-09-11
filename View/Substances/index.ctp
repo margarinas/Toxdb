@@ -1,6 +1,6 @@
 <?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.index']); });",array('inline'=>false)); ?>
 <table class="table" cellpadding="0" cellspacing="0">
-	<tr>
+	<tr class="pagination">
 		<th><?php echo $this->Paginator->sort('name','Pavadinimas');?></th>
 		<th><?php echo $this->Paginator->sort('generic_name','Patikslintas pavadinimas');?></th>
 		<?php if (!$this->params['isAjax']): ?>

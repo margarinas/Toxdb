@@ -1,10 +1,12 @@
-define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomplete","utils/poisonAutocomplete"], function(row,pagination,element,autocomplete,poisonAutocomplete) {
+define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomplete","utils/poisonAutocomplete","utils/message"], function(row,pagination,element,autocomplete,poisonAutocomplete,msg) {
+
+	var settings;
 
 	function init(options) {
-		defaults = {container:"#container",rowCallback:null,hideControls:false};
-		var settings = $.extend(defaults, options);
+		defaults = {container:"#container",rowCallback:null,hideControls:false, search:true, callback:null, showPaginatorSummary: true, limit:20};
+		settings = $.extend(defaults, options);
 
-		row.init(".event_row",function(){
+		row.init(".event_row",settings.container,function(){
 			if(typeof settings.rowCallback === "function")
 				settings.rowCallback();
 		});
@@ -13,11 +15,29 @@ define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomple
 			$(settings.container+" .control-hide").hide();
 		}
 
-		pagination.init({container:settings.container,callback:init});
+		if(settings.container === "#container")
+			showHistory = true;
+		else
+			showHistory= false;
+
+		console.log(typeof settings.callback);
+
+		if(typeof settings.callback == "function") {
+			firstCallback = settings.callback;
+			settings.callback = function() {
+				firstCallback();
+				eventSearch();
+			};
+		} else {
+			
+			if(settings.search)
+				settings.callback = eventSearch;
+		}
+
+		pagination.init({container:settings.container,history:showHistory,callback:settings.callback,showSummary:settings.showPaginatorSummary,limit:settings.limit});
 		$('.datepicker').datepicker();
 		autocomplete.init();
 		poisonAutocomplete.init("#poison_autocomplete");
-
 
 		events_selected = false;
 		$('.event-select-all').click(function(event) {
@@ -33,40 +53,74 @@ define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomple
 			event.preventDefault();
 		});
 
+		$(settings.container).on("click",'.event-delete', function(event){
 
-		$('.clear-search').click(function() {
-			$('#EventFindForm input').val('').prop('checked',false);
-			$("#EventFindForm select").each(function(){
-				$(this)[0].selectedIndex = 0;
-			});
-		});
+			var event_row = $(this).parents("tr.event_row");
 
-		$("#EventFindForm").submit(function(event) {
-			url = $(this).attr('action');
-			data = $(this).serialize();
+			if(confirm('Ar tikrai norite ištrinti ?')) {
+				$.post($(this).attr('href'),function(data){
+					console.log(data);
+					if(data.result === "success") {
+						event_row.fadeOut(function(){
+							$(this).remove();
+						});
+					}
+						
+					msg.init(data.message);
+					
+					
+				});
+			}
 
-			$.ajax({
-				method:"post",
-				beforeSend: function (XMLHttpRequest) {
-					$("#busy-indicator").fadeIn();
-				},
-				complete:function(jqXHR, textStatus) {
-					$("#busy-indicator").fadeOut();
-				},
-				success: function (data, textStatus,jqXHR ) {
-					$(settings.container).html(data);
-					init(settings);
-					history.pushState(null,null,$(data).find('#EventCurrentUrl').val())
-				},
-				data:data,
-				url:url
-			});
 			event.preventDefault();
+			return false;
 		});
+
+
+		if(typeof settings.callback === "function")
+			settings.callback();
 	}
 
+
+	eventSearch = function() {
+				
+
+			$('.clear-search').click(function() {
+				$('#EventFindForm input').val('').prop('checked',false);
+				$("#EventFindForm select").each(function(){
+					$(this)[0].selectedIndex = 0;
+				});
+			});
+
+			$("#EventFindForm").submit(function(event) {
+				url = $(this).attr('action');
+				data = $(this).serialize();
+
+				$.ajax({
+					method:"post",
+					beforeSend: function (XMLHttpRequest) {
+						$("#busy-indicator").fadeIn();
+					},
+					complete:function(jqXHR, textStatus) {
+						$("#busy-indicator").fadeOut();
+					},
+					success: function (data, textStatus,jqXHR ) {
+						$(settings.container).html(data);
+						init(settings);
+						if(settings.container === "#container")
+							history.pushState(null,null,$(data).find('#EventCurrentUrl').val());
+					},
+					data:data,
+					url:url
+				});
+				event.preventDefault();
+			});
+		
+	};
+
 	return {
-		init:init
+		init:init,
+		search:eventSearch
 	};
 	
 });

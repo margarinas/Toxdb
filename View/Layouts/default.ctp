@@ -87,6 +87,6 @@
 	<?php echo $this->fetch('scriptBottom'); ?>
 	<?php //echo $this->Js->writeBuffer(); ?>
 	<div id="busy-indicator"></div>
-	<?php //echo $this->element('sql_dump'); ?>
+	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>

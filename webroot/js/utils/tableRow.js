@@ -7,6 +7,16 @@ define(["jquery"],function($) {
 			passedFunction = parentElement;
 		if(typeof parentElement !== "string")
 			parentElement = "#container";
+
+		if(parentElement !== "#container") {
+
+			$(parentElement).on('click',element+" a:not(.post-link)",function(event) {
+				
+				window.open($(this).attr('href'));
+
+				return false;
+			});
+		}
 		$(parentElement).off('click',element);
 		$(parentElement).on('click', element, function(event) {
 			var checkbox = $(this).find('.select-element');

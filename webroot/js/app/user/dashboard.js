@@ -1,4 +1,4 @@
-define(["utils/poisonAutocomplete","utils/modal","app/substance/actions","utils/getElement","app/event/report"],function(poisonAutocomplete,modal,actions,element,report) {
+define(["utils/poisonAutocomplete","utils/modal","app/substance/actions","utils/getElement","app/event/report","app/event/index","app/call/index","app/draft/index"],function(poisonAutocomplete,modal,actions,element,report,event,call,draft) {
     function init(options) {
 
         if(typeof options !== "object" && typeof options !== "undefined")
@@ -42,16 +42,50 @@ define(["utils/poisonAutocomplete","utils/modal","app/substance/actions","utils/
             event.preventDefault();
             return false;
         });
+        var lastWeek = new Date();
+        lastWeek.setDate(lastWeek.getDate()-7);
+        lastWeek = $.datepicker.formatDate('yy-mm-dd', lastWeek);
+
+        $('.event-list').load(baseUrl+'events/find/noSearchForm:1/event_per_page:5/current_user:1/created_from:'+lastWeek,function(){
+            $('.event-select-collum, .event-user-collum').remove();
+            $("#busy-indicator").fadeOut();
+            event.init({
+                container:".event-list",
+                showPaginatorSummary:false,
+                callback:function(){
+                    $('.event-select-collum, .event-user-collum').remove();
+                }
+            });
+        });
+
+        $('.draft-list').load(baseUrl+'drafts/index/Event',function(){
+            $("#busy-indicator").fadeOut();
+            draft.init({
+                container:".draft-list",
+                showPaginatorSummary:false
+            });
+        });
 
         $('.user-menu a').on('click',function(event){
             $("#busy-indicator").fadeIn();
+            $('.user-menu li').removeClass('active');
+            $(this).parent().addClass('active');
             url = event.target.href;
             $("#container").load(url,function(){
                 $("#busy-indicator").fadeOut();
 
                 dest = url.split('/').pop();
-                if(dest ==="report")
-                    report.init();
+                switch(dest) {
+                    case "":
+                        init();
+                        break;
+                    case "report":
+                        report.init();
+                        break;
+                    case "calls":
+                        call.init();
+                }
+
                 history.pushState(null,null,url);
             }) ;
             event.preventDefault();

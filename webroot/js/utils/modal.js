@@ -1,7 +1,7 @@
 define(["jquery"],function($){
 	var set = function(options, callback){
 
-		defaults = {content:'',show:false,id:'modal',title:'01',footer:'',data:null};
+		defaults = {content:'',show:false,id:'modal',title:'01',footer:'',data:null,onHide:null};
 
 		if(typeof options === "string")
 			options = {getUrl:options};
@@ -37,9 +37,12 @@ define(["jquery"],function($){
 						tinyMCE.execCommand('mceRemoveEditor', false, this.id);
 					});
 				}
-
+				console.log(this);
 				$(this).find('.modal-body').empty();
 				$(this).find('.attach_substance').addClass('disabled');
+				if(typeof settings.onHide === "function"){
+					settings.onHide();
+				}
 
 			}
 		});

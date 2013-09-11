@@ -57,24 +57,36 @@ class Event extends AppModel {
  *
  * @var array
  */
-	public $hasMany = array(
-		'Patient' => array(
-			'className' => 'Patient',
-			'foreignKey' => 'event_id',
-			'dependent' => true,
-			'conditions' => '',
-			'fields' => '',
-			'order' => '',
-			'limit' => '',
-			'offset' => '',
-			'exclusive' => '',
-			'finderQuery' => '',
-			'counterQuery' => ''
+public $hasMany = array(
+	'Patient' => array(
+		'className' => 'Patient',
+		'foreignKey' => 'event_id',
+		'dependent' => true,
+		'conditions' => '',
+		'fields' => '',
+		'order' => '',
+		'limit' => '',
+		'offset' => '',
+		'exclusive' => '',
+		'finderQuery' => '',
+		'counterQuery' => ''
 		),
-		'Call' => array('dependent'=>false)
+	'Call' => array('dependent'=>false)
 	);
-
-
+/**
+ * hasOne associations
+ *
+ * @var array
+ */
+public $hasOne = array(
+	'Draft' => array(
+		'className' => 'Draft',
+		'foreignKey' => 'assoc_id',
+		'dependent' => true,
+		'conditions' => array('Draft.model'=>'Event'),
+		'fields' => ''
+		)
+	);
 /**
  * hasAndBelongsToMany associations
  *
@@ -127,6 +139,7 @@ class Event extends AppModel {
         'id_from' => array('type' => 'query', 'method' => 'idFrom'),
         'id_to' => array('type' => 'query', 'method' => 'idTo'),
         'username' => array('type' => 'like', 'field' => array('User.username', 'User.name')),
+        'user_id' => array('type' => 'value'),
         'patient_name' => array('type' => 'subquery', 'method'=>'findByPatients', 'field' => 'Event.id' ),
         'patient_age_group' => array('type' => 'subquery', 'method'=>'findByPatients', 'field' => 'Event.id' ),
         'not_poisoning' => array('type' => 'subquery', 'method'=>'findByPatients', 'field' => 'Event.id' ),
@@ -379,21 +392,18 @@ class Event extends AppModel {
     	return $event;
     }
 
-    // public function getEventTypes() {
-    // 	return $this->EventAttribute->find('list',array(
-    // 		'fields'=>array('id','name','subgroup'),
-    // 		'conditions'=>array('group' =>'type')
-    // 		));
-    // }
+    public function getEventTypes() {
+    	return $this->EventAttribute->find('list',array(
+    		'fields'=>array('id','name','subgroup'),
+    		'conditions'=>array('group' =>'type')
+    		));
+    }
 
 
     public function getFormLists() {
 
     	$formLists = array(
-    		'eventTypes' => $this->EventAttribute->find('list',array(
-    			'fields'=>array('id','name','subgroup'),
-    			'conditions'=>array('group' =>'type')
-    			)),
+    		'eventTypes' => $this->getEventTypes(),
     		'eventAttributes' => $this->EventAttribute->find('list',array(
     			'fields'=>array('id','name','group'),
     			'conditions'=>array('group !=' =>'type')
@@ -436,6 +446,9 @@ class Event extends AppModel {
 			$this->data['RelatedEvent']['RelatedEvent'] = false;
 		// $this->data['EventAttribute'][]= $this->data['EventAttribute']['EventAttribute'];
 		        // pr($this->data);
+		// if(isset($this->data['Draft']))
+		// 	unset($this->data['Draft']);
+		$this->unbindModel(array('hasOne'=>array('Draft')));
 		return true;
 	}
 	public function beforeSave($options = array()) {
@@ -446,11 +459,20 @@ class Event extends AppModel {
 
 			if(!isset($this->data['Agent']))
 				$this->data['Agent'] = array();
+
 		}
-		
+
 		return true;
 	}
-
+	public function afterSave($created)	{
+		$cond = array(
+			'OR' => array(
+				'Draft.assoc_id'=>$this->id
+				));
+		if(!empty($this->data['Event']['Draft']['id']))
+			$cond['OR']['Draft.id'] = $this->data['Event']['Draft']['id'];
+		$this->Draft->deleteAll($cond, false);
+	}
 
 	public function report($date_range=array()) {
 		set_time_limit(300);

@@ -1,11 +1,29 @@
 define(['jquery',"utils/modal","utils/tableRow"], function($,modal,row) {
 
 
+
+
     var add_call_options = {
         getUrl:'calls',
         show:true,id:'add_call',
         title:"Ieškoti konsultacijos įrašo",
-        footer:'<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button><button class="btn btn-primary disabled attach_call">Priskirti įrašą</button>'
+        footer:'<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button><button class="btn btn-primary disabled attach_call">Priskirti įrašą</button>',
+        onHide:function() {
+            var seen = {};
+            $(".attached-call-id").each(function(){
+                value = $(this).val();
+                if (seen[value])
+                    $(this).parent().remove();
+                else
+                    seen[value] = true;
+
+                console.log($(this).val());
+            });
+
+            $(".call_fields").each(function(step, field){
+                $(field).find('input').incrementInput({num:step,separator:'%'});
+            });
+        }
     };
 
 
@@ -27,7 +45,6 @@ define(['jquery',"utils/modal","utils/tableRow"], function($,modal,row) {
     $('.add-call-btn').click(function(event) {
 
         modal.set(add_call_options, function() {
-            onHide();
             row.init('tr.call_row','.modal', function(){
                 $('.attach_call').removeClass('disabled');
             });
@@ -53,26 +70,5 @@ define(['jquery',"utils/modal","utils/tableRow"], function($,modal,row) {
     });
 
 
-onHide = function() {
-    $('#add_call').on('hidden', function(e) {
-        if($(e.target).hasClass("modal")) {
 
-            var seen = {};
-            $(".attached-call-id").each(function(){
-                value = $(this).val();
-                if (seen[value])
-                    $(this).parent().remove();
-                else
-                    seen[value] = true;
-
-                console.log($(this).val());
-            });
-
-            $(".call_fields").each(function(step, field){
-                $(field).find('input').incrementInput({num:step,separator:'%'});
-            });
-        }
-
-    });
-};
 });

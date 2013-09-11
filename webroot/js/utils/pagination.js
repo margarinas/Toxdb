@@ -6,13 +6,17 @@ define(["jquery"],function($){
 		if(typeof options !== "object" && typeof options !== "undefined")
 			throw new Error("Must provide options as an object");
 
-		defaults = {element:".pagination",container:"#container",limit:20,history:true,callback:null,scrollTo:false};
+		defaults = {element:".pagination a",container:"#container",limit:null,history:true,callback:null,scrollTo:false,showSummary:true};
 		var settings = $.extend(defaults, options);
 
-		
-		$(settings.element).on("click", 'a', function (event) {
+
+		if(!settings.showSummary) {
+			$(".paginator-summary").hide();
+		}
+		// $(settings.container).off('click',settings.element);
+		$(settings.container).on("click", settings.element, function (event) {
 			url = $(this).attr('href');
-			console.log(url);
+			
 			if(url !== "#") {
 				$.ajax({
 					beforeSend:function (XMLHttpRequest) {
@@ -20,21 +24,28 @@ define(["jquery"],function($){
 					},
 					complete:function (XMLHttpRequest, textStatus) {
 						$("#busy-indicator").fadeOut();
-
+						if(!settings.showSummary) {
+							$(".paginator-summary").hide();
+						}
 						if(settings.scrollTo === false)
 							$(settings.container).parent().scrollTop(0);
 						
-						if(settings.history === true)
+						if(settings.history)
 							history.pushState(null, null, url);
 
-						if(typeof settings.callback === "function")
+						if(typeof settings.callback === "function"){
+							console.log(settings.callback);
 							settings.callback(XMLHttpRequest);
+						}
 					},
 					success:function (data, textStatus) {
 						$(settings.container).html(data);
-						init(settings);
+						// init(settings);
 					},
-					data:{limit:settings.limit},
+					data:function(){
+						if(settings.limit !== null)
+							return {limit:settings.limit};
+					},
 					url:url
 				});
 			}

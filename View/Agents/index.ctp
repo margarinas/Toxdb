@@ -9,7 +9,7 @@
 // 	echo $this->Html->link("Pridėti naują medžiaga",array('controller'=>'agents', 'action'=>'add'),array('class'=>'btn btn-success margin-bottom')); 
 ?>
 <table class="table" cellpadding="0" cellspacing="0">
-	<tr>
+	<tr class="pagination">
 		<th><?php echo $this->Paginator->sort('name','Pavadinimas');?></th>
 		<th><?php echo $this->Paginator->sort('PoisonGroup','Grupė');?></th>
 		<?php if (!$this->params['isAjax']): ?>
