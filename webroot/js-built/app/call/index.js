@@ -1,0 +1,1 @@
+define(["utils/tableRow","utils/pagination"],function(e,t){return init=function(n){defaults={container:"#container"};var r=$.extend(defaults,n);e.init(" .call_row",r.container),t.init({container:r.container})},{init:init}});
