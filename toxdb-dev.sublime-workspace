@@ -528,6 +528,30 @@
 			}
 		},
 		{
+			"file": "View/Calls/index.ctp",
+			"settings":
+			{
+				"buffer_size": 2992,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Controller/CallsController.php",
+			"settings":
+			{
+				"buffer_size": 3662,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Model/Call.php",
+			"settings":
+			{
+				"buffer_size": 1649,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "webroot/js/app/user/dashboard.js",
 			"settings":
 			{
@@ -536,93 +560,10 @@
 			}
 		},
 		{
-			"file": "webroot/js/app/event/index.js",
-			"settings":
-			{
-				"buffer_size": 3191,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "webroot/js/app/call/index.js",
 			"settings":
 			{
 				"buffer_size": 317,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "webroot/js/app/draft/index.js",
-			"settings":
-			{
-				"buffer_size": 910,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "View/Drafts/index.ctp",
-			"settings":
-			{
-				"buffer_size": 1321,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Controller/DraftsController.php",
-			"settings":
-			{
-				"buffer_size": 1018,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "webroot/js/utils/pagination.js",
-			"settings":
-			{
-				"buffer_size": 1547,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "webroot/js/utils/tableRow.js",
-			"settings":
-			{
-				"buffer_size": 970,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "View/Events/index.ctp",
-			"settings":
-			{
-				"buffer_size": 5681,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Controller/EventsController.php",
-			"settings":
-			{
-				"buffer_size": 15033,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "Controller/CallsController.php",
-			"settings":
-			{
-				"buffer_size": 3661,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "({\n   baseUrl: '.',\n	paths: {\n		'main': 'main',\n		//'domReady':'lib/domReady',\n		'purl':'lib/purl',\n		'common' : 'app/common',\n		'jquery': 'lib/jquery',\n		'jquery-ui':'lib/jquery-ui.min',\n		'jquery-ui-timepicker':'lib/jquery-ui-timepicker-addon',\n		'jquery-ui-datepicker-lt':'lib/jquery.ui.datepicker-lt',\n		'jquery-ui-timepicker-lt':'lib/jquery-ui-timepicker-lt',\n		'bootstrap':'lib/bootstrap.min',\n		'tinymce':'lib/tinymce/jquery.tinymce.min'\n	},\n	appDir:\".\",\n	dir: \"../www-built\",\n	optimizeCss:'none',\n	// mainConfigFile: 'main.js',\n    // name: \"main\",\n    // out: \"main-built.js\",\n    modules: [\n		{name:'app/index'},\n		{name:'app/call.index'},\n		{name:'app/event.add'},\n		{name:'app/event.index'},\n		{name:'app/login'},\n		{name:'app/poison.add'},\n		{name:'app/poison.index'},\n		{name:'app/substance.search'}\n    ]\n})",
-			"file": "webroot/js/build.js",
-			"file_size": 850,
-			"file_write_time": 130234006523213889,
-			"settings":
-			{
-				"buffer_size": 822,
 				"line_ending": "Windows"
 			}
 		}
@@ -766,11 +707,31 @@
 	},
 	"file_history":
 	[
+		"/E/wamp/www/toxdb-dev/webroot/js/app/call.index.js",
+		"/E/wamp/www/toxdb-dev/View/Calls/index.ctp",
+		"/E/wamp/www/toxdb-dev/Model/Call.php",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event.add.js",
+		"/E/wamp/www/toxdb-dev/Config/bootstrap.php",
+		"/E/wamp/www/toxdb-dev/webroot/build.js",
+		"/E/wamp/www/toxdb-dev/View/Layouts/default.ctp",
+		"/E/wamp/www/toxdb-dev/Config/core.php",
+		"/E/wamp/www/toxdb-dev/Controller/CallsController.php",
+		"/E/wamp/www/toxdb-dev/Controller/EventsController.php",
+		"/E/wamp/www/toxdb-dev/View/Events/index.ctp",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/tableRow.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/utils/pagination.js",
+		"/E/wamp/www/toxdb-dev/Controller/DraftsController.php",
+		"/E/wamp/www/toxdb-dev/View/Drafts/index.ctp",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/draft/index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/call/index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/event/index.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/app/user/dashboard.js",
+		"/E/wamp/www/toxdb-dev/webroot/js/build.js",
+		"/E/wamp/www/toxdb-dev/webroot/js-built/build.txt",
 		"/E/wamp/www/toxdb-dev/webroot/js/www-built/main.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/www-built/app/index.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/search.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/main.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/build.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/www-built/app/event.index.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event.index.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/common.js",
@@ -790,28 +751,20 @@
 		"/C/Program Files/mintty-quake-console/mintty-quake-console.ini",
 		"/C/Users/LZ/AppData/Local/Temp/7zO7D9B.tmp/mintty-quake-console.ini",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/related_event_add.js",
-		"/E/wamp/www/toxdb-dev/View/Events/index.ctp",
 		"/E/wamp/www/toxdb-dev/View/Events/report.ctp",
-		"/E/wamp/www/toxdb-dev/Controller/EventsController.php",
 		"/E/wamp/www/toxdb-dev/View/Events/add.ctp",
 		"/E/wamp/www/toxdb-dev/Model/Draft.php",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/substance_add.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/modal.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/call_add.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/event.add.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/message.js",
-		"/E/wamp/www/toxdb-dev/Model/Call.php",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/actions.js",
 		"/E/wamp/www/toxdb-dev/Controller/AgentsController.php",
 		"/E/wamp/www/toxdb-js/Model/Call.php",
 		"/E/wamp/www/toxdb-dev/Vendor/autoload.php",
 		"/E/wamp/www/toxdb-dev/Controller/AppController.php",
 		"/E/wamp/www/toxdb-dev/View/Elements/event/search.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/js/utils/pagination.js",
 		"/E/wamp/www/toxdb-dev/View/Elements/user/menu.ctp",
-		"/E/wamp/www/toxdb-dev/View/Calls/index.ctp",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/call.index.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/utils/tableRow.js",
 		"/E/wamp/www/toxdb-dev/View/Substances/index.ctp",
 		"/E/wamp/www/toxdb-dev/View/Agents/index.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/stopReload.js",
@@ -820,7 +773,6 @@
 		"/E/wamp/www/toxdb-dev/Model/User.php",
 		"/E/wamp/www/toxdb-dev/Controller/UsersController.php",
 		"/E/wamp/www/toxdb-dev/webroot/css/style.css",
-		"/E/wamp/www/toxdb-dev/Controller/DraftsController.php",
 		"/E/wamp/www/toxdb-dev/Model/Patient.php",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/add_related_event.js",
 		"/E/wamp/www/toxdb-dev/View/Substances/dashboard.ctp",
@@ -829,8 +781,6 @@
 		"/E/wamp/www/toxdb-dev/Config/routes.php",
 		"/E/wamp/www/toxdb-dev/Plugin/Utility/Model/Behavior/CacheableBehavior.php",
 		"/E/wamp/www/toxdb-dev/Model/PatientAttribute.php",
-		"/E/wamp/www/toxdb-dev/View/Layouts/default.ctp",
-		"/E/wamp/www/toxdb-dev/Config/core.php",
 		"/C/Users/LZ/AppData/Local/Temp/scp53486/docroot/tpl/index.htm",
 		"/C/Users/LZ/AppData/Local/Temp/scp54027/docroot/index.htm",
 		"/C/Users/LZ/AppData/Local/Temp/scp55579/docroot/includes/content_loader.php",
@@ -850,7 +800,6 @@
 		"/E/wamp/www/toxdb-dev/View/Events/view.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/event/report.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/index.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/user/dashboard.js",
 		"/E/wamp/www/toxdb-dev/View/Users/dashboard.ctp",
 		"/E/wamp/www/toxdb-dev/View/Layouts/user.ctp",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/user/menu.js",
@@ -885,15 +834,7 @@
 		"/E/wamp/www/toxdb-dev/webroot/js/utils/poisionAutocomplete.js",
 		"/E/wamp/www/toxdb-dev/webroot/js/app/substance/dashboard.js",
 		"/E/wamp/www/toxdb-dev/View/Elements/modal.ctp",
-		"/C/Users/LZ/AppData/Local/Temp/scp24288/domains/zdanaviciai.lt/public_html/index.html",
-		"/E/wamp/www/toxdb-dev/webroot/js/app/event/add_call.js",
-		"/C/cygwin/home/LZ/.bashrc",
-		"/C/cygwin/home/LZ/.bash_profile",
-		"/E/wamp/www/ambulance/index.html",
-		"/E/wamp/www/toxdb-dev/webroot/js/main-built.js",
-		"/E/wamp/www/toxdb-dev/webroot/js/node_modules/requirejs/bin/r.js",
-		"/C/Users/LZ/AppData/Local/Temp/scp17945/domains/e-projektai.eu/public_html/work/toxdb.bak/index.php",
-		"/C/Users/LZ/AppData/Local/Temp/scp20623/domains/e-projektai.eu/public_html/work/toxdb/webroot/index.php"
+		"/C/Users/LZ/AppData/Local/Temp/scp24288/domains/zdanaviciai.lt/public_html/index.html"
 	],
 	"find":
 	{
@@ -912,6 +853,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"debu",
+			"js",
 			"name",
 			"',",
 			"Draft",
@@ -1037,9 +980,7 @@
 			"__DIR__",
 			"CAPABILITY_USESTDGROUPS",
 			"::",
-			"32",
-			"64",
-			"remove-cal"
+			"32"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1084,7 +1025,7 @@
 	"groups":
 	[
 		{
-			"selected": 12,
+			"selected": 5,
 			"sheets":
 			[
 				{
@@ -1178,6 +1119,273 @@
 				},
 				{
 					"buffer": 1,
+					"file": "View/Calls/index.ctp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2992,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"empty-rules": false
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+								"ctp": "php",
+								"javascript": "C:/Program Files/nodejs/node.exe"
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Controller/CallsController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3662,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								252,
+								252
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"empty-rules": false
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+								"ctp": "php",
+								"javascript": "C:/Program Files/nodejs/node.exe"
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Model/Call.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1649,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"annotations":
+							[
+								"TODO",
+								"README",
+								"FIXME"
+							],
+							"csslint_options":
+							{
+								"empty-rules": false
+							},
+							"gjslint_ignore":
+							[
+								110
+							],
+							"gjslint_options":
+							[
+							],
+							"javascript_linter": "jshint",
+							"jshint_options":
+							{
+								"browser": true,
+								"evil": true,
+								"regexdash": true,
+								"sub": true,
+								"trailing": true,
+								"wsh": true
+							},
+							"pep8": true,
+							"pep8_ignore":
+							[
+								"E501"
+							],
+							"perl_linter": "perlcritic",
+							"pyflakes_ignore":
+							[
+							],
+							"pyflakes_ignore_import_*": true,
+							"sublimelinter": true,
+							"sublimelinter_delay": 2,
+							"sublimelinter_disable":
+							[
+							],
+							"sublimelinter_executable_map":
+							{
+								"ctp": "php",
+								"javascript": "C:/Program Files/nodejs/node.exe"
+							},
+							"sublimelinter_fill_outlines": false,
+							"sublimelinter_gutter_marks": true,
+							"sublimelinter_gutter_marks_theme": "simple",
+							"sublimelinter_mark_style": "none",
+							"sublimelinter_notes": false,
+							"sublimelinter_objj_check_ascii": false,
+							"sublimelinter_popup_errors_on_save": false,
+							"sublimelinter_syntax_map":
+							{
+								"C++": "c",
+								"Python Django": "python",
+								"Ruby on Rails": "ruby"
+							},
+							"sublimelinter_wrap_find": true,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "webroot/js/app/user/dashboard.js",
 					"semi_transient": false,
 					"settings":
@@ -1189,8 +1397,8 @@
 						"selection":
 						[
 							[
-								2669,
-								2669
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1261,101 +1469,13 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "webroot/js/app/event/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3191,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1415,
-								1415
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 5,
 					"file": "webroot/js/app/call/index.js",
 					"semi_transient": false,
 					"settings":
@@ -1367,96 +1487,8 @@
 						"selection":
 						[
 							[
-								317,
-								317
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "webroot/js/app/draft/index.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 910,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								392,
-								874
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1524,656 +1556,6 @@
 							"sublimelinter_wrap_find": true,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "View/Drafts/index.ctp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1321,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								955,
-								1008
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "Controller/DraftsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1018,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								546,
-								546
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "webroot/js/utils/pagination.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1547,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								779,
-								779
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "webroot/js/utils/tableRow.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 970,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								383,
-								399
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "View/Events/index.ctp",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5681,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3887,
-								3887
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 630.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "Controller/EventsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 15033,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10715,
-								10715
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 4843.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "Controller/CallsController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3661,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2565,
-								2565
-							]
-						],
-						"settings":
-						{
-							"annotations":
-							[
-								"TODO",
-								"README",
-								"FIXME"
-							],
-							"csslint_options":
-							{
-								"empty-rules": false
-							},
-							"gjslint_ignore":
-							[
-								110
-							],
-							"gjslint_options":
-							[
-							],
-							"javascript_linter": "jshint",
-							"jshint_options":
-							{
-								"browser": true,
-								"evil": true,
-								"regexdash": true,
-								"sub": true,
-								"trailing": true,
-								"wsh": true
-							},
-							"pep8": true,
-							"pep8_ignore":
-							[
-								"E501"
-							],
-							"perl_linter": "perlcritic",
-							"pyflakes_ignore":
-							[
-							],
-							"pyflakes_ignore_import_*": true,
-							"sublimelinter": true,
-							"sublimelinter_delay": 2,
-							"sublimelinter_disable":
-							[
-							],
-							"sublimelinter_executable_map":
-							{
-								"ctp": "php",
-								"javascript": "C:/Program Files/nodejs/node.exe"
-							},
-							"sublimelinter_fill_outlines": false,
-							"sublimelinter_gutter_marks": true,
-							"sublimelinter_gutter_marks_theme": "simple",
-							"sublimelinter_mark_style": "none",
-							"sublimelinter_notes": false,
-							"sublimelinter_objj_check_ascii": false,
-							"sublimelinter_popup_errors_on_save": false,
-							"sublimelinter_syntax_map":
-							{
-								"C++": "c",
-								"Python Django": "python",
-								"Ruby on Rails": "ruby"
-							},
-							"sublimelinter_wrap_find": true,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1432.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 12,
-					"file": "webroot/js/build.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 822,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								472,
-								472
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -2230,6 +1612,54 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"call.",
+				"webroot\\js\\app\\call.index.js"
+			],
+			[
+				"das",
+				"webroot\\js\\app\\user\\dashboard.js"
+			],
+			[
+				"call",
+				"Model\\Call.php"
+			],
+			[
+				"calls",
+				"Controller\\CallsController.php"
+			],
+			[
+				"callsinde",
+				"View\\Calls\\index.ctp"
+			],
+			[
+				"callinde",
+				"View\\Calls\\index.ctp"
+			],
+			[
+				"eventadd",
+				"webroot\\js\\app\\event.add.js"
+			],
+			[
+				"boo",
+				"Config\\bootstrap.php"
+			],
+			[
+				"defa",
+				"View\\Layouts\\default.ctp"
+			],
+			[
+				"eventin",
+				"View\\Events\\index.ctp"
+			],
+			[
+				"core",
+				"Config\\core.php"
+			],
+			[
+				"boot",
+				"Config\\bootstrap.php"
+			],
 			[
 				"eve",
 				"Model\\Event.php"
@@ -2303,20 +1733,8 @@
 				"webroot\\js\\app\\event\\index.js"
 			],
 			[
-				"eventin",
-				"View\\Events\\index.ctp"
-			],
-			[
-				"call",
-				"Model\\Call.php"
-			],
-			[
 				"message.js",
 				"webroot\\js\\utils\\message.js"
-			],
-			[
-				"eventadd",
-				"webroot\\js\\app\\event.add.js"
 			],
 			[
 				"ro",
@@ -2407,10 +1825,6 @@
 				"Controller\\UsersController.php"
 			],
 			[
-				"callinde",
-				"View\\Calls\\index.ctp"
-			],
-			[
 				"add_re",
 				"webroot\\js\\app\\event\\add_related_event.js"
 			],
@@ -2449,10 +1863,6 @@
 			[
 				"draft",
 				"Controller\\DraftsController.php"
-			],
-			[
-				"core",
-				"Config\\core.php"
 			],
 			[
 				"cache",
@@ -2713,34 +2123,6 @@
 			[
 				"subsad",
 				"webroot\\js\\app\\event\\substance_add.js"
-			],
-			[
-				"sea",
-				"View\\Substances\\search.ctp"
-			],
-			[
-				"eventad",
-				"View\\Events\\add.ctp"
-			],
-			[
-				"moda",
-				"webroot\\js\\utils\\modal.js"
-			],
-			[
-				"st",
-				"webroot\\css\\style.css"
-			],
-			[
-				"get",
-				"webroot\\js\\utils\\getElement.js"
-			],
-			[
-				"act",
-				"View\\Elements\\substance\\actions.ctp"
-			],
-			[
-				"das",
-				"View\\Substances\\dashboard.ctp"
 			]
 		],
 		"width": 0.0
