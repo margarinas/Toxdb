@@ -30,7 +30,7 @@ public function index() {
 
 public function getCalls() {
 
-	if($this->Call->fetchCalls())
+	if($this->Call->importCalls())
 		$this->redirect(array('action' => 'index'));
 }
 
