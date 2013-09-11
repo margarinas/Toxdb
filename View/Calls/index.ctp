@@ -7,7 +7,7 @@ if (!$this->params['isAjax']):
 ?>
 	<h3><?php echo __('Skambučių sąrašas');?></h3>
 <?php endif; ?>
-
+<?php echo $this->Html->link("Atnaujinti",array('action'=>'getCalls'),array('class'=>'btn btn-info pull-right hide', 'id'=>'calls-get')); ?>
 <table class="table">
 	<tr>
 		<th><?php echo $this->Paginator->sort('number', 'Tel. nr.');?></th>
