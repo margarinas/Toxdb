@@ -13,8 +13,8 @@
 		'bootstrap':'lib/bootstrap.min',
 		'tinymce':'lib/tinymce/jquery.tinymce.min'
 	},
-	appDir:".",
-	dir: "../js-built",
+	appDir:"js",
+	dir: "js-built",
 	optimizeCss:'none',
 	// mainConfigFile: 'main.js',
     // name: "main",
