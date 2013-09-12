@@ -37,7 +37,7 @@ app/[Cc]onfig/database.php
 *.sublime-workspace
 sftp-config.json
 Plugin/*
-!Plugin/
+!Plugin/TwitterBootstrap/
 
 
 webroot/files/calls/*
