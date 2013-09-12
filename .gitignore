@@ -37,6 +37,7 @@ app/[Cc]onfig/database.php
 *.sublime-workspace
 sftp-config.json
 Plugin/*
+!Plugin/
 
 
 webroot/files/calls/*
