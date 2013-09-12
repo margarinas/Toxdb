@@ -50,7 +50,7 @@
 	}
 	?>
 
-	<div id="substance-add-agents">
+	<div id="substance-add-agents" class="<?php echo !empty($this->data['Substance']['noagents'])?'hide':''; ?>">
 	<legend>Pagrindinės sudedamosios medžiagos</legend>
 
 	
@@ -86,8 +86,10 @@
 	
 	
 	<?php $agents = !empty($this->data['Agent'])?$this->data['Agent']:array(1); ?>
-	<div class="agents accordion <?php echo !empty($this->data['Substance']['noagents'])?'hide':''; ?>" id="agents_create">
+	<div class="agents accordion" id="agents_create">
+
 		<?php foreach ($agents as $key => $value): ?>
+
 		<div class="agent accordion-group">
 			<div class="accordion-heading">
 				<a class="accordion-toggle" data-toggle="collapse" data-parent="#agents_create" href="#agent<?php echo $key ?>agent">Medžiaga #<?php echo $key+1 ?></a>
