@@ -1,0 +1,1 @@
+define([],function(){var e=function(e,t){$.ajax({url:baseUrl+"getElement",data:e,success:function(e){t(e)}})};return{loadElement:e}});

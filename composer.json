@@ -1,0 +1,11 @@
+{
+	"config": {
+		"vendor-dir": "Vendor"
+	},
+	"require": {
+		"margarinas/cakephp-cms": "0.*",
+		"mjohnson/utility": "1.5.*",
+		"cakephp/debug_kit": "2.2.*@dev",
+		"cakedc/search": "1.1.*"
+	}
+}
