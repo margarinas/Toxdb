@@ -49,6 +49,8 @@ webroot/files/new_calls/*
 
 Vendor/autoload.php
 Vendor/composer/
+!Vendor/
+
 composer.lock
 .DS_Store
 .DS_Store?
