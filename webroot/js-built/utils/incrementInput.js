@@ -1,1 +1,0 @@
-function incrementInput(e,t){optArray=new Array("id","name","for","href");for(i=0;i<optArray.length;i++)e.attr(optArray[i])&&(strArray=e.attr(optArray[i]).split("0"),e.attr(optArray[i],strArray[0]+t+strArray.pop()));return e.is("a")&&e.text(e.text().slice(0,-1)+(t+1)),e.is("select")&&e.find("option:selected").prop("selected",!1),e};

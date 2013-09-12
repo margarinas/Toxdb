@@ -1,1 +1,0 @@
-define(["jquery","bootstrap"],function(e){return init=function(t){typeof t=="undefined"&&(t=".autocomplete"),e(t).typeahead({minLength:3,source:function(t,n){return e.getJSON(baseUrl+"substances/find_poison/",{term:t},function(e){return n(e)})}})},{init:init}});

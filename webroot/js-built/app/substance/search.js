@@ -1,1 +1,0 @@
-define(["jquery"],function(e){return init=function(t,n){function r(t,n,r){e.ajax({async:!0,beforeSend:function(t){e("#busy-indicator").fadeIn()},complete:function(t,n){e("#busy-indicator").fadeOut()},data:n,dataType:"html",evalScripts:!0,success:function(n,i){e("#"+t).html(n),typeof r=="function"&&r(n)},url:baseUrl+t})}r("substances",t,n),r("agents",t,n)},{init:init}});
