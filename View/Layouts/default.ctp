@@ -32,7 +32,7 @@
 
 
 	echo $this->Html->css(array(
-		'ui/jquery-ui-1.9.2.custom',
+		'ui/jquery-ui-1.10.0.custom',
 		'bootstrap.min', 
 		'bootstrap-responsive.min',
 		'style'

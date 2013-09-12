@@ -1,5 +1,6 @@
 <?php
 App::uses('AppModel', 'Model');
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
@@ -117,17 +118,10 @@ class User extends AppModel {
 
 	public function beforeSave($options = array()) {
         if (isset($this->data['User']['password'])) {
-            $this->data['User']['password'] = AuthComponent::password($this->data['User']['password']);
+        	//$passwordHasher = new SimplePasswordHasher();
+            $this->data['User']['password'] = SimplePasswordHasher::hash($this->data['User']['password']);
         }
         return true;
-    }
-    public function afterFind($results, $primary = false){
-    	foreach ($results as $key => $val) {
-        if (isset($val['User']['password'])) {
-            unset($results[$key]['User']['password']);
-        }
-    }
-    return $results;
     }
 
 }

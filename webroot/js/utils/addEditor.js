@@ -20,7 +20,7 @@ define(["jquery","tinymce"], function($) {
 		// language : "lt",
 		height:'200',
 		width:'80%',
-		content_css:baseUrl+"css/bootstrap.css,"+baseUrl+"css/style.css"
+		content_css:baseUrl+"css/bootstrap.min.css,"+baseUrl+"css/style.css"
 	});
 	};
 

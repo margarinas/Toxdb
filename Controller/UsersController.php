@@ -20,10 +20,17 @@ function beforeFilter () {
 	$this->Auth->allow('login','logout');
 }
 
+function beforeRender () {
+	  if (isset($this->data['User']['password'])) {
+           unset($this->request->data['User']['password']);
+      }
+}
+
 
 public function login()
 {	
 	if ($this->request->is('post')) {
+
 		if ($this->Auth->login()) {
 			$this->User->id = $this->Auth->user('id');
 			$this->User->save(array('last_login'=>date("Y-m-d H:i:s"),'ip'=>$_SERVER["REMOTE_ADDR"]));
