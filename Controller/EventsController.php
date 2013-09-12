@@ -267,6 +267,7 @@ public function edit($id = null) {
 			if(Configure::read('debug')==0)
 				$this->redirect(array('action' => 'index'));
 		} else {
+			pr($this->Event->validationErrors);
 			$this->Session->setFlash(__('Įrašas negalėjo būti išsaugotas. Bandykite dar kartą'),'failure');
 		}
 	} else {

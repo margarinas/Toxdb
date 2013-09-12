@@ -446,12 +446,14 @@ public $hasOne = array(
 			$this->data['RelatedEvent']['RelatedEvent'] = false;
 		// $this->data['EventAttribute'][]= $this->data['EventAttribute']['EventAttribute'];
 		        // pr($this->data);
-		// if(isset($this->data['Draft']))
-		// 	unset($this->data['Draft']);
-		$this->unbindModel(array('hasOne'=>array('Draft')));
+		if(isset($this->data['Draft']))
+			unset($this->data['Draft']);
+		
 		return true;
 	}
 	public function beforeSave($options = array()) {
+
+		
 
 		if(!empty($options['saveAllFields'])) {
 			if(!isset($this->data['Substance']))

@@ -1,6 +1,6 @@
 requirejs.config({
 	baseUrl: baseUrl+'js',
-	urlArgs: "v=1.02",
+	urlArgs: "v="+jsVersion,
 	paths: {
 		'main': 'main',
 		//'domReady':'lib/domReady',

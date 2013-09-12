@@ -59,12 +59,13 @@
 		?>
 
 	<script>
+		var jsVersion = "<?php echo Configure::read('JsVersion') ?>"
 		var baseUrl = "<?php echo $this->Html->url('/') ?>";
 	</script>
 
 
 	<?php 
-	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js?v=1.02"));
+	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js?v=".Configure::read('JsVersion')));
 	echo $this->fetch('script');
 	 ?>
 

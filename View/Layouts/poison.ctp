@@ -42,46 +42,17 @@
 	echo $this->fetch('meta');
 	echo $this->fetch('css');
 	
-	// echo $this->Html->script(array(
-	// 	'lib/jquery-1.9.1.min',
-	// 	'lib/bootstrap.min',
-	// 	'lib/jquery-ui.min',
-	// 	'lib/jquery-ui-timepicker-addon',
-	// 	'lib/jquery-ui-timepicker-lt',
-	// 	'lib/jquery.ui.datepicker-lt',
-	// 	'lib/tiny_mce/tiny_mce',
-	// 	'lib/jquery.incrementInput',
-	// 	// 'main'
-	// 	));
-
-
 	
 		?>
 
 	<script>
+		var jsVersion = "<?php echo Configure::read('JsVersion') ?>"
 		var baseUrl = "<?php echo $this->Html->url('/') ?>";
-		// tinyMCE.init({
-		// 	mode : "textareas",
-		// 	theme : "advanced",
-		// 	theme_advanced_toolbar_location : "top",
-		// 	theme_advanced_buttons1 : "bold,italic,underline,bullist,numlist,undo,redo",
-		// 	plugins: 'paste',
-		// 	paste_auto_cleanup_on_paste : true,
-		// 	paste_remove_styles: true,
-		// 	paste_remove_styles_if_webkit: true,
-		// 	paste_strip_class_attributes: true,
-		// 	theme_advanced_resizing : true,
-		// 	   language : "lt",
-		// 	   height:'200',
-		// 	 //content_css:baseUrl+"css/bootstrap.css"
-
-
-		// });
 	</script>
 
 
 	<?php 
-	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js"));
+	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js?v=".Configure::read('JsVersion')));
 	echo $this->fetch('script');
 	 ?>
 
