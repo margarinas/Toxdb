@@ -1,7 +1,8 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event.add']); });",array('inline'=>false)); ?>
 <div class="row">
     <div class="span2" id="sidebar_nav">
         <ul class="nav nav-pills nav-stacked sidebar-nav affix" >
-            <li class="event_main_section_link"><a href="#event_main">Kreipiasi</a></li>
+            <li class="event_main_section_link active"><a href="#event_main">Kreipiasi</a></li>
             <li class="patient_section_link"><a href="#patient_info">Pacientas</a></li>
             <li class="patient_section_link"><a href="#patient_history">Lydinčios ligos/būklės</a></li>
             <li class="patient_section_link"><a href="#poison_attach_button">Pridėti medžiagą</a></li>
@@ -20,9 +21,9 @@
     </div>
     <div class="span10 event_form">
         <?php //pr($this->data) ?>
-        <?php echo $this->Form->create('Event',array('class'=>'form-horizontal')); ?>
+        <?php echo $this->Form->create('Event',array('class'=>'form-horizontal','id'=>'EventAddForm')); ?>
         <fieldset id="event_main">
-        <legend >Naujas atvejis</legend>
+        <legend style="position:relative;top:-50px">Naujas atvejis</legend>
         <?php
 
         if (!empty($this->request->data['Event']['id']))
@@ -483,7 +484,7 @@ echo $this->Form->input('Patient.0.verified',array('label'=>'Laboratorinis patvi
                 'label_class'=>'radio inline'
                 ));
 
-
+pr($eventAttributes);
                 // EVENT ATTRIBUTES
                 echo $this->Form->input('Event.EventAttribute',array('label'=>'Užklausimo būdas',
                     'multiple'=>'checkbox',
@@ -535,6 +536,7 @@ echo $this->Form->input('Patient.0.verified',array('label'=>'Laboratorinis patvi
     </fieldset>
     <?php echo $this->Form->input('Event.extra', array('label'=>'PASTABOS')); ?>
     <?php echo $this->Form->input('Event.created', array('label'=>'Data','type'=>'text','class'=>'datetimepicker')); ?>
+    <?php echo $this->Form->hidden('Draft.id'); ?>
     <div class="form-actions">
         <?php echo $this->Form->submit('Pateikti', array(
             'div' => false,
@@ -551,40 +553,12 @@ echo $this->Form->input('Patient.0.verified',array('label'=>'Laboratorinis patvi
 </div>
 
 <?php
-$this->assign('modalId', 'add_substance');
-$this->assign('modalTitle', 'Ieškoti nuodingosios medžiagos');
-$this->start('modalFooter');?>
-<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>   
-<button class="btn btn-primary disabled attach_substance">Priskirti medžiagą pacientui</button>   
-<?php
-$this->end();
-echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); 
-?>
-
-<?php
-$this->assign('modalId', 'add-related-event');
-$this->assign('modalTitle', 'Ieškoti atvejo');
+$this->assign('modalId', '');
+$this->assign('modalTitle', '');
 $this->assign('modalFooter', '');
-echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); 
-?>
-
-<?php
-$this->assign('modalId', 'add_call');
-$this->assign('modalTitle', 'Ieškoti konsultacijos įrašo');
 $this->start('modalFooter');?>
-<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>   
-<button class="btn btn-primary disabled attach_call">Priskirti įrašą</button>   
+<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 <?php
 $this->end();
 echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); 
 ?>
-
-
-<?php //echo $this->element('modal', array(), array('plugin' => 'TwitterBootstrap')); ?>
-
-<?php $this->Html->script('event/add',array('inline'=>false)); ?>
-<!-- 
-<script type="text/javascript">
-    //require(["event/add"]);
-</script>
- -->

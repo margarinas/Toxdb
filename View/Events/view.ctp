@@ -1,14 +1,14 @@
 <button type="button" class="btn btn-success noprint" onclick="window.print()">Atspausdinti</button>
-<?php 
-if($this->Session->read('Auth.User.id')==$event['Event']['user_id'] || $this->Session->read('Auth.User.Group.name')=='admin')
-	echo $this->Html->link("Redaguoti",array('action'=>'edit',$event['Event']['id']),array('class'=>'btn pull-right noprint'));
- ?>
+
 <?php 
 if(empty($events))
 	$events = array($event);
 foreach ($events as $event): ?>
 	
-
+<?php 
+if($this->Session->read('Auth.User.id')==$event['Event']['user_id'] || $this->Session->read('Auth.User.Group.name')=='admin')
+	echo $this->Html->link("Redaguoti",array('action'=>'edit',$event['Event']['id']),array('class'=>'btn pull-right noprint'));
+ ?>
 <div class="row print-event">
 <h3>Konsultacijos protokolas nr. <?php echo $event['Event']['id'] ?></h3>	
 <dl class="span6 collumn-print">

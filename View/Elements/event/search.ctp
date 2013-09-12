@@ -1,10 +1,13 @@
-<div class="event_search_form row collapse <?php if(!empty($this->data['Event']) && empty($this->data['Event']['agent_id']) && empty($this->data['Event']['substance_id']) || empty($events)) echo 'in' ?>">
+<button type="button" class="btn btn-danger margin-bottom" data-toggle="collapse" data-target=".event_search_form">
+  Paieška <i class="icon-arrow-down icon-white"></i>
+</button>
+<div class="event_search_form row collapse <?php  echo $showSearch ?>">
 	<?php
 //pr($events);
 	//pr($this->request->data);
 	echo $this->Form->create('Event',array('url' => array_merge(array('action' => 'find'), $this->params['pass']),'id'=>'EventFindForm'));
 	?>
-
+	<?php echo $this->Form->hidden('current_url',array('value'=>$this->here,'name'=>false)); ?>
 	<div class="span4">
 		<?php
 		echo $this->Form->input('id', array('label'=>'Protokolo nr.','type'=>'text'));
@@ -32,9 +35,9 @@
 					))
 			));
 		echo $this->Form->input('requester_name', array('label'=>'Kreipiasi','required'=>false,'class'=>'autocomplete'));
-		echo $this->Form->input('medical_request', array('label'=>'Kreipiasi medikas?'));
-		echo $this->Form->input('invalid_request', array('label'=>'Klaidingos konsultacijos'));
-		echo $this->Form->input('feedback', array('label'=>'Užklausimas dėl apsinuodijimo baigties'));
+		echo $this->Form->input('medical_request', array('label'=>'Kreipiasi medikas?','default'=>false,'hiddenField'=>false));
+		echo $this->Form->input('invalid_request', array('label'=>'Klaidingos konsultacijos', 'default'=>false,'hiddenField'=>false));
+		echo $this->Form->input('feedback', array('label'=>'Užklausimas dėl apsinuodijimo baigties', 'default'=>false,'hiddenField'=>false));
 		
 		
 		?>
@@ -44,7 +47,7 @@
 		echo $this->Form->input('patient_name', array('label'=>'Pacientas','id'=>'PatientName','class'=>'autocomplete')); 
 		echo $this->Form->input('patient_age_group', array('label'=>'Amžiaus grupė','options'=>array('child'=>'Vaikas','adult'=>'Suaugęs'),'empty'=>'...Pasirinkite...'));
 		echo $this->Form->input('username', array('label'=>'Vartotojas','id'=>'UserName','class'=>'autocomplete'));
-		echo $this->Form->input('patient_request', array('label'=>'Kreipiasi pacientas?'));
+		echo $this->Form->input('patient_request', array('label'=>'Kreipiasi pacientas?','default'=>false,'hiddenField'=>false));
 		echo $this->Form->input('event_type',array('label'=>false,
                 'options'=>$eventType,
                 'multiple'=>'checkbox',
@@ -67,9 +70,6 @@
 			
 			<div class="span2">
 				<?php 
-				if ($this->params['isAjax'])
-					echo $this->Js->submit('Ieškoti', array('update' => '#add-related-event .modal-body','url' => '/events/find','class'=>'btn btn-primary'));
-				else
 					echo $this->Form->submit('Ieškoti', array('class' => 'btn btn-inverse'));
 				?>
 			</div>

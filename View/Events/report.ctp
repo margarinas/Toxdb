@@ -1,3 +1,4 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event/report'], function(report) {report.init()}); });",array('inline'=>false)); ?>
 <?php
 echo $this->Form->create('Event',array('action'=>'report'));
 echo $this->Form->input('begin_date', array('label'=>'Laikotarpis',
@@ -59,6 +60,3 @@ echo $this->Form->end();
 	<?php echo $report['invalid_requests'] ?> klaidingi skambučiai.<br>
 	<?php echo $report['not_poisoning'] ?> skambučiai dėl gydymo konsultacijos nesusijusios su apsinuodijimu.<br>
 <?php endif ?>
-<script>
-	$('.report_date').datepicker();
-</script>

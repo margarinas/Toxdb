@@ -17,17 +17,15 @@ class EventsController extends AppController {
  * @return void
  */
 
-public function beforeFilter() 
-{
-	$this->helpers[] = 'Js';
-}
-
 
 public function index() {
 
 
 
-	$limit = $this->request->is('ajax')?7:20;
+	if(!empty($this->request->query['limit']))
+		$limit=$this->request->query['limit'];
+	else
+		$limit = 20;
 
 	$this->paginate = array(
 		'limit'=>$limit,
@@ -45,14 +43,15 @@ public function index() {
 		'conditions' => array('Event.created >'=>date('Y-m-d',strtotime('-1 week')))
 		);
 
-	
-	$this->set('events', $this->paginate());
+
+	$events = $this->paginate();
+
+	$showSearch = (!empty($this->data['Event']) || empty($events))?'in':false;
+	$this->set('showSearch',$showSearch);
+	$this->set('events', $events);
 
 
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
+	$eventTypes =  $this->Event->getEventTypes();
 	$this->set('eventType',$eventTypes['main']);
 	$this->set('poison_group',$this->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null),'order'=>'PoisonGroup.order ASC')));
 
@@ -61,15 +60,15 @@ public function index() {
 public function find()
 {
 
-
-	$checkbox_fields = array('medical_request','invalid_request','patient_request','feedback');
-	foreach ($checkbox_fields as $field) {
-		if(isset($this->passedArgs[$field]) && $this->passedArgs[$field]==0)
-			unset($this->passedArgs[$field]);
-	}
-
-
 	$this->Prg->commonProcess();
+	$parsedParams = $this->Prg->parsedParams();
+
+	if(!empty($this->params['named']['current_user']))
+		$parsedParams['user_id']=$this->Auth->user('id');
+
+	$limit = !empty($this->params['named']['event_per_page'])?$this->params['named']['event_per_page']:20;
+
+	$this->request->data['Event']['event_per_page'] = $limit;
 	$this->paginate = array(
 		'order' => 'Event.created DESC',
 		'contain' => array(
@@ -82,18 +81,19 @@ public function find()
 				),
 			'User'=>array('fields'=>array('id','name'))
 			),
-		'conditions' => $this->Event->parseCriteria($this->passedArgs),
-		'limit' => !empty($this->passedArgs['event_per_page'])?$this->passedArgs['event_per_page']:20
+		'conditions' => $this->Event->parseCriteria($parsedParams),
+		'limit' => $limit
 		);
 
 
-	$this->request->data['Event'] += $this->passedArgs;
+	//$this->request->data['Event'] += $this->passedArgs;
 
 
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
+	$eventTypes = $this->Event->getEventTypes();
+
+	if(!empty($this->params['named']['noSearchForm']))
+		$this->set('noSearchForm',true);
+	$this->set('showSearch','in');
 	$this->set('eventType',$eventTypes['main']);
 	$this->set('poison_group',$this->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null),'order'=>'PoisonGroup.order ASC')));
 	$this->set('events',$this->paginate());
@@ -187,36 +187,15 @@ public function add() {
 			$this->request->data['Event']['created'] = date('Y-m-d H:i');
 	}
 
-	$eventAttributes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','group'),
-		'conditions'=>array('group !=' =>'type')
-		));
 
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
-
-	$patientAttributes = $this->PatientAttribute->find('group');
-
-	$evaluations = $this->Event->Patient->Evaluation->groupList();
-	$poisoning_attributes = $this->Event->Patient->PoisoningAttribute->groupList();
-	$poisoning_cause = $this->Event->Patient->PoisoningAttribute->groupList('p_cause');;
-	$poisoning_place = $this->Event->Patient->PoisoningAttribute->groupList('p_place');
-
-	$treatments = $this->Event->Patient->PatientTreatment->Treatment->find('list',array(
-		'fields'=>array('id','description'),
-		'conditions'=>array('group'=>'basic')
-		));
-
-	$treatment_places = $this->Event->Patient->PatientsTreatmentPlace->TreatmentPlace->find('list');
-
-	$users = $this->Event->User->find('list',array('fields'=>array('id','name')));
 	$units = $this->Unit->groupList();
-
-	$this->set(compact('users','eventAttributes','eventTypes','patientAttributes','evaluations','poisoning_attributes','poisoning_cause','poisoning_place','treatments','treatment_places','units','substances','agents','antidotes'));
+	$formLists = $this->Event->getFormLists();
+	extract($formLists);
+	//pr($eventTypes);
+	$this->set(compact('units','substances','agents','antidotes',array_keys($formLists)));
 
 }
+
 
 /**
  * edit method
@@ -234,8 +213,6 @@ public function edit($id = null) {
 		exit;
 	};
 
-	$this->Event->id = $id;
-	$this->Event->recursive = -1;
 	$this->Event->contain(array(
 		'Patient' => array(
 			'AgentsPatient' => array('Agent'),
@@ -248,7 +225,8 @@ public function edit($id = null) {
 		'EventAttribute',
 		'Call',
 		'Substance',
-		'Agent'
+		'Agent',
+		'Draft'=>array('fields'=>array('id'))
 		));
 
 
@@ -257,28 +235,7 @@ public function edit($id = null) {
 		throw new NotFoundException(__('Invalid event'));
 	}
 
-	$eventAttributes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','group'),
-		'conditions'=>array('group !=' =>'type')
-		));
-
-	$eventTypes = $this->Event->EventAttribute->find('list',array(
-		'fields'=>array('id','name','subgroup'),
-		'conditions'=>array('group' =>'type')
-		));
-
-	$patientAttributes = $this->PatientAttribute->find('group');
-	$evaluations = $this->Event->Patient->Evaluation->groupList();
-	$poisoning_attributes = $this->Event->Patient->PoisoningAttribute->groupList();
-	$poisoning_cause = $this->Event->Patient->PoisoningAttribute->groupList('p_cause');;
-	$poisoning_place = $this->Event->Patient->PoisoningAttribute->groupList('p_place');
-
-
-	$treatments = $this->Event->Patient->PatientTreatment->Treatment->find('list',array(
-		'fields'=>array('id','description'),
-		'conditions'=>array('group'=>'basic')
-		));
-	$treatment_places = $this->Event->Patient->PatientsTreatmentPlace->TreatmentPlace->find('list');
+	
 
 	if ($this->request->is('post') || $this->request->is('put')) {
 
@@ -310,6 +267,7 @@ public function edit($id = null) {
 			if(Configure::read('debug')==0)
 				$this->redirect(array('action' => 'index'));
 		} else {
+			pr($this->Event->validationErrors);
 			$this->Session->setFlash(__('Įrašas negalėjo būti išsaugotas. Bandykite dar kartą'),'failure');
 		}
 	} else {
@@ -362,12 +320,11 @@ public function edit($id = null) {
 
 
 
-
-
-	$users = $this->Event->User->find('list',array('fields'=>array('id','name')));
 	$units = $this->Unit->find('list',array('fields'=>array('id','name','group')));
 	
-	$this->set(compact('users','eventAttributes','eventTypes','patientAttributes','evaluations','poisoning_attributes','poisoning_cause','poisoning_place','treatments','treatment_places','units','substances','agents','antidotes'));
+	$formLists = $this->Event->getFormLists();
+	extract($formLists);
+	$this->set(compact('units','substances','agents','antidotes',array_keys($formLists)));
 	$this->render('/Events/add');
 }
 
@@ -379,20 +336,25 @@ public function edit($id = null) {
  * @param string $id
  * @return void
  */
-public function delete($id = null) {
+public function delete() {
 	if (!$this->request->is('post')) {
 		throw new MethodNotAllowedException();
 	}
-	$this->Event->id = $id;
+	$this->Event->id = $this->request->query['id'];
 	if (!$this->Event->exists()) {
-		throw new NotFoundException(__('Invalid event'));
+		throw new NotFoundException(__('Invalid draft'));
 	}
 	if ($this->Event->delete()) {
-		$this->Session->setFlash(__('Event deleted'));
-		$this->redirect(array('action' => 'index'));
+		$message = "Atvejis ištrintas";
+		$result = "success";
+	} else {
+		$message = "Atvejo ištrinti nepavyko";
+		$result = "failed";
 	}
-	$this->Session->setFlash(__('Event was not deleted'));
-	$this->redirect(array('action' => 'index'));
+
+	$this->set(compact('message','result'));
+	$this->set('_serialize',array('message','result'));
+	
 }
 
 public function report() {
@@ -411,11 +373,65 @@ public function report() {
 	}
 }
 
-public function draft() {
-	if($this->request->is('post')) {
-		//$this->
+public function saveDraft() {
+
+
+
+	if($this->request->is('post') || $this->request->is('put')) {
+
+		$saveData = array(
+			'model' => 'Event',
+			'user_id' => $this->Auth->user('id'),
+			'content' => $this->data,
+			);
+
+		
+		if(!empty($this->data['Event']['id'])) {
+			$saveData['assoc_id'] = $this->data['Event']['id'];
+		}
+
+		if(!empty($this->data['Draft']['id'])) {		
+			$this->Event->Draft->id = $this->data['Draft']['id'];
+		} else {
+			$this->Event->Draft->create();
+		}
+
+		if($this->Event->Draft->save($saveData)) {
+			$draft_id = $this->Event->Draft->id;
+			
+			if(empty($this->data['Draft']['id']))
+				$result = 'created';
+			else
+				$result = 'saved';
+		} else {
+			$result = 'failed';
+			$draft_id = false;
+		}
+		
+		
 	}
+
+	$this->set('draft_id',$draft_id);
+	$this->set('result',$result);
+	$this->set('_serialize',array('draft_id','result'));
 }
+
+public function restoreDraft($id = null) {
+
+	$this->Event->Draft->id = $id;
+	if (!$this->Event->Draft->exists()) {
+		throw new NotFoundException(__('Invalid draft'));
+	}
+	$draft = $this->Event->Draft->read(null,$id);
+	$this->request->data = $draft['Draft']['content'];
+	if(!empty($this->data['Event']['id']))
+		$this->edit();
+	else
+		$this->add();
+	
+	$this->render('add');
+}
+
 
 public function _correct_patient()
 {
@@ -471,9 +487,9 @@ public function _correct_patient()
 		//$result_substances = Hash::combine($result,'{n}.Patient.0.id','{n}.Patient.0.Substance.0.poison_group_id');
 		//$result = Hash::extract($result,'{n}.Patient.AgentsPatient.0.Agent.poison_group_id');
 		//pr($result2);
-		$final_result = array();
+	$final_result = array();
 		// foreach ($result as $key => $event) {
-		
+
 		// 	if(!empty($event['Patient'])) {
 		// 		$patient = $event['Patient'][0];
 		// 		$this->Event->Patient->id = $patient['id'];
@@ -494,9 +510,9 @@ public function _correct_patient()
 
 		// }
 
-		
+
 		//$save = $this->Event->Patient->saveMany($final_result);
-		pr($final_result);
+	pr($final_result);
 
 }
 }

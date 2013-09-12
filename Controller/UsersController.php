@@ -41,35 +41,39 @@ public function logout()
 }
 
 public function dashboard() {
-	$this->layout = 'user';
+	if(!$this->request->is('ajax'))
+		$this->layout = 'user';
 	$user = $this->User->find('first',array(
 		'conditions'=>array('User.id'=>$this->Auth->user('id'))
 		));
 	//pr($data);
 	$posts = $this->Post->find('all',array(
-	'order'=>'created DESC'
+	'order'=>'created DESC',
+	'limit' => 2
 		)
 	);
 
-	$this->paginate = array('Event' => array(
-		'order' => 'Event.created DESC',
-		'contain' => array(
-			'Patient' => array(
-				'fields'=>array('Patient.name','Patient.id'),
-				'AgentsPatient' => array('Agent'=>array('fields'=>array('id','name'))),
-				'Substance' => array('fields'=>array('name','id'))
-				),
-			'User'=>array('fields'=>array('id','name'))
-			),
-		'conditions'=>array(
-			'Event.created >='=>date('Y-m-d H:i:s',strtotime('-1 week')),
-			'Event.user_id' => $this->Auth->user('id')
-			),
-		)
-	);
+	// $this->paginate = array('Event' => array(
+	// 	'order' => 'Event.created DESC',
+	// 	'contain' => array(
+	// 		'Patient' => array(
+	// 			'fields'=>array('Patient.name','Patient.id'),
+	// 			'AgentsPatient' => array('Agent'=>array('fields'=>array('id','name'))),
+	// 			'Substance' => array('fields'=>array('name','id'))
+	// 			),
+	// 		'User'=>array('fields'=>array('id','name'))
+	// 		),
+	// 	'conditions'=>array(
+	// 		'Event.created >='=>date('Y-m-d H:i:s',strtotime('-1 week')),
+	// 		'Event.user_id' => $this->Auth->user('id')
+	// 		),
+	// 	)
+	// );
+
+	// $this->set('drafts',$this->paginate('Draft'));
 	$this->set('user',$user);
 	$this->set('posts',$posts);
-	$this->set('events',$this->paginate('Event'));
+	// $this->set('events',$this->paginate('Event'));
 }
 
 public function login_other_db()

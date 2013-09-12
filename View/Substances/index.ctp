@@ -1,27 +1,6 @@
-<?php if (!$this->params['isAjax']): ?>
-	<h3>Produktai</h3>
-	<?php echo $this->element('substance/actions') ?>
-<?php else: ?>
-
-	<h4>Produktai</h4>
-<?php endif; ?>
-<?php 
-if ($this->params['isAjax']) {
-	$this->Paginator->options(array(
-		'update' => '#substances',
-		'evalScripts' => true,
-		'before' => $this->Js->get('#busy-indicator')->effect('fadeIn', array('buffer' => false)),
-    	'complete' => $this->Js->get('#busy-indicator')->effect('fadeOut', array('buffer' => false))
-		));
-}
-
-?>
-<?php 
-if(!$this->params['isAjax'])
-	echo $this->Html->link("Pridėti naują produktą",array('controller'=>'substances', 'action'=>'add'),array('class'=>'btn btn-success margin-bottom')); 
-?>
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.index']); });",array('inline'=>false)); ?>
 <table class="table" cellpadding="0" cellspacing="0">
-	<tr>
+	<tr class="pagination">
 		<th><?php echo $this->Paginator->sort('name','Pavadinimas');?></th>
 		<th><?php echo $this->Paginator->sort('generic_name','Patikslintas pavadinimas');?></th>
 		<?php if (!$this->params['isAjax']): ?>
@@ -93,41 +72,6 @@ if(!$this->params['isAjax'])
 <?php endif; ?>
 		<?php echo $this->Paginator->pagination(array('modulus'=>'6')); ?>
 <?php //echo $this->Html->script(array('utils/tableRow')); ?>
-<script type="text/javascript">
-	require(['utils/tableRow'],function(row){
-		row.init('.substance_row',function(){
-				$('.attach_substance').removeClass('disabled');
-			});
-	});
-	// $('.select_substance').change(function(event) {
-	// 	$('.attach_substance').removeClass('disabled');
-	// });
 
-<?php if($this->params['isAjax']): ?>
-	$('.substance_row a').click( function() {
-		window.open( $(this).attr('href') );
-		return false;
-	});
-	$('.modal-body .actions').hide();
-	
-
-		
-<?php endif; ?>
-
-	// $('.substance_row').click(function(event) {
-	// 	var checkbox = $(this).find('.select_substance');
-	// 	if(checkbox.prop('checked') && $(this).hasClass('success'))
-	// 		checkbox.prop('checked',false);
-	// 	else if(!$(this).hasClass('success'))
-	// 		checkbox.prop('checked','checked');
-
-
-	// 	$(this).toggleClass('success');
-	// 	$('.attach_substance').removeClass('disabled');
-	// });
-	// $('.attach_substance').unbind();
-	
-	
-</script>
 
 

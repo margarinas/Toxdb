@@ -17,6 +17,8 @@ class SubstancesController extends AppController {
 
   public $autocomplete = true;
 
+  public $layout = 'poison';
+
   public function search()  {
    
     if(isset($this->request->query['term']))
@@ -125,7 +127,7 @@ class SubstancesController extends AppController {
         $this->set('units',$this->Unit->find('list',array('id','name','group')));
 
         $this->Session->setFlash(__('Įrašas išsaugotas'),'success');
-        if($this->RequestHandler->isAjax()) {
+        if($this->RequestHandler->isAjax() && $this->data['redirectTo'] == "dashboard") {
           $this->Substance->Agent->bindModel(array('hasOne' => array('AgentsSubstance')));
           $savedAgents = $this->Substance->Agent->find('all',array(
             'conditions'=>array(
@@ -241,8 +243,10 @@ class SubstancesController extends AppController {
       $term = $this->request->data['term'];
 
 
-    if($this->request->is('ajax'))
-      $this->paginate['Substance']['limit']=7;
+    if(!empty($this->request->query['limit']))
+      $this->paginate['Substance']['limit']=$this->request->query['limit'];
+    else if($this->request->is('ajax'))
+      $this->paginate['Substance']['limit']=25;
 
     $conditions = array();
     if(!empty($term)) {

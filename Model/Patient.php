@@ -223,21 +223,6 @@ public function beforeValidate($options = array())
 {
 
 
-	// $year = $this->data['Patient']['age_year']?:0;
-	// $month = $this->data['Patient']['age_month']?:0;
-	// $day = $this->data['Patient']['age_day']?:0;
-
-	// if($year>0 || $month>0 || $day>0) {
-	// 	$this->data['Patient']['age']=date("Y-m-d", strtotime(
-	// 		'-'.$this->data['Patient']['age_year'].'year '
-	// 		.$this->data['Patient']['age_month'].'month '
-	// 		.$this->data['Patient']['age_day'].'day'
-	// 		)
-	// 	);
-	// }
-
-
-
 
 	if(!empty($this->data[$this->alias]['type']) && $this->data[$this->alias]['type']=='gyv')
 		$this->validator()->remove('age_group');

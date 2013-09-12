@@ -1,4 +1,4 @@
-(function( $ ){
+define( ["jquery"], function( $ ){
 
 	var methods = {
 		init : function( options ) {
@@ -68,4 +68,4 @@
 
 };
 
-})( jQuery );
+});

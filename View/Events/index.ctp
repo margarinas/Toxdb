@@ -1,32 +1,27 @@
+<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event.index']); });",array('inline'=>false)); ?>
+
 <?php 
-if ($this->params['isAjax']) {
-	$this->Paginator->options(array(
-		'update' => '#add-related-event .modal-body',
-		'evalScripts' => true,
-		'before' => $this->Js->get('#busy-indicator')->effect('fadeIn', array('buffer' => false)),
-    	'complete' => $this->Js->get('#busy-indicator')->effect('fadeOut', array('buffer' => false))
-		));
-}
-if (!$this->params['isAjax']):
+if (!$this->params['isAjax'] && $this->action=='index'):
 ?>
-<h3><?php echo __('Atvejai'); if ($this->action=='index') echo ' nuo '.date('Y-m-d',strtotime('-1 week')); ?></h3>
+<h4><?php echo __('Atvejai').' nuo '.date('Y-m-d',strtotime('-1 week')); ?></h4>
 <?php endif; ?>
-<button type="button" class="btn btn-danger margin-bottom" data-toggle="collapse" data-target=".event_search_form">
-  Paieška <i class="icon-arrow-down icon-white"></i>
-</button>
-<?php echo $this->element('event/search'); ?>
+
+<?php 
+if(empty($noSearchForm))
+	echo $this->element('event/search');
+ ?>
 <?php 
 
 if(!empty($events)):
 echo $this->Form->create('Event',array('action'=>'multiplePrint','target'=>'_blank')); ?>
 <table class="table">
-	<tr>
+	<tr class="pagination">
 		<th><?php echo $this->Paginator->sort('id','Nr.');?></th>
 		<th><?php echo $this->Paginator->sort('created','data');?></th>
 		<th>Medžiaga</th>
-		<th><?php echo $this->Paginator->sort('user_id','Vartotojas');?></th>
+		<th class="event-user-collum"><?php echo $this->Paginator->sort('user_id','Vartotojas');?></th>
 		<th class="actions"><?php echo __('Veiksmai');?></th>
-		<th><a href="#" class="event-select-all"><i class="icon-check"></i></a></th>
+		<th class="event-select-collum"><a href="#" class="event-select-all"><i class="icon-check"></i></a></th>
 	</tr>
 	<?php
 	foreach ($events as $event): ?>
@@ -67,29 +62,31 @@ echo $this->Form->create('Event',array('action'=>'multiplePrint','target'=>'_bla
 			?>
 
 		</td>
-		<td>
+		<td class="event-user-collum">
 			<?php echo $this->Html->link($event['User']['name'], array('controller' => 'users', 'action' => 'view', $event['User']['id'])); ?>
 		</td>
 		<td class="actions">
 			<div class="btn-group">
 				<?php 
 				echo $this->Html->link('<i class="icon-zoom-in"></i>', array('action' => 'view', $event['Event']['id']),array('class'=>'btn btn-mini','escape'=>false));
-				if(!$this->params['isAjax']) {
+				
 					if($this->Session->read('Auth.User.id')==$event['User']['id'] || $this->Session->read('Auth.User.Group.name')=='admin')
-						echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit',$event['Event']['id']),array('class'=>'btn btn-mini','escape'=>false ));
+						echo $this->Html->link('<i class="icon-pencil"></i>', array('action' => 'edit',$event['Event']['id']),array('class'=>'btn btn-mini control-hide','escape'=>false ));
 					if($this->Session->read('Auth.User.Group.name')=='admin')
-						echo $this->Form->postLink('<i class="icon-trash icon-white"></i>', array('action' => 'delete', $event['Event']['id']), array('class'=>'btn btn-mini btn-danger','escape'=>false), __('Ar tikrai norite ištrinti # %s?', $event['Event']['id']));
-				}
+						echo $this->Html->link('<i class="icon-trash icon-white"></i>', array('action' => 'delete', 'ext'=>'json','?'=>array('id'=>$event['Event']['id'])),
+							array('class'=>'btn btn-mini btn-danger control-hide event-delete post-link','escape'=>false));
+				
 				?>
 			</div>
 		</td>
-		<td><?php	echo $this->OldForm->input('Event.',array('value'=>$event['Event']['id'],'type'=>'checkbox','div'=>false,'label'=>false, 'class'=>'select_event select-element','hiddenField'=>false)); ?>
+		<td class="event-select-collum">
+		<?php	echo $this->OldForm->input('Event.',array('value'=>$event['Event']['id'],'type'=>'checkbox','div'=>false,'label'=>false, 'class'=>'select_event select-element','hiddenField'=>false)); ?>
 		</td>
 	</tr>
 <?php endforeach;?>
 </table>
 
-<p>
+<p class="paginator-summary">
 <?php
 echo $this->Paginator->counter(array(
 	'format' => __('Puslapis {:page} / {:pages}')
@@ -106,51 +103,51 @@ if(!$this->params['isAjax'])
 
 <?php endif; ?>
 <script>
-require(['lib/bootstrap.min','utils/tableRow'],function(require,row) {
-	row.init('.event_row')
+// require(['lib/bootstrap.min','utils/tableRow'],function(require,row) {
+// 	row.init('.event_row')
 
 
-$('#poison_autocomplete').typeahead({
-	minLength: 3,
-	source: function (query, process) {
+// $('#poison_autocomplete').typeahead({
+// 	minLength: 3,
+// 	source: function (query, process) {
 
-			return $.getJSON(
-				baseUrl+'substances/find_poison/',
-				{ term: query },
-				function (data) {
-					console.log(data);
-					return process(data);
-				});
-		}
+// 			return $.getJSON(
+// 				baseUrl+'substances/find_poison/',
+// 				{ term: query },
+// 				function (data) {
+// 					console.log(data);
+// 					return process(data);
+// 				});
+// 		}
 
-	});
+// 	});
 
-	$('.clear-search').click(function() {
-		$('#EventFindForm input').val('').prop('checked',false);;
-		$('#EventFindForm select').val([0]);	
-	});
+// 	$('.clear-search').click(function() {
+// 		$('#EventFindForm input').val('').prop('checked',false);;
+// 		$('#EventFindForm select').val([0]);	
+// 	});
 
-	// $('.event_row').click(function(event) {
-	// 	var checkbox = $(this).find('.select_event');
-	// 	if(checkbox.prop('checked') && $(this).hasClass('success'))
-	// 		checkbox.prop('checked',false);
-	// 	else if(!$(this).hasClass('success'))
-	// 		checkbox.prop('checked','checked');
-	// 	$(this).toggleClass('success');
+// 	// $('.event_row').click(function(event) {
+// 	// 	var checkbox = $(this).find('.select_event');
+// 	// 	if(checkbox.prop('checked') && $(this).hasClass('success'))
+// 	// 		checkbox.prop('checked',false);
+// 	// 	else if(!$(this).hasClass('success'))
+// 	// 		checkbox.prop('checked','checked');
+// 	// 	$(this).toggleClass('success');
 
-	// });
-	var events_selected = false;
-	$('.event-select-all').click(function(event) {
-		if(events_selected) {
-			$('.event_row').removeClass('success').find('.select_event').prop('checked','');
-			events_selected = false;
-		}
-		else {
-			$('.event_row').addClass('success').find('.select_event').prop('checked','checked');
-			events_selected = true;
-		}
-		return false;
-	});
+// 	// });
+// 	var events_selected = false;
+// 	$('.event-select-all').click(function(event) {
+// 		if(events_selected) {
+// 			$('.event_row').removeClass('success').find('.select_event').prop('checked','');
+// 			events_selected = false;
+// 		}
+// 		else {
+// 			$('.event_row').addClass('success').find('.select_event').prop('checked','checked');
+// 			events_selected = true;
+// 		}
+// 		return false;
+// 	});
 
-});
+// });
 </script>
