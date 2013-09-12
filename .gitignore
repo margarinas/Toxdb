@@ -50,6 +50,7 @@ webroot/files/new_calls/*
 Vendor/autoload.php
 Vendor/composer/
 !Vendor/
+!Vendor/empty
 
 composer.lock
 .DS_Store
