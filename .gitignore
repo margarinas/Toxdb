@@ -32,8 +32,9 @@ tmp/tests/*
 
 [Cc]onfig/database.php
 app/[Cc]onfig/database.php
-toxdb.sublime-project
-toxdb.sublime-workspace
+
+*.sublime-project
+*.sublime-workspace
 sftp-config.json
 Plugin/*
 
