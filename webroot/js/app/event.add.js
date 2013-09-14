@@ -57,10 +57,13 @@ define(['utils/addEditor',"utils/message","common","utils/stopReload","lib/jquer
     var event_agents;
     var patient_substances;
     var patient_agents;
+
+    var patient_req_fields = $(".patient [required='required']");
     $('.event_toggle_patient').change(function(event) {
         if($(this).is(":checked")) {
             patient_links = $('.patient_section_link').detach();
             $('.patient').hide();
+            patient_req_fields.removeAttr('required');
             $('.add-event-substance').show();
 
             patient_substances = $('.substances .formated_substances').detach();
@@ -77,6 +80,7 @@ define(['utils/addEditor',"utils/message","common","utils/stopReload","lib/jquer
             patient_links.insertAfter('.event_main_section_link');
             patient_links = null;
             $('.patient').show();
+            patient_req_fields.attr('required','required');
             $('.add-event-substance').hide();
             event_substances = $('.substances .formated_substances').detach();
             event_agents = $('.agents .agent_fields').detach();
