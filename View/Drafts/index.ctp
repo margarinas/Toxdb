@@ -3,6 +3,7 @@
 	<tr class="pagination">
 		<th><?php echo $this->Paginator->sort('created','sukurtas');?></th>
 		<th><?php echo __('Konsultacijos data'); ?></th>
+		<th><?php echo __('Protokolo nr.'); ?></th>
 		<th class="actions"><?php echo __('Actions');?></th>
 	</tr>
 
@@ -15,6 +16,14 @@
 			</td>
 			
 			<td><?php echo $this->Time->format('Y-m-d H:i',$draft['Draft']['content']['Event']['created']); ?>&nbsp;</td>
+			<td>
+			<?php 
+			if(!empty($draft['Draft']['content']['Event']['id']))
+				echo $this->Html->link($draft['Draft']['content']['Event']['id'],array('controller'=>'events','action'=>'view',$draft['Draft']['content']['Event']['id']));
+			else 
+				echo "";
+			?>
+			</td>
 			<td class="actions">
 				<div class="btn-group">
 					<?php 

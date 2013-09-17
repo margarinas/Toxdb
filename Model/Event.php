@@ -446,14 +446,19 @@ public $hasOne = array(
 			$this->data['RelatedEvent']['RelatedEvent'] = false;
 		// $this->data['EventAttribute'][]= $this->data['EventAttribute']['EventAttribute'];
 		        // pr($this->data);
-		if(isset($this->data['Draft']))
-			unset($this->data['Draft']);
+		// if(isset($this->data['Draft']))
+		// 	unset($this->data['Draft']);
+		$this->unbindModel(
+			array('hasOne' => array('Draft'))
+		);
 		
 		return true;
 	}
 	public function beforeSave($options = array()) {
 
-		
+		$this->unbindModel(
+			array('hasOne' => array('Draft'))
+		);
 
 		if(!empty($options['saveAllFields'])) {
 			if(!isset($this->data['Substance']))
@@ -467,6 +472,7 @@ public $hasOne = array(
 		return true;
 	}
 	public function afterSave($created)	{
+		pr($this->data);
 		$cond = array(
 			'OR' => array(
 				'Draft.assoc_id'=>$this->id

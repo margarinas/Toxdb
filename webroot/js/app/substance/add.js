@@ -106,9 +106,17 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
             $(this).hide();
         });
 
-
+        var substance_agent_req_fields = $('#substance-add-agents [required="required"]');
+        if($('#SubstanceNoagents').is(":checked")){
+            substance_agent_req_fields.removeAttr('required');
+        }
         $('#SubstanceNoagents').change(function(event) {
             $('#substance-add-agents').toggle();
+            if($(this).is(":checked")) {
+                substance_agent_req_fields.removeAttr('required');
+            } else {
+                substance_agent_req_fields.attr('required','required');
+            }
         });
 
 

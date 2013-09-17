@@ -39,7 +39,7 @@
 
 			</td>
 		<?php endif; ?>
-		<td class="actions">
+		<td class="actions poison-actions">
 			<div class="btn-group">
 				<?php 
 				echo $this->Html->link('<i class="icon-zoom-in"></i>', array('action' => 'view', $agent['Agent']['id']),array('class'=>'btn btn-mini','escape'=>false));

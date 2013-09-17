@@ -59,6 +59,9 @@ define(['utils/addEditor',"utils/message","common","utils/stopReload","lib/jquer
     var patient_agents;
 
     var patient_req_fields = $(".patient [required='required']");
+    if($(".event_toggle_patient").is(":checked")) {
+        patient_req_fields.removeAttr('required');
+    }
     $('.event_toggle_patient').change(function(event) {
         if($(this).is(":checked")) {
             patient_links = $('.patient_section_link').detach();
