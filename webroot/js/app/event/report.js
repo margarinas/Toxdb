@@ -11,7 +11,7 @@ define(["common"],function(){
 				type:"POST",
 				url:url,
 				data:data,
-				timemout:300000,
+				timemout:600000,
 				success:function(response){
 					$("#container").html(response);
 					$("#busy-indicator").fadeOut();

@@ -483,7 +483,7 @@ public $hasOne = array(
 	}
 
 	public function report($date_range=array()) {
-		set_time_limit(300);
+		set_time_limit(600);
 		$report_fields = array(
 			'events' => array(),
 			'medical_requests' => array('medical_request'=>1),

@@ -31,19 +31,21 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
-	public $actsAs = array('Containable');
+	public $actsAs = array('Containable','Utility.Cacheable');
 	public $recursive = -1;
 
 	public function groupList($subgroup='')
 	{
 		$options = array(
 			'fields'=>array('id','name','group'),
-			'order'=>'order ASC'
+			'order'=>'order ASC',
+			'cache' => __METHOD__
 			);
 
 		if (!empty($subgroup)) {
 			$options['fields']= array('id','name','subgroup');
 			$options['conditions']=array('group'=>$subgroup);
+			$options['cache']=array(__METHOD__, $subgroup);
 		}
 		return $this->find('list',$options);
 
