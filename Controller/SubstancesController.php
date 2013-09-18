@@ -246,7 +246,7 @@ class SubstancesController extends AppController {
     if(!empty($this->request->query['limit']))
       $this->paginate['Substance']['limit']=$this->request->query['limit'];
     else if($this->request->is('ajax'))
-      $this->paginate['Substance']['limit']=25;
+      $this->paginate['Substance']['limit']=20;
 
     $conditions = array();
     if(!empty($term)) {

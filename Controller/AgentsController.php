@@ -35,7 +35,7 @@ class AgentsController extends AppController {
 		if(!empty($this->request->query['limit']))
 			$this->paginate['Agent']['limit']=$this->request->query['limit'];
 		else if($this->request->is('ajax'))
-			$this->paginate['Agent']['limit']=25;
+			$this->paginate['Agent']['limit']=20;
 
 		$this->paginate['Agent']['order']='default ASC, Agent.name ASC';
 		$this->paginate['Agent']['contain']=array('PoisonGroup','Substance');

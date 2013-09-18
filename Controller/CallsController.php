@@ -7,7 +7,7 @@ App::uses('AppController', 'Controller');
  */
 class CallsController extends AppController {
 
-	public $paginate = array('Call');
+	public $paginate = array('Call'=>array('limit'=>20));
 /**
  * index method
  *

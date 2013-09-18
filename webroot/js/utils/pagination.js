@@ -13,10 +13,12 @@ define(["jquery"],function($){
 		if(!settings.showSummary) {
 			$(".paginator-summary").hide();
 		}
+		console.log(settings.container);
 		// $(settings.container).off('click',settings.element);
 		$(settings.container).on("click", settings.element, function (event) {
+
 			url = $(this).attr('href');
-			
+
 			if(url !== "#") {
 				$.ajax({
 					beforeSend:function (XMLHttpRequest) {
@@ -34,7 +36,6 @@ define(["jquery"],function($){
 							history.pushState(null, null, url);
 
 						if(typeof settings.callback === "function"){
-							console.log(settings.callback);
 							settings.callback(XMLHttpRequest);
 						}
 					},

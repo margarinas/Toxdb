@@ -20,9 +20,8 @@ define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomple
 		else
 			showHistory= false;
 
-		console.log(typeof settings.callback);
 
-		if(typeof settings.callback == "function") {
+		if(typeof settings.callback === "function") {
 			firstCallback = settings.callback;
 			settings.callback = function() {
 				firstCallback();
@@ -98,6 +97,7 @@ define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomple
 
 				$.ajax({
 					method:"post",
+					timeout:300000,
 					beforeSend: function (XMLHttpRequest) {
 						$("#busy-indicator").fadeIn();
 					},

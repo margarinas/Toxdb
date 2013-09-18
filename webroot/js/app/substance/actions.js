@@ -6,7 +6,7 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 			throw new Error("Must provide options as an object");
 		defaults = {
 			container:"#container",
-			rowLimit:25,
+			rowLimit:20,
 			history:true,
 			attachTo:null,
 			searchCallback:function(){},
@@ -38,7 +38,6 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 			search.init(data,function(){
 				settings.searchCallback();
 				pagination.init({
-					element:".pagination",
 					container:"#substances",
 					history:settings.history,
 					limit:settings.rowLimit,
@@ -47,7 +46,6 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 				});
 
 				pagination.init({
-					element:".pagination",
 					container:"#agents",
 					history:settings.history,
 					limit:settings.rowLimit,
