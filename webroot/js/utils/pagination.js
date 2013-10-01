@@ -18,7 +18,9 @@ define(["jquery"],function($){
 		$(settings.container).on("click", settings.element, function (event) {
 
 			url = $(this).attr('href');
-
+			data = {};
+			if(settings.limit !== null)
+				data.limit= settings.limit;
 			if(url !== "#") {
 				$.ajax({
 					beforeSend:function (XMLHttpRequest) {
@@ -43,10 +45,7 @@ define(["jquery"],function($){
 						$(settings.container).html(data);
 						// init(settings);
 					},
-					data:function(){
-						if(settings.limit !== null)
-							return {limit:settings.limit};
-					},
+					data:data,
 					url:url
 				});
 			}

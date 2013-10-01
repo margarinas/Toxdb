@@ -1,4 +1,4 @@
-define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","utils/tableRow","common",'bootstrap','utils/incrementInput'],function($,autocomplete,editor,listGroups,row){
+define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","utils/tableRow",'utils/pagination',"common",'bootstrap','utils/incrementInput'],function($,autocomplete,editor,listGroups,row,pagination){
 
     function init(options) {
 
@@ -93,9 +93,12 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
                     });
         });
 
+
+        pagination.init({container:".agent_search_results",limit:10,history:false});
         $('.search_agent').click(function(event) {
-            $('.agent_search_results').load(baseUrl+'agents/index/',{'term':$(this).prev().val()},function(){
-                row.init('.agent_row',".agent_search_results");
+            $('.agent_search_results').load(baseUrl+'agents/index/',{'term':$(this).prev().val(),'limit':10},function(){
+                // if(settings.container !== ".modal-body")
+                    row.init('.agent_row',".agent_search_results");
             });
             $('#agent_to_substance').show();
             $('.substance_create .accordion-body').collapse('hide');

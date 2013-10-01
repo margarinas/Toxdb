@@ -34,6 +34,8 @@ class AgentsController extends AppController {
 
 		if(!empty($this->request->query['limit']))
 			$this->paginate['Agent']['limit']=$this->request->query['limit'];
+		else if(!empty($this->request->data['limit']))
+			$this->paginate['Agent']['limit']=$this->request->data['limit'];
 		else if($this->request->is('ajax'))
 			$this->paginate['Agent']['limit']=20;
 

@@ -20,7 +20,7 @@ define(["jquery"],function($) {
 		$(parentElement).off('click',element);
 		$(parentElement).on('click', element, function(event) {
 			var checkbox = $(this).find('.select-element');
-
+			console.log(parentElement);
 			if(checkbox.prop('checked') && $(this).hasClass('success'))
 				checkbox.prop('checked',false);
 			else if(!$(this).hasClass('success'))
