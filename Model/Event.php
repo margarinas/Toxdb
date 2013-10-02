@@ -472,7 +472,7 @@ public $hasOne = array(
 		return true;
 	}
 	public function afterSave($created)	{
-		pr($this->data);
+
 		$cond = array(
 			'OR' => array(
 				'Draft.assoc_id'=>$this->id

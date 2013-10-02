@@ -13,7 +13,7 @@ define(["jquery"],function($){
 		if(!settings.showSummary) {
 			$(".paginator-summary").hide();
 		}
-		console.log(settings.container);
+
 		// $(settings.container).off('click',settings.element);
 		$(settings.container).on("click", settings.element, function (event) {
 

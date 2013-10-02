@@ -96,7 +96,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
 
         pagination.init({container:".agent_search_results",limit:10,history:false});
         $('.search_agent').click(function(event) {
-            $('.agent_search_results').load(baseUrl+'agents/index/',{'term':$(this).prev().val(),'limit':10},function(){
+            $('.agent_search_results').load(baseUrl+'agents/index/',{'term':$(".agent-search-input").val(),'limit':10},function(){
                 // if(settings.container !== ".modal-body")
                     row.init('.agent_row',".agent_search_results");
             });

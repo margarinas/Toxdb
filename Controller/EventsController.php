@@ -423,7 +423,11 @@ public function restoreDraft($id = null) {
 		throw new NotFoundException(__('Invalid draft'));
 	}
 	$draft = $this->Event->Draft->read(null,$id);
-	$this->request->data = $draft['Draft']['content'];
+	if(!$this->request->is('post'))
+		$this->request->data = $draft['Draft']['content'];
+	
+	$this->request->data['Draft']['id'] = $id;
+
 	if(!empty($this->data['Event']['id']))
 		$this->edit();
 	else

@@ -16,7 +16,8 @@ class DraftsController extends AppController {
 
 		$this->paginate = array(
 			'conditions'=> array('model'=>$model,'user_id'=>$this->Auth->user('id')),
-			'limit' => $limit
+			'limit' => $limit,
+			'order'=> 'created DESC'
 			);
 
 		$this->set('drafts',$this->paginate());
