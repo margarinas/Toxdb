@@ -16,7 +16,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
 
         $('#SubstanceAddForm').submit(function(event) {
             $('.substance_create textarea').each(function(event){
-            tinyMCE.execCommand('mceRemoveEditor', false, this.id);
+                tinyMCE.execCommand('mceRemoveEditor', false, this.id);
 
             });
 

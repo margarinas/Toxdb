@@ -73,10 +73,7 @@
 		</div>
 		<div class="span8">
 			<div class="input-append">
-			<form>
 				<input type="text" id="AgentName" class="autocomplete agent-search-input">
-			</form>
-				
 				<button class="btn search_agent" type="button">Ieškoti medžiagos</button>
 				<button id="agent_to_substance" class="btn btn-primary hide" type="button">Susieti medžiagą su produktu</button>
 			</div>
