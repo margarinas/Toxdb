@@ -248,12 +248,14 @@ class SubstancesController extends AppController {
     else if($this->request->is('ajax'))
       $this->paginate['Substance']['limit']=20;
 
+   
     $conditions = array();
     if(!empty($term)) {
       $conditions = array(
         'OR' => array(
           'Substance.name LIKE' => '%'.$term.'%',
-          'Substance.generic_name LIKE' => '%'.$term.'%'
+          'Substance.generic_name LIKE' => '%'.$term.'%',
+          'Agent.name LIKE' => '%'.$term.'%'
           )
         );
     }
@@ -263,6 +265,22 @@ class SubstancesController extends AppController {
        $conditions['AND']['OR']['Substance.user_id']=$this->Auth->user('id');
      }
 
+    $this->paginate['Substance']['joins']=array(
+        array(
+        'table'=>'agents_substances', 
+        'alias' => 'AgentsSubstance',
+        'type'=>'left',
+        'conditions'=> array(
+          'Substance.id = AgentsSubstance.substance_id'
+        )),
+      array(
+        'table'=>'agents', 
+        'alias' => 'Agent',
+        'type'=>'left',
+        'conditions'=> array(
+          'Agent.id = AgentsSubstance.agent_id'
+        )),
+    );
     $this->paginate['Substance']['contain']=array('Agent','PoisonGroup');
     $this->paginate['Substance']['order']='default ASC, Substance.name ASC';
     //$this->Substance->recursive = 0;
