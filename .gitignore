@@ -39,7 +39,7 @@ sftp-config.json
 Plugin/*
 !Plugin/TwitterBootstrap/
 
-
+webroot/index.php
 webroot/files/calls/*
 !webroot/files/calls/
 
