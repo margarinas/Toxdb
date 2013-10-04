@@ -22,6 +22,7 @@ define(["jquery","tinymce"], function($) {
 		width:'80%',
 		content_css:baseUrl+"css/bootstrap.min.css,"+baseUrl+"css/style.css"
 	});
+
 	};
 
 	return {

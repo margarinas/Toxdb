@@ -1,4 +1,4 @@
-define(["jquery","utils/autocomplete","tinymce","bootstrap","jquery-ui","jquery-ui-timepicker","jquery-ui-datepicker-lt","jquery-ui-timepicker-lt"], function($,autocomplete) {
+define(["jquery","utils/autocomplete","bootstrap","jquery-ui","jquery-ui-timepicker","jquery-ui-datepicker-lt","jquery-ui-timepicker-lt"], function($,autocomplete) {
 
 
 	//$('#EventCreated').datetimepicker();

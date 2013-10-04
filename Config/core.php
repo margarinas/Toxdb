@@ -32,6 +32,8 @@
  * In production mode, flash messages redirect after a time interval.
  * In development mode, you need to click the flash message to continue.
  */
+
+
 	if($_SERVER['REMOTE_ADDR'] == '78.63.214.78' || $_SERVER['REMOTE_ADDR'] == '127.0.0.1')
 		Configure::write('debug', 2);
 	else

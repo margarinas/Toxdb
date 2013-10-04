@@ -25,7 +25,6 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 
 		$("#SubstanceSearchForm").submit(function (e) {
 			
-			console.log(settings.container);
 			$(settings.container).html('<div class="row-fluid"><div class="span6"><h4>Produktai</h4><div id="substances"></div></div><div class="span6"><h4>Medžiagos</h4><div id="agents"></div></div></div>');
 			row.init('.agent_row',settings.container,settings.rowClickCallback);
 			row.init('.substance_row',settings.container,settings.rowClickCallback);

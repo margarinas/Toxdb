@@ -2,7 +2,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
 
     function init(options) {
 
-        editor.init();
+      
         listGroups.init();
 
         defaults = {container:"#container",redirectTo:"index",postCallback:null};
@@ -12,6 +12,8 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
             tinyMCE.execCommand('mceRemoveEditor', false, this.id);
             tinyMCE.execCommand('mceAddEditor', false, this.id);
         });
+       } else {
+            editor.init()
        }
 
         $('#SubstanceAddForm').submit(function(event) {
@@ -57,7 +59,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
             $('.substance_create .accordion-body').collapse('hide');
 
 
-            tinyMCE.execCommand('mceFocus', false, 'Agent0Description');
+            // tinyMCE.execCommand('mceFocus', false, 'Agent0Description');
             tinyMCE.execCommand('mceRemoveEditor', false, 'Agent0Description');
 
             var clonedAgent = $('.substance_create .agent').first().clone();
@@ -72,6 +74,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
             tinyMCE.execCommand('mceAddEditor', false, 'Agent0Description');
             tinyMCE.execCommand('mceAddEditor', false, 'Agent'+num+'Description');
             $('.substance_create .agent').last().find('.accordion-body').collapse('show');
+            
             $('.substance_create .agent').last().find('.poison_subgroup').empty().hide();
 
             $('.substance_create .agent').last().find('.agent_remove').click(function(event) {
@@ -93,6 +96,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
                     });
         });
 
+        var substance_agent_req_fields = $('#substance-add-agents [required="required"]');
 
         pagination.init({container:".agent_search_results",limit:10,history:false});
         $('.search_agent').click(function(event) {
@@ -106,10 +110,11 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
         $('#agent_to_substance').click(function(event) {
             $('.agents_attached').append($('.select_agent:checked').next().find('input:checkbox').prop('checked','checked').end().find('.agent_dose_field, .agent-main-group').remove().end().show());
             $('.agent_search_results').empty();
+            substance_agent_req_fields.removeAttr('required');
             $(this).hide();
         });
 
-        var substance_agent_req_fields = $('#substance-add-agents [required="required"]');
+      
         if($('#SubstanceNoagents').is(":checked")){
             substance_agent_req_fields.removeAttr('required');
         }

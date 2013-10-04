@@ -446,8 +446,8 @@ public $hasOne = array(
 			$this->data['RelatedEvent']['RelatedEvent'] = false;
 		// $this->data['EventAttribute'][]= $this->data['EventAttribute']['EventAttribute'];
 		        // pr($this->data);
-		// if(isset($this->data['Draft']))
-		// 	unset($this->data['Draft']);
+		if(empty($this->data['Draft']['id']))
+			unset($this->data['Draft']);
 		$this->unbindModel(
 			array('hasOne' => array('Draft'))
 		);

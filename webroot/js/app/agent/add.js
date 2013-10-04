@@ -2,7 +2,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","comm
 
     function init(options) {
 
-        editor.init();
+        
         listGroups.init();
 
         defaults = {container:"#container",redirectTo:"index",postCallback:null};
@@ -12,6 +12,8 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","comm
                 tinyMCE.execCommand('mceRemoveEditor', false, this.id);
                 tinyMCE.execCommand('mceAddEditor', false, this.id);
             });
+        } else {
+            editor.init();
         }
 
         $('#AgentAddForm').submit(function(event) {
