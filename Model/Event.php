@@ -446,8 +446,10 @@ public $hasOne = array(
 			$this->data['RelatedEvent']['RelatedEvent'] = false;
 		// $this->data['EventAttribute'][]= $this->data['EventAttribute']['EventAttribute'];
 		        // pr($this->data);
-		// if(isset($this->data['Draft']))
-		unset($this->data['Draft']);
+		if(isset($this->data['Draft'])){
+			$this->data['draft_to_delete'] = $this->data['Draft'];
+			unset($this->data['Draft']);
+		}
 		$this->unbindModel(
 			array('hasOne' => array('Draft'))
 		);
@@ -472,13 +474,12 @@ public $hasOne = array(
 		return true;
 	}
 	public function afterSave($created)	{
-
 		$cond = array(
 			'OR' => array(
 				'Draft.assoc_id'=>$this->id
 				));
-		if(!empty($this->data['Event']['Draft']['id']))
-			$cond['OR']['Draft.id'] = $this->data['Event']['Draft']['id'];
+		if(!empty($this->data['Event']['draft_to_delete']['id']))
+			$cond['OR']['Draft.id'] = $this->data['Event']['draft_to_delete']['id'];
 		$this->Draft->deleteAll($cond, false);
 	}
 
