@@ -258,6 +258,22 @@ class SubstancesController extends AppController {
           'Agent.name LIKE' => '%'.$term.'%'
           )
         );
+      $this->paginate['Substance']['joins']=array(
+        array(
+          'table'=>'agents_substances', 
+          'alias' => 'AgentsSubstance',
+          'type'=>'left',
+          'conditions'=> array(
+            'Substance.id = AgentsSubstance.substance_id'
+            )),
+        array(
+          'table'=>'agents', 
+          'alias' => 'Agent',
+          'type'=>'left',
+          'conditions'=> array(
+            'Agent.id = AgentsSubstance.agent_id'
+            )),
+        );
     }
 
     if($this->Auth->user('Group.name') != 'admin') {
@@ -265,22 +281,7 @@ class SubstancesController extends AppController {
        $conditions['AND']['OR']['Substance.user_id']=$this->Auth->user('id');
      }
 
-    $this->paginate['Substance']['joins']=array(
-        array(
-        'table'=>'agents_substances', 
-        'alias' => 'AgentsSubstance',
-        'type'=>'left',
-        'conditions'=> array(
-          'Substance.id = AgentsSubstance.substance_id'
-        )),
-      array(
-        'table'=>'agents', 
-        'alias' => 'Agent',
-        'type'=>'left',
-        'conditions'=> array(
-          'Agent.id = AgentsSubstance.agent_id'
-        )),
-    );
+
     $this->paginate['Substance']['contain']=array('Agent','PoisonGroup');
     $this->paginate['Substance']['order']='default ASC, Substance.name ASC';
     //$this->Substance->recursive = 0;

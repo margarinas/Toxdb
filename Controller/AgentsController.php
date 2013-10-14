@@ -30,6 +30,22 @@ class AgentsController extends AppController {
 					'Substance.generic_name LIKE' => '%'.$term.'%'
 					)
 				);
+			$this->paginate['Agent']['joins']=array(
+				array(
+					'table'=>'agents_substances', 
+					'alias' => 'AgentsSubstance',
+					'type'=>'left',
+					'conditions'=> array(
+						'Agent.id = AgentsSubstance.agent_id'
+						)),
+				array(
+					'table'=>'substances', 
+					'alias' => 'Substance',
+					'type'=>'left',
+					'conditions'=> array(
+						'Substance.id = AgentsSubstance.substance_id'
+						)),
+				);
 		}
 		if($this->Auth->user('Group.name') != 'admin') {
 			$conditions['OR']['Agent.default']=true;
@@ -44,22 +60,7 @@ class AgentsController extends AppController {
 			$this->paginate['Agent']['limit']=20;
 
 
-		$this->paginate['Agent']['joins']=array(
-			array(
-				'table'=>'agents_substances', 
-				'alias' => 'AgentsSubstance',
-				'type'=>'left',
-				'conditions'=> array(
-					'Agent.id = AgentsSubstance.agent_id'
-					)),
-			array(
-				'table'=>'substances', 
-				'alias' => 'Substance',
-				'type'=>'left',
-				'conditions'=> array(
-					'Substance.id = AgentsSubstance.substance_id'
-					)),
-		);
+		
 		$this->paginate['Agent']['order']='default ASC, Agent.name ASC';
 		$this->paginate['Agent']['contain']=array('PoisonGroup','Substance');
 		$this->set('agents', $this->paginate('Agent',$conditions));
