@@ -22,7 +22,7 @@ define(["jquery","utils/pagination","utils/getElement","utils/modal","app/event/
 				// });
 
 				$(".modal-body .event_row").click(function(){
-
+					target = this;
 									new_related_event = related_event.clone();
 					$('.events-related').append(new_related_event);
 
