@@ -2,10 +2,10 @@ requirejs.config({
 	baseUrl: baseUrl+'js',
 	urlArgs: "v="+jsVersion,
 	paths: {
-		'main': 'main',
+		// 'main': 'main',
 		//'domReady':'lib/domReady',
 		'purl':'lib/purl',
-		'common' : 'app/common',
+		// 'common' : 'app/common',
 		'jquery': 'lib/jquery',
 		'jquery-ui':'lib/jquery-ui.min',
 		'jquery-ui-timepicker':'lib/jquery-ui-timepicker-addon',
@@ -24,4 +24,3 @@ requirejs.config({
 		"jquery-ui-timepicker-lt":['jquery',"jquery-ui","jquery-ui-timepicker"]
 	}
 });
-

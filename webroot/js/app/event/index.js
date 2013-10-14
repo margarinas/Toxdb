@@ -1,4 +1,4 @@
-define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomplete","utils/poisonAutocomplete","utils/message"], function(row,pagination,element,autocomplete,poisonAutocomplete,msg) {
+define(["utils/pagination","utils/getElement","utils/autocomplete","utils/poisonAutocomplete","utils/message"], function(pagination,element,autocomplete,poisonAutocomplete,msg) {
 
 	var settings;
 
@@ -6,10 +6,10 @@ define(["utils/tableRow","utils/pagination","utils/getElement","utils/autocomple
 		defaults = {container:"#container",rowCallback:null,hideControls:false, search:true, callback:null, showPaginatorSummary: true, limit:20};
 		settings = $.extend(defaults, options);
 
-		row.init(".event_row",settings.container,function(){
-			if(typeof settings.rowCallback === "function")
-				settings.rowCallback();
-		});
+		// row.init(".event_row",settings.container,function(){
+		// 	if(typeof settings.rowCallback === "function")
+		// 		settings.rowCallback();
+		// });
 
 		if(settings.hideControls === true) {
 			$(settings.container+" .control-hide").hide();

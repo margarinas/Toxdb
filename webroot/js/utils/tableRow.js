@@ -2,6 +2,10 @@ define(["jquery"],function($) {
 		// Stuff to do as soon as the DOM is ready;
 	init = function (element,parentElement,passedFunction) {
 		// body...
+		console.log(element,parentElement);
+
+		//$(parentElement).off('click',element);
+		// $(parentElement).off('click');
 
 		if(typeof parentElement === "function")
 			passedFunction = parentElement;
@@ -17,7 +21,7 @@ define(["jquery"],function($) {
 				return false;
 			});
 		}
-		$(parentElement).off('click',element);
+		
 		$(parentElement).on('click', element, function(event) {
 			var checkbox = $(this).find('.select-element');
 			console.log(parentElement);

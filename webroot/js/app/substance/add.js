@@ -1,4 +1,4 @@
-define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","utils/tableRow",'utils/pagination',"common",'bootstrap','utils/incrementInput'],function($,autocomplete,editor,listGroups,row,pagination){
+define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups",'utils/pagination','bootstrap','utils/incrementInput'],function($,autocomplete,editor,listGroups,pagination){
 
     function init(options) {
 
@@ -13,7 +13,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
             tinyMCE.execCommand('mceAddEditor', false, this.id);
         });
        } else {
-            editor.init()
+            editor.init();
        }
 
         $('#SubstanceAddForm').submit(function(event) {
@@ -102,7 +102,7 @@ define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","util
         $('.search_agent').click(function(event) {
             $('.agent_search_results').load(baseUrl+'agents/index/',{'term':$(".agent-search-input").val(),'limit':10},function(){
                 // if(settings.container !== ".modal-body")
-                    row.init('.agent_row',".agent_search_results");
+                    // row.init('.agent_row',".agent_search_results");
             });
             $('#agent_to_substance').show();
             $('.substance_create .accordion-body').collapse('hide');

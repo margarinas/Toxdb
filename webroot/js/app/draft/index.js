@@ -1,8 +1,8 @@
-define(["utils/tableRow","utils/pagination","utils/message"],function(row, pagination,msg){
+define(["utils/pagination","utils/message"],function(pagination,msg){
 	init = function(options) {
 		defaults = {container:"#container",showHistory:false};
 		var settings = $.extend(defaults, options);
-		row.init(".draft_row",settings.container);
+		// row.init(".draft_row",settings.container);
 		pagination.init({container:settings.container,history:settings.showHistory});
 
 		// $('.draft-delete').unbind("click");

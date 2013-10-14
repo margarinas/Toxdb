@@ -1,4 +1,4 @@
-define(["app/substance/add","app/agent/add","app/substance/actions","common","purl"],function(substances,agents,actions){
+define(["app/substance/add","app/agent/add","app/substance/actions","purl"],function(substances,agents,actions){
 
 	poison_url = $.url().attr("directory");
 	poison = poison_url.split("/");

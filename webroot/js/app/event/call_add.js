@@ -1,4 +1,4 @@
-define(['jquery',"utils/modal","utils/tableRow"], function($,modal,row) {
+define(['jquery',"utils/modal"], function($,modal) {
 
 
 
@@ -45,7 +45,10 @@ define(['jquery',"utils/modal","utils/tableRow"], function($,modal,row) {
     $('.add-call-btn').click(function(event) {
 
         modal.set(add_call_options, function() {
-            row.init('tr.call_row','.modal', function(){
+            // row.init('tr.call_row','.modal', function(){
+            //     $('.attach_call').removeClass('disabled');
+            // });
+            $('.call_row').click( function() {
                 $('.attach_call').removeClass('disabled');
             });
             $('.call_row a').click( function() {

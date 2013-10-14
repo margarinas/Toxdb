@@ -1,3 +1,3 @@
-define(["app/call/index","common"],function(call){
+define(["app/call/index"],function(call){
 	call.init();
 });

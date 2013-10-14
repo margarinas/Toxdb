@@ -1,4 +1,4 @@
-<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/event.add']); });",array('inline'=>false)); ?>
+<?php $this->Html->scriptBlock("require(['app/common'], function (main) { require(['app/event.add']); });",array('inline'=>false)); ?>
 <div class="row">
     <div class="span2" id="sidebar_nav">
         <ul class="nav nav-pills nav-stacked sidebar-nav affix" >

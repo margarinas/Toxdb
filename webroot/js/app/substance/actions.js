@@ -1,4 +1,4 @@
-define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pagination","app/substance/search","utils/tableRow"],function(autocomplete,substance,agent,pagination,search,row){
+define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pagination","app/substance/search"],function(autocomplete,substance,agent,pagination,search){
 
 	init = function (options) {
 
@@ -26,8 +26,8 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 		$("#SubstanceSearchForm").submit(function (e) {
 			
 			$(settings.container).html('<div class="row-fluid"><div class="span6"><h4>Produktai</h4><div id="substances"></div></div><div class="span6"><h4>Medžiagos</h4><div id="agents"></div></div></div>');
-			row.init('.agent_row',settings.container,settings.rowClickCallback);
-			row.init('.substance_row',settings.container,settings.rowClickCallback);
+			// row.init('.agent_row',settings.container,settings.rowClickCallback);
+			// row.init('.substance_row',settings.container,settings.rowClickCallback);
 			data = $(this).serialize();
 
 			query = {limit:settings.rowLimit,attachTo:settings.attachTo};
@@ -63,7 +63,7 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 			url = e.target.href;
 			$("#busy-indicator").fadeIn();
 			$(settings.container).load(url,$.param({attachTo:settings.attachTo}), function() {
-
+				console.log(settings.container);
 				substance.init({container:settings.container,redirectTo:"dashboard"});
 				$("#busy-indicator").fadeOut();
 				if(settings.history)

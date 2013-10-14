@@ -1,4 +1,4 @@
-<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.index']); });",array('inline'=>false)); ?>
+<?php $this->Html->scriptBlock("require(['app/common'], function (main) { require(['app/poison.index']); });",array('inline'=>false)); ?>
 <table class="table" cellpadding="0" cellspacing="0">
 	<tr class="pagination">
 		<th><?php echo $this->Paginator->sort('name','Pavadinimas');?></th>

@@ -2,7 +2,7 @@ define(["jquery"],function($){
 
 
 	function init (options) {
-
+		
 		if(typeof options !== "object" && typeof options !== "undefined")
 			throw new Error("Must provide options as an object");
 
@@ -14,7 +14,7 @@ define(["jquery"],function($){
 			$(".paginator-summary").hide();
 		}
 
-		// $(settings.container).off('click',settings.element);
+		$(settings.container).off('click',settings.element);
 		$(settings.container).on("click", settings.element, function (event) {
 
 			url = $(this).attr('href');

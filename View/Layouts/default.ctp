@@ -65,8 +65,10 @@
 
 
 	<?php 
-	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js?v=".Configure::read('JsVersion')));
+	echo $this->Html->script('require.js',array('data-main'=>$this->Html->url('/')."js/main.js?bla=".Configure::read('JsVersion')));
+	echo $this->Html->scriptBlock("requirejs.config({urlArgs: 'v='+jsVersion});");
 	echo $this->fetch('script');
+	
 	 ?>
 
 

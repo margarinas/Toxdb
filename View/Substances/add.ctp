@@ -1,4 +1,4 @@
-<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/poison.add']); });",array('inline'=>false)); ?>
+<?php $this->Html->scriptBlock("require(['app/common'], function (main) { require(['app/poison.add']); });",array('inline'=>false)); ?>
 <div class="substance_create">
 	<h3>Produktas</h3>
 	<?php

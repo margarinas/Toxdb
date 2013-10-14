@@ -1,4 +1,4 @@
-<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/call.index']); });",array('inline'=>false)); ?>
+<?php $this->Html->scriptBlock("require(['app/common'], function (main) { require(['app/call.index']); });",array('inline'=>false)); ?>
 <?php 
 
 

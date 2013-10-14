@@ -1,4 +1,4 @@
-define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups","common",'bootstrap'],function($,autocomplete,editor,listGroups){
+define(['jquery',"utils/autocomplete",'utils/addEditor',"utils/listGroups",'bootstrap'],function($,autocomplete,editor,listGroups){
 
     function init(options) {
 

@@ -1,4 +1,4 @@
-define(['utils/addEditor',"utils/message","common","utils/stopReload","lib/jquery.incrementInput",'app/event/substance_add','app/event/call_add',"app/event/antidote_add","app/event/related_event_add"], function(editor,message){
+define(['utils/addEditor',"utils/message","utils/stopReload","lib/jquery.incrementInput",'app/event/substance_add','app/event/call_add',"app/event/antidote_add","app/event/related_event_add"], function(editor,message){
 
 
     editor.init();

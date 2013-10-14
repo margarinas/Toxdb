@@ -1,4 +1,4 @@
-define(["common"],function(){
+define(function(){
 	function init () {
 		$('.report_date').datepicker();
 		$("#EventReportForm").submit(function(event){

@@ -1,3 +1,3 @@
-define(["app/event/index","common"],function(event){
+define(["app/event/index"],function(event){
 	event.init();
 });

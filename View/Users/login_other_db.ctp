@@ -1,4 +1,4 @@
-<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/login']); });",array('inline'=>false)); ?>
+<?php $this->Html->scriptBlock("require(['app/common'], function (main) { require(['app/login']); });",array('inline'=>false)); ?>
 <?php 
 echo $this->Form->create(null,array('url'=>'http://www.toxinz.com/Login','target'=>'_blank','id'=>'toxinz_login'));
 ?>

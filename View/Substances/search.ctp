@@ -3,7 +3,7 @@
 //pr($substances);
 //pr($agents);
 
-$this->Html->scriptBlock("require(['main'], function (main) { require(['app/substance.search']); });",array('inline'=>false));
+$this->Html->scriptBlock("require(['app/common'], function (main) { require(['app/substance.search']); });",array('inline'=>false));
 
 ?>
 <div class="row">

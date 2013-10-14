@@ -1,4 +1,4 @@
-define(["jquery","utils/autocomplete","bootstrap","jquery-ui","jquery-ui-timepicker","jquery-ui-datepicker-lt","jquery-ui-timepicker-lt"], function($,autocomplete) {
+define(["jquery","utils/autocomplete","utils/tableRow","bootstrap","jquery-ui","jquery-ui-timepicker","jquery-ui-datepicker-lt","jquery-ui-timepicker-lt"], function($,autocomplete,row) {
 
 
 	//$('#EventCreated').datetimepicker();
@@ -32,6 +32,12 @@ define(["jquery","utils/autocomplete","bootstrap","jquery-ui","jquery-ui-timepic
 	autocomplete.init();
 
 
+	row.init(".event_row");
+	row.init(".agent_row");
+	row.init(".substance_row");
+	row.init(".antidote_row");
+	row.init(".call_row");
+	// row.init(".call_row");
 
 
 });

@@ -1,4 +1,4 @@
-<?php $this->Html->scriptBlock("require(['main'], function (main) { require(['app/index']); });",array('inline'=>false)); ?>
+<?php $this->Html->scriptBlock("require(['app/common'], function () { require(['app/index']); });",array('inline'=>false)); ?>
 <div class="row">
 	<div class="span5">
 		<h4><?php echo __('Naujienos') ?></h4>
