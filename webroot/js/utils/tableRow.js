@@ -2,7 +2,7 @@ define(["jquery"],function($) {
 		// Stuff to do as soon as the DOM is ready;
 	init = function (element,parentElement,passedFunction) {
 		// body...
-		console.log(element,parentElement);
+		
 
 		//$(parentElement).off('click',element);
 		// $(parentElement).off('click');
@@ -24,7 +24,7 @@ define(["jquery"],function($) {
 		
 		$(parentElement).on('click', element, function(event) {
 			var checkbox = $(this).find('.select-element');
-			console.log(parentElement);
+			
 			if(checkbox.prop('checked') && $(this).hasClass('success'))
 				checkbox.prop('checked',false);
 			else if(!$(this).hasClass('success'))

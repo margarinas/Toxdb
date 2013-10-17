@@ -28,6 +28,8 @@ define(["utils/poisonAutocomplete","app/substance/add","app/agent/add","utils/pa
 			$(settings.container).html('<div class="row-fluid"><div class="span6"><h4>Produktai</h4><div id="substances"></div></div><div class="span6"><h4>Medžiagos</h4><div id="agents"></div></div></div>');
 			// row.init('.agent_row',settings.container,settings.rowClickCallback);
 			// row.init('.substance_row',settings.container,settings.rowClickCallback);
+			$('.modal').off('click','.agent_row, .substance_row');
+			$('.modal').on('click','.agent_row, .substance_row',settings.rowClickCallback);
 			data = $(this).serialize();
 
 			query = {limit:settings.rowLimit,attachTo:settings.attachTo};

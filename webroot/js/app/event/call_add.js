@@ -1,11 +1,12 @@
-define(['jquery',"utils/modal"], function($,modal) {
+define(['jquery',"utils/modal","utils/pagination"], function($,modal,pagination) {
 
 
 
 
     var add_call_options = {
         getUrl:'calls',
-        show:true,id:'add_call',
+        show:true,
+        id:'add_call',
         title:"Ieškoti konsultacijos įrašo",
         footer:'<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button><button class="btn btn-primary disabled attach_call">Priskirti įrašą</button>',
         onHide:function() {
@@ -48,6 +49,11 @@ define(['jquery',"utils/modal"], function($,modal) {
             // row.init('tr.call_row','.modal', function(){
             //     $('.attach_call').removeClass('disabled');
             // });
+
+            pagination.init({
+                    container:"#add_call .modal-body",
+                    history:false   
+            });
             $('.call_row').click( function() {
                 $('.attach_call').removeClass('disabled');
             });

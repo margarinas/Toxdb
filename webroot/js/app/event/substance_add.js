@@ -61,6 +61,7 @@ define(['jquery',"utils/modal","utils/getElement","app/substance/actions"], func
                 },
                 rowClickCallback: function(){
                     $('.attach_substance').removeClass('disabled');
+                    console.log('vlaio');
                 }
             });
            // onHide();
