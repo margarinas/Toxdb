@@ -42,7 +42,7 @@
             else if(!empty($this->request->data['Event']['user_id']))
                  echo $this->Form->hidden('Event.user_id');
             echo $this->Form->input('requester_name', array('label' => 'Vardas pavardė','div'=>'control-group input-append','after'=>' <button class="btn unknown_value" type="button">Nežinoma</button>'));
-            echo $this->Form->input('institution', array('label' => 'Įstaiga'));
+            echo $this->Form->input('institution', array('label' => 'Įstaiga','class'=>'autocomplete'));
             echo $this->Form->input('medical_request', array('label'=>'Kreipasi medikas?'));
             echo $this->Form->input('patient_request', array('label'=>'Kreipiasi pacientas?','type'=>'checkbox'));
             echo $this->Form->input('no_patient', array('label'=>'Nėra nukentėjusių?','type'=>'checkbox','class'=>'event_toggle_patient'));
@@ -55,7 +55,7 @@
             <div class="span5">
                 <?php 
                 echo $this->Form->input('address', array('label' => 'Adresas','placeholder'=>'Adresas'));
-                echo $this->Form->input('city', array('label' => 'Miestas','placeholder'=>'Miestas'));
+                echo $this->Form->input('city', array('label' => 'Miestas','placeholder'=>'Miestas', 'class'=>'autocomplete'));
                 echo $this->Form->input('phone', array('label' => 'Telefonas'));
                 echo $this->Form->input('invalid_request', array('label'=>'Klaidingas skambutis','class'=>'event_toggle_patient event_invalid_request'));
                 echo $this->Form->input('has_related_events', array('label'=>'Yra susijusių konsultacijų','type'=>'checkbox','class'=>'related-events-toggle'));
