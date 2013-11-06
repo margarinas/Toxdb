@@ -151,8 +151,13 @@ class Substance extends AppModel {
 			$poison_group_id = null;
 
 		if ($poison_group_id) {
-			$this->PoisonGroup->id = $poison_group_id;
-			$parent_id = $this->PoisonGroup->field('parent_id');
+
+			// $this->PoisonGroup->id = $poison_group_id;
+			// $parent_id = $this->PoisonGroup->field('parent_id');
+
+			$parent_poison_group = $this->PoisonGroup->getById($poison_group_id);
+			$parent_id = $parent_poison_group['PoisonGroup']['id'];
+			
 			if(!empty($parent_id)) {
 				if($primary) {
 					$results[$key][$this->alias]['poison_subgroup_id'] = $results[$key][$this->alias]['poison_group_id'];

@@ -13,6 +13,7 @@ class TreatmentPlace extends AppModel {
  */
 public $displayField = 'name';
 
+
 public $hasMany = array(
 	'PatientsTreatmentPlace' => array(
 		'className' => 'PatientsTreatmentPlace',

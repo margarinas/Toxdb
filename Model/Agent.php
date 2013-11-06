@@ -135,8 +135,13 @@ public function afterFind($results, $primary = false) {
 			$poison_group_id = null;
 
 		if ($poison_group_id) {
-			$this->PoisonGroup->id = $poison_group_id;
-			$parent_id = $this->PoisonGroup->field('parent_id');
+
+			// $this->PoisonGroup->id = $poison_group_id;
+			// $parent_id = $this->PoisonGroup->field('parent_id');
+
+			$parent_poison_group = $this->PoisonGroup->getById($poison_group_id);
+			$parent_id = $parent_poison_group['PoisonGroup']['id'];
+			
 			if(!empty($parent_id)) {
 				if($primary) {
 					$results[$key]['Agent']['poison_subgroup_id'] = $results[$key]['Agent']['poison_group_id'];

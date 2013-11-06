@@ -351,10 +351,15 @@ public function beforeSave($options=array()) {
 public function afterFind($results, $primary = false) {
 	foreach ($results as $key => $val) {
 
-        $results[$key]['Patient']['TreatmentBefore'] = $this->PatientTreatment->find('list',array('fields'=>array('treatment_id'),'conditions'=>array('before'=>1,'patient_id'=>$val['Patient']['id'])));
-        $results[$key]['Patient']['TreatmentRecommended'] = $this->Event->Patient->PatientTreatment->find('list',array('fields'=>array('treatment_id'),'conditions'=>array('recommended'=>1,'patient_id'=>$val['Patient']['id'])));
-		$results[$key]['Patient']['TreatmentPlaceBefore'] = $this->Event->Patient->PatientsTreatmentPlace->find('list',array('fields'=>array('treatment_place_id'),'conditions'=>array('before'=>1,'patient_id'=>$val['Patient']['id'])));
-		$results[$key]['Patient']['TreatmentPlaceRecommended'] = $this->Event->Patient->PatientsTreatmentPlace->find('list',array('fields'=>array('treatment_place_id'),'conditions'=>array('recommended'=>1,'patient_id'=>$val['Patient']['id'])));
+  //       $results[$key]['Patient']['TreatmentBefore'] = $this->PatientTreatment->find('list',array('fields'=>array('treatment_id'),'conditions'=>array('before'=>1,'patient_id'=>$val['Patient']['id'])));
+  //       $results[$key]['Patient']['TreatmentRecommended'] = $this->Event->Patient->PatientTreatment->find('list',array('fields'=>array('treatment_id'),'conditions'=>array('recommended'=>1,'patient_id'=>$val['Patient']['id'])));
+		// $results[$key]['Patient']['TreatmentPlaceBefore'] = $this->Event->Patient->PatientsTreatmentPlace->find('list',array('fields'=>array('treatment_place_id'),'conditions'=>array('before'=>1,'patient_id'=>$val['Patient']['id'])));
+		// $results[$key]['Patient']['TreatmentPlaceRecommended'] = $this->Event->Patient->PatientsTreatmentPlace->find('list',array('fields'=>array('treatment_place_id'),'conditions'=>array('recommended'=>1,'patient_id'=>$val['Patient']['id'])));
+  		
+  		$results[$key]['Patient']['TreatmentBefore'] = $this->PatientTreatment->listTreatmentBefore($val['Patient']['id']);
+        $results[$key]['Patient']['TreatmentRecommended'] = $this->PatientTreatment->listTreatmentRecommended($val['Patient']['id']);
+		$results[$key]['Patient']['TreatmentPlaceBefore'] = $this->PatientsTreatmentPlace->listTreatmentPlaceBefore($val['Patient']['id']);
+		$results[$key]['Patient']['TreatmentPlaceRecommended'] = $this->PatientsTreatmentPlace->listTreatmentPlaceRecommended($val['Patient']['id']);
 
     }
     return $results;

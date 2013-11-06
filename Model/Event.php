@@ -132,7 +132,7 @@ public $hasOne = array(
         'invalid_request' => array('type' => 'value'),
         'patient_request' => array('type' => 'value'),
         'feedback' => array('type' => 'value'),
-        'event_type' => array('type' => 'subquery', 'method' => 'findByEventAttr','field' => 'Event.id'),
+        'event_type' => array('type' => 'value', 'field' => 'EventsEventAttribute.event_attribute_id'),
         //'search' => array('type' => 'like', 'field' => 'Article.description'),
         'created_from' => array('type' => 'query', 'method' => 'dateFrom'),
         'created_to' => array('type' => 'query', 'method' => 'dateTo'),
@@ -140,18 +140,18 @@ public $hasOne = array(
         'id_to' => array('type' => 'query', 'method' => 'idTo'),
         'username' => array('type' => 'like', 'field' => array('User.username', 'User.name')),
         'user_id' => array('type' => 'value'),
-        'patient_name' => array('type' => 'subquery', 'method'=>'findByPatients', 'field' => 'Event.id' ),
-        'patient_age_group' => array('type' => 'subquery', 'method'=>'findByPatients', 'field' => 'Event.id' ),
-        'not_poisoning' => array('type' => 'subquery', 'method'=>'findByPatients', 'field' => 'Event.id' ),
+        'patient_name' => array('type' => 'like', 'field'=>'Patient.name'),
+        'patient_age_group' => array('type' => 'value', 'field'=>'Patient.age_group'),
+        'not_poisoning' => array('type' => 'value', 'field' => 'Patient.not_poisoning' ),
         // 'agents' => array('type' => 'subquery', 'method' => 'findByAgents', 'field' => 'Event.id'),
         'antidotes' => array('type' => 'subquery', 'method' => 'findByAntidotes', 'encode' => true,'field' => 'Event.id'),
         // 'substances' => array('type' => 'subquery', 'method' => 'findBySubstances', 'field' => 'Event.id'),
-        'poison' => array('type' => 'subquery', 'method' => 'findByPoison', 'encode' => true, 'field' => 'Event.id'),
-        'poison_group' => array('type' => 'subquery', 'method' => 'findByPatients', 'encode' => true, 'field' => 'Event.id'),
-        'patient_poison_group_id' => array('type' => 'subquery', 'method' => 'findByPatients', 'field' => 'Event.id'),
-        'agent_poison_group_id' => array('type' => 'subquery', 'method' => 'findByPoison', 'field' => 'Event.id'),
-        'agent_id' => array('type' => 'subquery', 'method' => 'findByPoison', 'field' => 'Event.id'),
-        'substance_id' => array('type' => 'subquery', 'method' => 'findByPoison', 'field' => 'Event.id'),
+        'poison' => array('type' => 'query', 'method' => 'findByPoison', 'encode' => true),
+        'poison_group' => array('type' => 'query', 'method' => 'findByPatients'),
+        'patient_poison_group_id' => array('type' => 'query', 'method' => 'findByPatients'),
+        'agent_poison_group_id' => array('type' => 'query', 'method' => 'findByPoison'),
+        'agent_id' => array('type' => 'query', 'method' => 'findByPoison'),
+        'substance_id' => array('type' => 'query', 'method' => 'findByPoison'),
        // 'filter' => array('type' => 'query', 'method' => 'orConditions'),,
         //'enhanced_search' => array('type' => 'like', 'encode' => true, 'before' => false, 'after' => false, 'field' => array('ThisModel.name','OtherModel.name')),
     );
@@ -184,17 +184,17 @@ public $hasOne = array(
     }
 
 	 public function findByPatients($data = array()) {
-        $this->Patient->Behaviors->attach('Containable', array('autoFields' => false,'recursive'=>false));
-        $this->Patient->Behaviors->attach('Search.Searchable');
+        // $this->Patient->Behaviors->attach('Containable', array('autoFields' => false,'recursive'=>false));
+        // $this->Patient->Behaviors->attach('Search.Searchable');
 
         $cond = array();
-        if(!empty($data['patient_age_group']))
-        	$cond['Patient.age_group']= $data['patient_age_group'];
-        if(isset($data['patient_name']))
-        	$cond['Patient.name LIKE']  = '%'.$data['patient_name'].'%';
+        // if(!empty($data['patient_age_group']))
+        // 	$cond['Patient.age_group']= $data['patient_age_group'];
+        // if(isset($data['patient_name']) && !empty($data['patient_name']))
+        // 	$cond['Patient.name LIKE']  = '%'.$data['patient_name'].'%';
 
-        if(!empty($data['not_poisoning']))
-        	$cond['Patient.not_poisoning']= $data['not_poisoning'];
+        // if(!empty($data['not_poisoning']))
+        // 	$cond['Patient.not_poisoning']= $data['not_poisoning'];
 
 
         if(!empty($data['poison_group'])) {
@@ -204,7 +204,7 @@ public $hasOne = array(
         	else {
         		$cond['AND']['OR'][]['Patient.poison_group_id'] = $data['poison_group'];
 
-        		$poison_subgroup = $this->Patient->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>$data['poison_group'])));
+        		$poison_subgroup = $this->Patient->PoisonGroup->getListByParentId($data['poison_group']);
 
         		if($poison_subgroup) {
 
@@ -219,18 +219,18 @@ public $hasOne = array(
 			$cond[]['Patient.poison_group_id'] = $data['patient_poison_group_id'];
 			
 		
-        $query = $this->Patient->getQuery('all', array(
-            'conditions' => $cond,
-            'fields' => array('event_id'),
-            'recursive' => -1,
-            'contain' => array('AgentsPatient'=>array('Agent'),'Substance')
-        ));
+        // $query = $this->Patient->getQuery('all', array(
+        //     'conditions' => $cond,
+        //     'fields' => array('event_id'),
+        //     'recursive' => -1,
+        //     'contain' => array('AgentsPatient'=>array('Agent'),'Substance')
+        // ));
         // pr($query);
-        return $query;
+        return $cond;
     }
 
 	public function findByPoison($data = array()) {
-		$joins = array(
+		/*$joins = array(
 			array(
 				'table'=>'agents_patients', 
 				'alias' => 'AgentsPatient',
@@ -259,10 +259,10 @@ public $hasOne = array(
 				'conditions'=> array(
 					'Substance.id = PatientsSubstance.substance_id'
 				)),
-			);
+			);*/
 		
-		$this->Patient->Behaviors->attach('Search.Searchable');
-		$this->Patient->Behaviors->attach('Containable', array('autoFields' => false,'recursive'=>false));
+		// $this->Patient->Behaviors->attach('Search.Searchable');
+		// $this->Patient->Behaviors->attach('Containable', array('autoFields' => false,'recursive'=>false));
 
 		$cond = array();
 		if(isset($data['poison']))
@@ -298,16 +298,16 @@ public $hasOne = array(
 			$cond['AND']['OR']['Substance.poison_group_id'] = $data['agent_poison_group_id'];
 		}
 
-		$query = $this->Patient->getQuery('all', array(
-            //'conditions' => $this->Patient->parseCriteria(array('agents'=>'asd')),
-			'conditions' => $cond,
-			'fields' => array('Patient.event_id'),
-			'recursive' => -1,
-			'joins'=>$joins,
-			'contain' => array('AgentsPatient'=>array('Agent'),'Substance')
-			));
+		// $query = $this->Patient->getQuery('all', array(
+  //           //'conditions' => $this->Patient->parseCriteria(array('agents'=>'asd')),
+		// 	'conditions' => $cond,
+		// 	'fields' => array('Patient.event_id'),
+		// 	'recursive' => -1,
+		// 	'joins'=>$joins,
+		// 	'contain' => array('AgentsPatient'=>array('Agent'),'Substance')
+		// 	));
 		// pr($query);
-		return $query;
+		return $cond;
 	}
 
     public function findByAntidotes($data = array()) {
@@ -483,7 +483,7 @@ public $hasOne = array(
 		$this->Draft->deleteAll($cond, false);
 	}
 
-	public function report($date_range=array()) {
+/*	public function report($date_range=array()) {
 		set_time_limit(600);
 		$report_fields = array(
 			'events' => array(),
@@ -556,8 +556,131 @@ public $hasOne = array(
 
 		return $report;
 
-	}
+	}*/
 
+	public function report($date_range=array()) {
+		set_time_limit(600);
+
+		$patient_joins = array(
+			array(
+				'table'=>'patients', 
+				'alias' => 'Patient',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.event_id = Event.id'
+					)),
+			array(
+				'table'=>'agents_patients', 
+				'alias' => 'AgentsPatient',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.id = AgentsPatient.patient_id'
+					)),
+			array(
+				'table'=>'agents', 
+				'alias' => 'Agent',
+				'type'=>'left',
+				'conditions'=> array(
+					'Agent.id = AgentsPatient.agent_id'
+					)),
+			array(
+				'table'=>'patients_substances', 
+				'alias' => 'PatientsSubstance',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.id = PatientsSubstance.patient_id'
+					)),
+			array(
+				'table'=>'substances', 
+				'alias' => 'Substance',
+				'type'=>'left',
+				'conditions'=> array(
+					'Substance.id = PatientsSubstance.substance_id'
+					)),
+			
+
+			);
+
+		$event_type_joins =  array(array(
+				'table'=>'events_event_attributes', 
+				'alias' => 'EventsEventAttribute',
+				'type'=>'left',
+				'conditions'=> array(
+					'EventsEventAttribute.event_id = Event.id'
+					))
+		);
+
+		$report_fields = array(
+			'events' => array('cond'=>array(),'joins'=>array()),
+			'medical_requests' => array('cond'=>array('medical_request'=>1),'joins'=>array()),
+			'patients_requests' => array('cond'=>array('patient_request'=>1),'joins'=>array()),
+			'invalid_requests' => array('cond'=>array('invalid_request'=>1),'joins'=>array()),
+			'not_poisoning' => array('cond'=>array('Patient.not_poisoning'=>1),'joins'=>$patient_joins),
+			'type_event' => array('cond'=>array('EventsEventAttribute.event_attribute_id'=>1),'joins'=>$event_type_joins),
+			'type_incident' =>array('cond'=>array('EventsEventAttribute.event_attribute_id'=>2),'joins'=>$event_type_joins),
+			'type_request' =>array('cond'=>array('EventsEventAttribute.event_attribute_id'=>3),'joins'=>$event_type_joins),
+
+			);
+
+		$age_groups = array('adult','child');
+		
+		if(!empty($date_range['begin_date']) || !empty($date_range['end_date'])) {
+			$main_cond = array(
+				'Event.created >='=> $date_range['begin_date'],
+				'Event.created <' => date('Y-m-d H:i:s',strtotime($date_range['end_date'] . ' + 1 day'))
+				);
+
+			foreach ($report_fields as $key => $field) {
+				$cond = $main_cond;
+				$cond = array_merge($cond,$field['cond']);
+				$report[$key] = $this->find('count',array('conditions'=>$cond, 'joins'=>$field['joins'],'group'=>'Event.id'));
+					
+			}
+			$poison_groups = $this->Patient->PoisonGroup->getListByParentId(null);
+
+			foreach ($age_groups as $age_group) {
+				$cond = $main_cond;
+				$cond[] =$this->findByPatients(array('patient_age_group'=>$age_group, 'poison_group'=>'hasPoison'));
+				$report['poison'][$age_group] = $this->find('count',array('conditions'=>$cond,'joins'=>$patient_joins,'group'=>'Event.id'));
+
+				foreach ($poison_groups as $group_id => $name) {
+					$cond2 = $main_cond;
+					$cond2[] = 	$this->findByPatients(array('patient_age_group'=>$age_group,'poison_group'=>$group_id,'group'=>'Event.id'));
+					$sub_groups = $this->Patient->PoisonGroup->getListByParentId($group_id);
+					//pr(!empty($sub_groups));
+					if($sub_groups) {
+						$case_count = 0;
+						foreach ($sub_groups as $sub_id => $sub_name) {
+							//$cond3 = $cond2;
+							$cond3 = $main_cond;
+							$cond3[] = $this->findByPatients(array('patient_age_group'=>$age_group,'patient_poison_group_id'=>$sub_id));
+							$report['poison_groups'][$age_group][$name][$sub_name] = $this->find('count',array('conditions'=>$cond3,'joins'=>$patient_joins,'group'=>'Event.id'));
+							$case_count += $report['poison_groups'][$age_group][$name][$sub_name];
+							$report['poison_groups'][$age_group][$name] = array_filter($report['poison_groups'][$age_group][$name]);
+						}
+						if($case_count)
+						 $report['poison_groups'][$age_group][$name]['main'] = $case_count;
+					} else {
+						$report['poison_groups'][$age_group][$name] = $this->find('count',array('conditions'=>$cond2,'joins'=>$patient_joins,'group'=>'Event.id'));
+					}
+				}
+				$report['poison_groups'][$age_group] = array_filter($report['poison_groups'][$age_group]);
+			}	
+
+			// pr($report);
+			// pr($this->find('all',array('contain'=>array('Patient'),'conditions'=>array(
+			// 	'`Event`.`id` IN ('.$this->findByPatients(array('poison_group'=>13)).')',
+			// 	'`Event`.`id` IN ('.$this->findByPoison(array('agent_poison_group'=>14)).')',
+			// 	)
+			// 	)));
+			// $poison_groups = $this->Patient->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null)));
+			// $events = $this->find('count',array('conditions'=>$main_cond));
+
+		}
+
+		return $report;
+
+	}
 	public function afterFind($results, $primary = false) {
 
 		foreach ($results as $key => $value) {

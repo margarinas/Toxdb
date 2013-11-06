@@ -22,11 +22,7 @@ define(["utils/pagination","utils/getElement","utils/autocomplete","utils/poison
 
 
 		if(typeof settings.callback === "function") {
-			firstCallback = settings.callback;
-			settings.callback = function() {
-				firstCallback();
-				eventSearch();
-			};
+			settings.callback();
 		} else {
 			
 			if(settings.search)

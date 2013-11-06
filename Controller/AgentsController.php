@@ -46,6 +46,9 @@ class AgentsController extends AppController {
 						'Substance.id = AgentsSubstance.substance_id'
 						)),
 				);
+
+			// $this->paginate['Agent']['fields']=array('DISTINCT Agent.id','Agent.name','Agent.default','Agent.user_id','PoisonGroup.name');
+			$this->paginate['Agent']['group']='Agent.id';
 		}
 		if($this->Auth->user('Group.name') != 'admin') {
 			$conditions['AND']['OR']['Agent.default']=true;
@@ -63,7 +66,7 @@ class AgentsController extends AppController {
 		
 		$this->paginate['Agent']['order']='default ASC, Agent.name ASC';
 		$this->paginate['Agent']['contain']=array('PoisonGroup','Substance');
-		$this->paginate['Agent']['fields']=array('DISTINCT Agent.name','Agent.default','Agent.user_id','PoisonGroup.name');
+		
 		$this->set('agents', $this->paginate('Agent',$conditions));
 		$this->set('units', $this->Unit->find('list',array('fields'=>array('id','name','group'))));
 	}

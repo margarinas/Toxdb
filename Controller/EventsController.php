@@ -69,6 +69,65 @@ public function find()
 	$limit = !empty($this->params['named']['event_per_page'])?$this->params['named']['event_per_page']:20;
 
 	$this->request->data['Event']['event_per_page'] = $limit;
+
+	$joins = array(
+		array(
+				'table'=>'patients', 
+				'alias' => 'Patient',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.event_id = Event.id'
+				))	
+		);
+
+	if(!empty($parsedParams['poison'])) {
+		$poison_joins = array(
+		 	array(
+				'table'=>'agents_patients', 
+				'alias' => 'AgentsPatient',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.id = AgentsPatient.patient_id'
+				)),
+			array(
+				'table'=>'agents', 
+				'alias' => 'Agent',
+				'type'=>'left',
+				'conditions'=> array(
+					'Agent.id = AgentsPatient.agent_id'
+				)),
+			array(
+				'table'=>'patients_substances', 
+				'alias' => 'PatientsSubstance',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.id = PatientsSubstance.patient_id'
+				)),
+			array(
+				'table'=>'substances', 
+				'alias' => 'Substance',
+				'type'=>'left',
+				'conditions'=> array(
+					'Substance.id = PatientsSubstance.substance_id'
+				))
+			);
+
+		$joins= array_merge($joins,$poison_joins);
+	}
+
+	if(!empty($parsedParams['event_type'])) {
+		$event_type_joins = array(
+			array(
+				'table'=>'events_event_attributes', 
+				'alias' => 'EventsEventAttribute',
+				'type'=>'left',
+				'conditions'=> array(
+					'EventsEventAttribute.event_id = Event.id'
+					))
+		);
+		$joins= array_merge($joins,$event_type_joins);
+	}
+
 	$this->paginate = array(
 		'order' => 'Event.created DESC',
 		'contain' => array(
@@ -77,10 +136,12 @@ public function find()
 			'Patient' => array(
 				'fields'=>array('Patient.name','Patient.id'),
 				'AgentsPatient' => array('Agent'=>array('fields'=>array('id','name'))),
-				'Substance' => array('fields'=>array('name','id'))
+				'Substance' => array('fields'=>array('name','id')),
 				),
 			'User'=>array('fields'=>array('id','name'))
 			),
+		// 'fields'=>array('Event.id','Event.created','Patient.id','Patient.name','Agent.id','Agent.name','Substance.id','Substance.name','User.name','User.id'),
+		'joins'=>$joins,
 		'conditions' => $this->Event->parseCriteria($parsedParams),
 		'limit' => $limit
 		);

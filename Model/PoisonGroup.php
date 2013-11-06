@@ -16,6 +16,7 @@ class PoisonGroup extends AppModel {
 	public $displayField = 'name';
 
 	public $order = 'PoisonGroup.order';
+	public $actsAs = array('Utility.Cacheable'=>array('expires'=>'+24 hours'));
 
 /**
  * Validation rules
@@ -80,5 +81,10 @@ class PoisonGroup extends AppModel {
 			'counterQuery' => ''
 		)
 	);
+
+
+	public function getListByParentId($parent_id) {
+		return $this->find('list',array('conditions'=>array('parent_id'=>$parent_id),'cache'=>array(__METHOD__,$parent_id)));
+	}
 
 }

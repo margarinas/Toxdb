@@ -33,5 +33,26 @@ class PatientTreatment extends AppModel {
 		)
 	);
 
+	public $actsAs = array('Utility.Cacheable'=>array('expires'=>'+24 hours'));
 
+
+	public function listTreatmentBefore($patient_id)
+	{
+		$this->find('list',array(
+			'fields'=>array('treatment_id'),
+			'conditions'=>array('before'=>1,'patient_id'=>$patient_id),
+			'cache' => array(__METHOD__, $patient_id)
+			)
+		);
+	}
+
+	public function listTreatmentRecommended($patient_id)
+	{
+		$this->find('list',array(
+			'fields'=>array('treatment_id'),
+			'conditions'=>array('recommended'=>1,'patient_id'=>$patient_id),
+			'cache' => array(__METHOD__, $patient_id)
+			)
+		);
+	}
 }
