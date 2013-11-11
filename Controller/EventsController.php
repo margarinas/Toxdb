@@ -80,7 +80,7 @@ public function find()
 				))	
 		);
 
-	if(!empty($parsedParams['poison'])) {
+	if(!empty($parsedParams['poison']) || !empty($parsedParams['substance_id']) || !empty($parsedParams['agent_id'])) {
 		$poison_joins = array(
 		 	array(
 				'table'=>'agents_patients', 
