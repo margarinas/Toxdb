@@ -35,6 +35,7 @@
 		'ui/jquery-ui-1.10.0.custom',
 		'bootstrap.min', 
 		'bootstrap-responsive.min',
+		'typeahead.js-bootstrap',
 		'style'
 		));
 
