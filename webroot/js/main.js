@@ -12,10 +12,12 @@ requirejs.config({
 		'jquery-ui-datepicker-lt':'lib/jquery.ui.datepicker-lt',
 		'jquery-ui-timepicker-lt':'lib/jquery-ui-timepicker-lt',
 		'bootstrap':'lib/bootstrap.min',
+		'typeahead':'lib/typeahead.min',
 		'tinymce':'lib/tinymce/jquery.tinymce.min'
 	},
 	shim: {
 		'bootstrap':['jquery'],
+		'typeahead':['jquery'],
 		'jquery-ui': ['jquery'],
 		'tinymce': ['jquery'],
 		'purl': ['jquery'],

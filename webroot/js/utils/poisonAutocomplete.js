@@ -20,13 +20,14 @@ define(["jquery","bootstrap"],function($){
 
 
 		});*/
-		$.getJSON(baseUrl+'substances/find_poison/')
-			.done(function(data){
+
+		// $.getJSON(baseUrl+'substances/find_poison/', function (poisons) {
+			// console.log(data);
 				$(element).typeahead({
-					minLength: 1,
-					source:data
+					name:'all_poisons',
+					prefetch:baseUrl+'substances/find_poison/'
 				});
-			});
+			// });
 
 		
 	};

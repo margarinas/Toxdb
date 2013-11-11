@@ -1,4 +1,4 @@
-define(["jquery","utils/autocomplete","utils/tableRow","bootstrap","jquery-ui","jquery-ui-timepicker","jquery-ui-datepicker-lt","jquery-ui-timepicker-lt"], function($,autocomplete,row) {
+define(["jquery","utils/autocomplete","utils/tableRow","bootstrap","jquery-ui","jquery-ui-timepicker","jquery-ui-datepicker-lt","jquery-ui-timepicker-lt","typeahead"], function($,autocomplete,row) {
 
 
 	//$('#EventCreated').datetimepicker();

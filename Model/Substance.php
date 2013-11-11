@@ -14,7 +14,7 @@ class Substance extends AppModel {
  * @var string
  */
 	public $displayField = 'name';
-
+	public $actsAs = array('Utility.Cacheable'=>array('expires'=>'+24 hours'));
 
 	//The Associations below have been created with all possible keys, those that are not needed can be removed
 
@@ -134,7 +134,7 @@ class Substance extends AppModel {
 
 	public function find_all_poison()	{
 		
-		return $this->cache(array(__METHOD__), function($model){
+		return $this->cache(__METHOD__, function($model){
 
 			$results = $model->find('all',array(
 				'recursive'=>-1,

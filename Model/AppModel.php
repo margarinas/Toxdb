@@ -31,7 +31,7 @@ App::uses('Model', 'Model');
  * @package       app.Model
  */
 class AppModel extends Model {
-	public $actsAs = array('Containable','Utility.Cacheable');
+	public $actsAs = array('Containable','Utility.Cacheable'=>array('expires'=>'+24 hours'));
 	public $recursive = -1;
 
 	public function groupList($subgroup='')
@@ -69,7 +69,7 @@ class AppModel extends Model {
 	public function autocomplete($needle)
 	{
 		$results = $this->find('all',array('recursive'=>-1,
-			'fields'=>array($needle,'id'),
+			'fields'=>array('DISTINCT '.$needle,'id'),
 			'cache'=>array(__METHOD__,$needle),
 			'cacheExpires'=>'+24 hours'
 			));
