@@ -140,7 +140,7 @@ public function afterFind($results, $primary = false) {
 			// $parent_id = $this->PoisonGroup->field('parent_id');
 
 			$parent_poison_group = $this->PoisonGroup->getById($poison_group_id);
-			$parent_id = $parent_poison_group['PoisonGroup']['id'];
+			$parent_id = $parent_poison_group['PoisonGroup']['parent_id'];
 			
 			if(!empty($parent_id)) {
 				if($primary) {
