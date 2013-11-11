@@ -12,6 +12,8 @@ class AntidotesController extends AppController {
  *
  * @return void
  */public $paginate = array('Antidote');
+	public $autocomplete = true;
+
 	public function index($term=null) {
 		
 		if(!empty($this->request->query['limit']))

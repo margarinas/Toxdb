@@ -28,7 +28,7 @@ define(["jquery","bootstrap"],function($){
 			element = ".autocomplete";
 
 		$(element).each(function(index,current){
-
+			console.log(current);
 			input_id = $(current).attr('id').toDash().split('-');
 			input_id.shift();
 			controller = input_id.shift()+'s'; //need to pluralize
