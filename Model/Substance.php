@@ -158,7 +158,7 @@ class Substance extends AppModel {
 			}
 		
 			return array_unique(array_values(array_filter($final_result)));
-		}, '24 hours');
+		}, '+24 hours');
 		
 	}
 

@@ -40,7 +40,7 @@ class AppModel extends Model {
 			'fields'=>array('id','name','group'),
 			'order'=>'order ASC',
 			'cache' => __METHOD__,
-			'cacheExpires'=>'24 hours'
+			'cacheExpires'=>'+24 hours'
 			);
 
 		if (!empty($subgroup)) {
@@ -71,7 +71,7 @@ class AppModel extends Model {
 		$results = $this->find('all',array('recursive'=>-1,
 			'fields'=>array($needle,'id'),
 			'cache'=>array(__METHOD__,$needle),
-			'cacheExpires'=>'24 hours'
+			'cacheExpires'=>'+24 hours'
 			));
 		//pr($this->alias);
 		$results = Hash::combine($results, '{n}.'.$this->alias.'.'.$needle);
