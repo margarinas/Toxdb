@@ -76,60 +76,90 @@ class Substance extends AppModel {
 
 		);
 
-	public function find_poison($term)	{
-		// $joins = array(
-		// 	array(
-		// 		'table'=>'agents_substances', 
-		// 		'alias' => 'AgentsSubstance',
-		// 		'type'=>'left',
-		// 		'conditions'=> array(
-		// 			'Substance.id = AgentsSubstance.substance_id'
-		// 		)),
-		// 	array(
-		// 		'table'=>'agents', 
-		// 		'alias' => 'Agent',
-		// 		'type'=>'left',
-		// 		'conditions'=> array(
-		// 			'Agent.id = AgentsSubstance.agent_id'
-		// 		))
-		// 	);
-		$results = $this->find('all',array(
-			// 'contain'=>array('Agent'),
-			'recursive'=>-1,
-			'conditions' => array(
-				'OR' => array(
-					'Substance.name LIKE' => '%'.$term.'%',
-					'Substance.generic_name LIKE' => '%'.$term.'%',
-					// 'Agent.name LIKE' => '%'.$term.'%'
-					)
-				),
-			// 'joins'=>$joins,
-			'fields'=>array('Substance.name','Substance.generic_name'/*,'Agent.name'*/),
-			'limit' =>20
-			));
-		//$results = $results['Agent']+$results['Substance'];
-		// pr($results);
-		// $results = Hash::combine($results, '{n}.Substance.id','{n}.Substance.name')+
-		// 			Hash::combine($results, '{n}.Substance.id','{n}.Agent.name')+
-		// 			Hash::combine($results, '{n}.Substance.id','{n}.Substance.generic_name');
-		$agent_results = $this->Agent->find('all',array(
-			'conditions'=>array('Agent.name LIKE' => '%'.$term.'%'),
-			'fields'=>array('Agent.name'),
-			'limit' => 20
-			));
+	// public function find_poison($term)	{
+	// 	// $joins = array(
+	// 	// 	array(
+	// 	// 		'table'=>'agents_substances', 
+	// 	// 		'alias' => 'AgentsSubstance',
+	// 	// 		'type'=>'left',
+	// 	// 		'conditions'=> array(
+	// 	// 			'Substance.id = AgentsSubstance.substance_id'
+	// 	// 		)),
+	// 	// 	array(
+	// 	// 		'table'=>'agents', 
+	// 	// 		'alias' => 'Agent',
+	// 	// 		'type'=>'left',
+	// 	// 		'conditions'=> array(
+	// 	// 			'Agent.id = AgentsSubstance.agent_id'
+	// 	// 		))
+	// 	// 	);
+	// 	$results = $this->find('all',array(
+	// 		// 'contain'=>array('Agent'),
+	// 		'recursive'=>-1,
+	// 		'conditions' => array(
+	// 			'OR' => array(
+	// 				'Substance.name LIKE' => '%'.$term.'%',
+	// 				'Substance.generic_name LIKE' => '%'.$term.'%',
+	// 				// 'Agent.name LIKE' => '%'.$term.'%'
+	// 				)
+	// 			),
+	// 		// 'joins'=>$joins,
+	// 		'fields'=>array('Substance.name','Substance.generic_name'/*,'Agent.name'*/),
+	// 		'limit' =>20
+	// 		));
+	// 	//$results = $results['Agent']+$results['Substance'];
+	// 	// pr($results);
+	// 	// $results = Hash::combine($results, '{n}.Substance.id','{n}.Substance.name')+
+	// 	// 			Hash::combine($results, '{n}.Substance.id','{n}.Agent.name')+
+	// 	// 			Hash::combine($results, '{n}.Substance.id','{n}.Substance.generic_name');
+	// 	$agent_results = $this->Agent->find('all',array(
+	// 		'conditions'=>array('Agent.name LIKE' => '%'.$term.'%'),
+	// 		'fields'=>array('Agent.name'),
+	// 		'limit' => 20
+	// 		));
 
-		$final_result = array();
-		foreach ($results as $key => $result) {
-			// $final_result[] = $result['Agent']['name'];
-			$final_result[] = $result['Substance']['name'];
-			$final_result[] = $result['Substance']['generic_name'];
-		}
+	// 	$final_result = array();
+	// 	foreach ($results as $key => $result) {
+	// 		// $final_result[] = $result['Agent']['name'];
+	// 		$final_result[] = $result['Substance']['name'];
+	// 		$final_result[] = $result['Substance']['generic_name'];
+	// 	}
 
-		foreach ($agent_results as $key => $agent) {
-			$final_result[] = $agent['Agent']['name'];
-		}
-		//pr($final_result);
-		return array_unique(array_values(array_filter($final_result)));
+	// 	foreach ($agent_results as $key => $agent) {
+	// 		$final_result[] = $agent['Agent']['name'];
+	// 	}
+	// 	//pr($final_result);
+	// 	return array_unique(array_values(array_filter($final_result)));
+	// }
+
+	public function find_all_poison()	{
+		
+		return $this->cache(array(__METHOD__), function($model){
+
+			$results = $model->find('all',array(
+				'recursive'=>-1,
+				'fields'=>array('Substance.name','Substance.generic_name'),
+				// 'limit' =>20
+				));
+
+			$agent_results = $model->Agent->find('all',array(
+				'fields'=>array('Agent.name'),
+				// 'limit' => 20
+				));
+
+			$final_result = array();
+			foreach ($results as $key => $result) {
+				$final_result[] = $result['Substance']['name'];
+				$final_result[] = $result['Substance']['generic_name'];
+			}
+
+			foreach ($agent_results as $key => $agent) {
+				$final_result[] = $agent['Agent']['name'];
+			}
+		
+			return array_unique(array_values(array_filter($final_result)));
+		});
+		
 	}
 
 

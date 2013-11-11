@@ -290,9 +290,9 @@ class SubstancesController extends AppController {
 
   public function find_poison()  {
     $results = array();
-    if(!empty($_GET['term']))
-      $results = $this->Substance->find_poison($_GET['term']);
-    
+    // if(!empty($_GET['term']))
+      $results = $this->Substance->find_all_poison();
+
     return new CakeResponse(array('body' => json_encode(array_values($results))));
   }
 

@@ -51,14 +51,26 @@ class AppModel extends Model {
 
 	}
 
-	public function autocomplete($needle, $term)
+	// public function autocomplete($needle, $term)
+	// {
+	// 	$results = $this->find('all',array('recursive'=>-1,
+	// 		'conditions'=>array(
+	// 			$needle.' LIKE'=>'%'.$term.'%'
+	// 			),
+	// 		'fields'=>array($needle,'id'),
+	// 		'limit' =>20
+	// 		));
+	// 	//pr($this->alias);
+	// 	$results = Hash::combine($results, '{n}.'.$this->alias.'.'.$needle);
+	// 	return array_keys($results);
+	// }
+
+	public function autocomplete($needle)
 	{
 		$results = $this->find('all',array('recursive'=>-1,
-			'conditions'=>array(
-				$needle.' LIKE'=>'%'.$term.'%'
-				),
 			'fields'=>array($needle,'id'),
-			'limit' =>20
+			'limit' =>20,
+			'cache'=>array(__METHOD__,$needle)
 			));
 		//pr($this->alias);
 		$results = Hash::combine($results, '{n}.'.$this->alias.'.'.$needle);

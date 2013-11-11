@@ -48,16 +48,28 @@ class AppController extends Controller {
     );
 
 
+    // public function autocomplete($needle = '')
+    // {
+    // 	if(!$needle) {
+    // 		throw new BadRequestException('You should enter a needle');
+    		
+    // 	} else if (!$this->autocomplete){
+    // 		throw new MethodNotAllowedException('You can not use this method in this controller');
+    // 	}
+    // 	$results = $this->{$this->modelClass}->autocomplete($needle,$_GET['term']);
+    // 	return new CakeResponse(array('body' => json_encode($results)));
+    // }
+
     public function autocomplete($needle = '')
     {
-    	if(!$needle) {
-    		throw new BadRequestException('You should enter a needle');
-    		
-    	} else if (!$this->autocomplete){
-    		throw new MethodNotAllowedException('You can not use this method in this controller');
-    	}
-    	$results = $this->{$this->modelClass}->autocomplete($needle,$_GET['term']);
-    	return new CakeResponse(array('body' => json_encode($results)));
+        if(!$needle) {
+            throw new BadRequestException('You should enter a needle');
+            
+        } else if (!$this->autocomplete){
+            throw new MethodNotAllowedException('You can not use this method in this controller');
+        }
+        $results = $this->{$this->modelClass}->autocomplete($needle);
+        return new CakeResponse(array('body' => json_encode($results)));
     }
 
     public function getElement()

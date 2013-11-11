@@ -4,7 +4,9 @@ define(["jquery","bootstrap"],function($){
 
 		if(typeof element === "undefined")
 			element = ".autocomplete";
-		$(element).typeahead({
+
+
+/*		$(element).typeahead({
 			minLength: 3,
 			source: function (query, process) {
 
@@ -17,7 +19,16 @@ define(["jquery","bootstrap"],function($){
 			}
 
 
-		});
+		});*/
+		$.getJSON(baseUrl+'substances/find_poison/')
+			.done(function(data){
+				$(element).typeahead({
+					minLength: 1,
+					source:data
+				});
+			});
+
+		
 	};
 	return {
 		init:init

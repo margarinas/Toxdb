@@ -27,7 +27,22 @@ define(["jquery","bootstrap"],function($){
 		if(typeof element === "undefined")
 			element = ".autocomplete";
 
-		$(element).typeahead({
+		$(element).each(function(index,current){
+
+			input_id = $(current).attr('id').toDash().split('-');
+			input_id.shift();
+			controller = input_id.shift()+'s'; //need to pluralize
+			needle = input_id.join('_');
+			$.getJSON(baseUrl+controller+'/autocomplete/'+needle)
+				.done(function(data){
+					$(current).typeahead({
+					minLength: 1,
+					source:data
+				});
+				});
+			});
+		
+/*		$(element).typeahead({
 			minLength: 3,
 			source: function (query, process) {
 
@@ -47,7 +62,9 @@ define(["jquery","bootstrap"],function($){
 						return process(data);
 					});
 			}
-		});
+		});*/
+
+		
 	};
 	return {
 		init:init
