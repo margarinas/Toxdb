@@ -30,7 +30,7 @@ CakePlugin::load('TwitterBootstrap');
 CakePlugin::load('Search');
 CakePlugin::load('Utility', array('bootstrap' => false, 'routes' => true));
 Configure::write('CallsPath',WWW_ROOT.'files'.DS.'calls'.DS);
-Configure::write('JsVersion','2.6');
+Configure::write('JsVersion','2.7');
 
 /**
  * The settings below can be used to set additional paths to models, views and controllers.
