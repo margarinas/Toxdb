@@ -67,7 +67,7 @@ class SubstancesController extends AppController {
       $this->request->data['Substance']['user_id'] = $this->Auth->user('id');
       $this->Substance->set($this->data['Substance']);
       if(isset($this->request->data['Substance']['poison_subgroup_id'])) {
-        $substance_poison_subgroups = $this->Substance->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>$this->request->data['Substance']['poison_group_id'])));
+        $substance_poison_subgroups = $this->Substance->PoisonGroup->getListByParentId($this->request->data['Substance']['poison_group_id']);
         $this->set('substance_poison_subgroups',$substance_poison_subgroups);
       }
       $substanceValitadion = $this->Substance->validates();
@@ -147,7 +147,7 @@ class SubstancesController extends AppController {
       }
     }
 
-    $this->set('poison_groups', $this->Substance->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null),'order'=>'PoisonGroup.order ASC')));
+    $this->set('poison_groups', $this->Substance->Agent->PoisonGroup->getListByParentId(null));
     $this->set('units', $this->Unit->find('list',array('fields'=>array('id','name','group'))));
   }
 
@@ -164,7 +164,7 @@ class SubstancesController extends AppController {
       throw new NotFoundException(__('Invalid event'));
     }
     if ($this->request->is('post') || $this->request->is('put')) {
-
+      pr($this->request->data);
       $this->Substance->set($this->data['Substance']);
       $substanceValitadion = $this->Substance->validates();
       $agentValidation = false;
@@ -196,7 +196,7 @@ class SubstancesController extends AppController {
         }
           
         $this->Session->setFlash(__('Įrašas išsaugotas'),'success');
-        $this->redirect(array('action' => 'index'));
+        //$this->redirect(array('action' => 'index'));
       } else {
         $this->Session->setFlash(__('The event could not be saved. Please, try again.'),'failure');
       }
@@ -205,7 +205,7 @@ class SubstancesController extends AppController {
 
     }
 
-    $this->set('poison_groups', $this->Substance->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null))));
+    $this->set('poison_groups', $this->Substance->PoisonGroup->getListByParentId(null));
 
 
     $agent_poison_subgroups = array();
@@ -216,16 +216,17 @@ class SubstancesController extends AppController {
 
       foreach ($this->request->data['Agent'] as $key => $agent) {
         if(isset($this->request->data['Agent'][$key]['poison_subgroup_id']))
-          $agent_poison_subgroups[$key] = $this->Substance->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>$this->request->data['Agent'][$key]['poison_group_id'])));
+          $agent_poison_subgroups[$key] = $this->Substance->PoisonGroup->getListByParentId($this->request->data['Agent'][$key]['poison_group_id']);
       }
     }
 
     // pr($this->request->data);
     if(isset($this->request->data['Substance']['poison_subgroup_id'])) {
-      $substance_poison_subgroups = $this->Substance->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>$this->request->data['Substance']['poison_group_id'])));
+      $substance_poison_subgroups = $this->Substance->PoisonGroup->getListByParentId($this->request->data['Substance']['poison_group_id']);
       $this->set('substance_poison_subgroups',$substance_poison_subgroups);
     }
-    
+    pr($this->request->data);
+    pr($substance_poison_subgroups);
     
     $this->set('agent_poison_subgroups',$agent_poison_subgroups);
     $this->set('units', $this->Unit->find('list',array('fields'=>array('id','name','group'))));

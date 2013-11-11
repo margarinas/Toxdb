@@ -189,10 +189,10 @@ class AgentsController extends AppController {
 		$this->set('units', $this->Unit->find('list',array('fields'=>array('id','name','group'))));
 		//pr($this->request->data);
 		
-		$this->set('poison_groups', $this->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>null),'order'=>'PoisonGroup.order ASC')));
+		$this->set('poison_groups', $this->Agent->PoisonGroup->getListByParentId(null));
 
 		if(isset($this->request->data['Agent']['poison_subgroup_id']))
-			$this->set('poison_subgroups', $this->Agent->PoisonGroup->find('list',array('conditions'=>array('parent_id'=>$this->request->data['Agent']['poison_group_id']))));
+			$this->set('poison_subgroups', $this->Agent->PoisonGroup->getListByParentId($this->request->data['Agent']['poison_group_id']));
 
 		$this->render('add');
 	}
