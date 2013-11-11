@@ -164,7 +164,7 @@ class SubstancesController extends AppController {
       throw new NotFoundException(__('Invalid event'));
     }
     if ($this->request->is('post') || $this->request->is('put')) {
-      pr($this->request->data);
+
       $this->Substance->set($this->data['Substance']);
       $substanceValitadion = $this->Substance->validates();
       $agentValidation = false;
@@ -196,7 +196,7 @@ class SubstancesController extends AppController {
         }
           
         $this->Session->setFlash(__('Įrašas išsaugotas'),'success');
-        //$this->redirect(array('action' => 'index'));
+        $this->redirect(array('action' => 'index'));
       } else {
         $this->Session->setFlash(__('The event could not be saved. Please, try again.'),'failure');
       }
@@ -225,8 +225,6 @@ class SubstancesController extends AppController {
       $substance_poison_subgroups = $this->Substance->PoisonGroup->getListByParentId($this->request->data['Substance']['poison_group_id']);
       $this->set('substance_poison_subgroups',$substance_poison_subgroups);
     }
-    pr($this->request->data);
-    pr($substance_poison_subgroups);
     
     $this->set('agent_poison_subgroups',$agent_poison_subgroups);
     $this->set('units', $this->Unit->find('list',array('fields'=>array('id','name','group'))));
