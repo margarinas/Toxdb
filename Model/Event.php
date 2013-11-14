@@ -188,10 +188,10 @@ public $hasOne = array(
         // $this->Patient->Behaviors->attach('Search.Searchable');
 
         $cond = array();
-        // if(!empty($data['patient_age_group']))
-        // 	$cond['Patient.age_group']= $data['patient_age_group'];
-        // if(isset($data['patient_name']) && !empty($data['patient_name']))
-        // 	$cond['Patient.name LIKE']  = '%'.$data['patient_name'].'%';
+        if(!empty($data['patient_age_group']))
+        	$cond['Patient.age_group']= $data['patient_age_group'];
+        if(isset($data['patient_name']) && !empty($data['patient_name']))
+        	$cond['Patient.name LIKE']  = '%'.$data['patient_name'].'%';
 
         // if(!empty($data['not_poisoning']))
         // 	$cond['Patient.not_poisoning']= $data['not_poisoning'];
