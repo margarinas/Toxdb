@@ -3,6 +3,10 @@
   margin-bottom: 0;
 }
 
+.twitter-typeahead .tt-hint {
+  background: transparent;
+}
+
 .tt-dropdown-menu {
   min-width: 160px;
   margin-top: 2px;
@@ -27,6 +31,7 @@
   display: block;
   padding: 3px 20px;
 }
+
 
 .tt-suggestion.tt-is-under-cursor {
   color: #fff;
