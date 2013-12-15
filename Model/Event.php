@@ -473,7 +473,7 @@ public $hasOne = array(
 
 		return true;
 	}
-	public function afterSave($created)	{
+	public function afterSave($created, $options = array())	{
 		$cond = array(
 			'OR' => array(
 				'Draft.assoc_id'=>$this->id
