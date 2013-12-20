@@ -1,4 +1,4 @@
-define(["jquery","bootstrap"],function($){
+define(["jquery","bootstrap","typeahead"],function($){
 
 	init = function(element) {
 
@@ -47,7 +47,8 @@ define(["jquery","bootstrap"],function($){
 			needle = input_id.join('_');
 			$(current).typeahead({
 				name:controller+'_'+needle,
-				prefetch:baseUrl+controller+'/autocomplete/'+needle
+				prefetch:baseUrl+controller+'/autocomplete/'+needle,
+				ttl:604800000
 			});
 
 		});
