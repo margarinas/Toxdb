@@ -515,7 +515,7 @@ pr($eventAttributes);
                 </div>
                 <div class="span5">
                     <?php 
-                    if($this->Session->read('Auth.User.Group.name')=='admin')
+                    // if($this->Session->read('Auth.User.Group.name')=='admin')
                     echo $this->Html->link("Ieškoti konsultacijos įrašo",'/calls/', array('class'=>'btn btn-primary add-call-btn'));
                     ?>
                     
