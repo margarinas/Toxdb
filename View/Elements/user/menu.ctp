@@ -16,6 +16,13 @@ echo $this->Form->end();
 			'/events/report' => array('title'=>__('Ataskaita')),
 			'/cms/posts' => array('title'=>__('Naujienos'))
 			)
-	);
+		);
+	else
+		echo $this->Menu->menuList(array(
+			'/'=>array('title'=>__('Pagrindinis')),
+			// '/drafts/index'=>array('title'=>__('Pagrindinis')),
+			'/calls' => array('title'=>__('Skambučiai'))
+			)
+		);
 	?>
 </ul>

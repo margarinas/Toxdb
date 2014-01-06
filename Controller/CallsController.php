@@ -128,7 +128,7 @@ public function edit($id = null) {
  * @return void
  */
 public function delete($id = null) {
-	if (!$this->request->is('post')) {
+	if (!$this->request->is('post') || $this->Auth->user('Group.name') != 'admin') {
 		throw new MethodNotAllowedException();
 	}
 	$this->Call->id = $id;
