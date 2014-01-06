@@ -181,7 +181,8 @@
  */
 	Configure::write('Session', array(
 		'defaults' => 'php',
-		'timeout' => 120
+		'cookie' => 'toxdb',
+		'timeout' => 240
 	));
 
 /**
