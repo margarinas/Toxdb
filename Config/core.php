@@ -34,7 +34,7 @@
  */
 
 
-	if($_SERVER['REMOTE_ADDR'] == '78.63.214.78' || $_SERVER['REMOTE_ADDR'] == '127.0.0.1')
+	if($_SERVER['REMOTE_ADDR'] == '78.63.214.78' || $_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == '::1')
 		Configure::write('debug', 2);
 	else
 		Configure::write('debug', 0);

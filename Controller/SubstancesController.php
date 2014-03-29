@@ -283,6 +283,8 @@ class SubstancesController extends AppController {
 
     $this->paginate['Substance']['contain']=array('Agent','PoisonGroup');
     $this->paginate['Substance']['order']='default ASC, Substance.name ASC';
+    $this->paginate['Substance']['group']='Substance.id';
+
     //$this->Substance->recursive = 0;
     $this->set('substances', $this->paginate('Substance',$conditions));
     $this->set('units', $this->Unit->find('list',array('fields'=>array('id','name','group'))));

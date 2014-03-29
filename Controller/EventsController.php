@@ -434,6 +434,22 @@ public function report() {
 	}
 }
 
+
+public function asht_report() {
+	
+	$report = $this->Event->asht_report();
+
+	 $this->response->body($report);
+    $this->response->type('xml');
+
+    //Optionally force file download
+    $this->response->download('import-lt-2014-01.xml');
+
+    // Return response object to prevent controller from trying to render
+    // a view
+    return $this->response;
+}
+
 public function saveDraft() {
 
 

@@ -681,6 +681,190 @@ public $hasOne = array(
 		return $report;
 
 	}
+
+
+	public function asht_report()
+	{			
+
+		$joins = array(
+			array(
+				'table'=>'patients', 
+				'alias' => 'Patient',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.event_id = Event.id'
+					)),
+			array(
+				'table'=>'agents_patients', 
+				'alias' => 'AgentsPatient',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.id = AgentsPatient.patient_id'
+					)),
+			array(
+				'table'=>'agents', 
+				'alias' => 'Agent',
+				'type'=>'left',
+				'conditions'=> array(
+					'Agent.id = AgentsPatient.agent_id'
+					)),
+			array(
+				'table'=>'patients_substances', 
+				'alias' => 'PatientsSubstance',
+				'type'=>'left',
+				'conditions'=> array(
+					'Patient.id = PatientsSubstance.patient_id'
+					)),
+			array(
+				'table'=>'substances', 
+				'alias' => 'Substance',
+				'type'=>'left',
+				'conditions'=> array(
+					'Substance.id = PatientsSubstance.substance_id'
+					)),
+
+			
+
+			);
+
+		$conversions = [
+			'age_group'=>[
+				'child'=>'21.0002',
+				'adult'=>'21.0001',
+				'unknown'=>'21.0003'
+			],
+			'type' => [
+				'vyr' => '22.0001',
+				'mot' => '22.0002',
+				'gyv' => '22.0003',
+				'' => '22.0003'
+			]
+		];
+		$date_range = [
+			'begin_date'=>'2013-12-10',
+			'end_date'=>'2014-12-31'
+		];
+		$cond = array(
+				'Event.created >='=> $date_range['begin_date'],
+				'Event.created <' => date('Y-m-d H:i:s',strtotime($date_range['end_date'] . ' + 1 day')),
+				'Patient.poison_group_id' => 20
+				);
+
+		$results = $this->find('all',[
+			'contain'=>[
+				'Patient'=>	[
+					'PoisoningAttribute'=>['conditions'=>['asht_code !='=> '']],
+					'Evaluation'=>['conditions'=>['asht_code !='=> '']],
+					'AgentsPatient'=>['Agent'=>['fields'=>['id','name','cas_number']]],
+					'Substance'=>['fields'=>['id','name']],
+					'PatientTreatment'=>[
+						'Treatment'=>[
+							'conditions'=>['asht_code !='=>'']
+							]
+						]
+					],
+				],
+			'fields'=>[
+				
+				'Event.id',
+				'Event.created',
+				// 'Event.type'
+				// 'PoisoningAttribute.id'
+				],
+			'conditions'=>$cond,
+			'joins'=>$joins
+			]);
+
+		// pr($results);
+
+		$xml = new SimpleXMLElement('<delivery><caselist /></delivery>');
+		$caselist = $xml->caselist;
+		foreach ($results as $r) {
+			$patient = $r['Patient'][0];
+			$evaluations = Hash::combine($patient['Evaluation'], '{n}.group', '{n}.asht_code' );
+			$p_attr = Hash::combine($patient['PoisoningAttribute'], '{n}.group', '{n}.asht_code');
+
+			$agents = $patient['Substance'];
+
+
+			if(!empty($r['Patient']['AgentsPatient']) && !empty($agents))
+				$substances = $r['Patient']['AgentsPatient'];
+			else if(!empty($r['Patient']['AgentsPatient']) && empty($agents)){
+				$substances = '';
+				$agents = Hash::combine($r['Patient']['AgentsPatient'], '{n}.id', '{n}.Agent.name');
+			} else
+				$substances = '';
+			$treatments =  array_unique(array_filter(Hash::combine($patient['PatientTreatment'], '{n}.id', '{n}.Treatment.asht_code')));
+		
+			$case = $caselist->addChild('case');
+			$t = $case->addChild('technical');
+			$t->addChild('reportingcenter','11.0004');
+			$t->addChild('caseidentifier',$r['Event']['id']);
+			$t->addChild('firstupload',date('Y-m-d\TH:i:s',strtotime($r['Event']['created'])));
+			$t->addChild('preliminary', '');
+
+			$p = $case->addChild('patient');
+			$p->addChild('numofpatients',1);
+			$p->addChild('age',$patient['age_year']);
+			$p->addChild('age_group',$conversions['age_group'][$patient['age_group']]);
+			$p->addChild('sex',$conversions['type'][$patient['type']]);
+			$p->addChild('conditions');
+
+
+			$e = $case->addChild('exposure');
+			$e->addChild('datetimeofexposure',date('Y-m-d\TH:i:s',strtotime($patient['time_of_exposure'])));
+			$e->addChild('circumstances',$p_attr['p_cause']);
+			$e->addChild('exptype',$p_attr['p_type']);
+			$e->addChild('likelihood','34.0005');
+			$e->addChild('location',$p_attr['p_place']);
+			$routelist = $e->addChild('routelist');
+			$routelist->addChild('route',$p_attr['p_route']);
+
+			$agentlist = $case->addChild('agentlist');
+			if(!empty($agents)) {
+				foreach ($agents as $agent) {
+					$a = $agentlist->addChild('agent');
+					$a->addChild('agentcategory','41.0004');
+					$a->addChild('agentname',$agent['name']);
+					$a->addChild('atccode', '');
+					$a->addChild('agentunit','43.0005');
+					$a->addChild('unitnumber', '');
+					$substlist = $a->addChild('substancelist','');
+					if(!empty($substances)) {
+						
+						foreach ($substances as $subs) {
+							$s = $substlist->addChild('substance');
+							$s->addChild('substancecode',$subs['Agent']['cas_number']);
+							$s->addChild('substancename',$subs['Agent']['name']);
+							$s->addChild('substancedose',$subs['dose']);
+						}
+
+					}
+				}
+			}
+			$ce = $case->addChild('clinicaleffect','');
+			$ce->addChild('causality',$evaluations['symptoms']);
+			
+			$symptom = $ce->addChild('symptomlist')->addChild('symptom');
+			$symptom->addChild('clinicaleffects', '');
+			$symptom->addChild('clinicaleffectstext', strip_tags($patient['poisoning_info']));
+
+			$case->addChild('treatments')->addChild('treatmentlist');
+			foreach ($treatments as $treatment) {
+				$t = $case->treatments->treatmentlist->addChild('treatment');
+				$t->addChild('treatmentcode',$treatment);
+				$t->addChild('treatmenttext');
+			}
+
+			$o = $case->addChild('outcome');
+			$o->addChild('severity',$evaluations['grade']);
+			$o->addChild('outcome','');
+
+		}
+
+		return $xml->asXml();
+	}
+
 	public function afterFind($results, $primary = false) {
 
 		foreach ($results as $key => $value) {
