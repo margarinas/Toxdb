@@ -445,7 +445,7 @@ public function asht_report() {
     $this->response->type('xml');
 
     //Optionally force file download
-    //$this->response->download('import-lt-2014-01.xml');
+    $this->response->download('import-lt-2014-01.xml');
 
     // Return response object to prevent controller from trying to render
     // a view
