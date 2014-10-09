@@ -44,7 +44,8 @@ public function index() {
 		);
 
 
-	$events = $this->paginate();
+	// $events = $this->paginate();
+	$events = array();
 
 	$showSearch = (!empty($this->data['Event']) || empty($events))?'in':false;
 	$this->set('showSearch',$showSearch);
@@ -440,6 +441,7 @@ public function asht_report() {
 	$report = $this->Event->asht_report();
 
 	 $this->response->body($report);
+	 $this->response->charset('UTF-8');
     $this->response->type('xml');
 
     //Optionally force file download
