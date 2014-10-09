@@ -862,7 +862,7 @@ public $hasOne = array(
 
 		}
 
-		return $xml->asXml();
+		return html_entity_decode($xml->asXml());
 	}
 
 	public function afterFind($results, $primary = false) {
