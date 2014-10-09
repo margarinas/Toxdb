@@ -777,7 +777,7 @@ public $hasOne = array(
 
 		// pr($results);
 
-		$xml = new SimpleXMLElement('<delivery><caselist /></delivery>');
+		$xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><delivery><caselist /></delivery>');
 		$caselist = $xml->caselist;
 		foreach ($results as $r) {
 			$patient = $r['Patient'][0];
