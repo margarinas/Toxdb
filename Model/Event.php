@@ -798,7 +798,7 @@ public $hasOne = array(
 		
 			$case = $caselist->addChild('case');
 			$t = $case->addChild('technical');
-			$t->addChild('reportingcenter','11.0004');
+			$t->addChild('reportingcentre','11.0004');
 			$t->addChild('caseidentifier',$r['Event']['id']);
 			$t->addChild('firstupload',date('Y-m-d\TH:i:s',strtotime($r['Event']['created'])));
 			$t->addChild('preliminary', '');
@@ -806,7 +806,7 @@ public $hasOne = array(
 			$p = $case->addChild('patient');
 			$p->addChild('numofpatients',1);
 			$p->addChild('age',$patient['age_year']);
-			$p->addChild('age_group',$conversions['age_group'][$patient['age_group']]);
+			$p->addChild('agegroup',$conversions['age_group'][$patient['age_group']]);
 			$p->addChild('sex',$conversions['type'][$patient['type']]);
 			$p->addChild('conditions');
 
@@ -818,7 +818,7 @@ public $hasOne = array(
 			$e->addChild('likelihood','34.0005');
 			$e->addChild('location',$p_attr['p_place']);
 			$routelist = $e->addChild('routelist');
-			$routelist->addChild('route',$p_attr['p_route']);
+			$routelist->addChild('routitem',$p_attr['p_route']);
 
 			$agentlist = $case->addChild('agentlist');
 			if(!empty($agents)) {
