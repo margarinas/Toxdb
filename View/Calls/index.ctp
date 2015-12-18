@@ -3,11 +3,17 @@
 
 
 if (!$this->params['isAjax']):
-	echo $this->Html->link("Atnaujinti",array('action'=>'getCalls'),array('class'=>'btn btn-info pull-right', 'id'=>'calls-get'));
+	// echo $this->Html->link("Atnaujinti",array('action'=>'getCalls'),array('class'=>'btn btn-info pull-right', 'id'=>'calls-get'));
+	// echo $this->Html->link("Skambučiai be konsultacijos",array('action'=>'index',true),array('class'=>'btn btn-info pull-right'));
+	// echo $this->Html->link("Visi",array('action'=>'index'),array('class'=>'btn btn-info pull-right'));
 ?>
-	<h3><?php echo __('Skambučių sąrašas');?></h3>
+	<!-- <h3><?php echo __('Skambučių sąrašas');?></h3> -->
 <?php endif; ?>
-<?php echo $this->Html->link("Atnaujinti",array('action'=>'getCalls'),array('class'=>'btn btn-info pull-right hide', 'id'=>'calls-get')); ?>
+<?php 
+	echo $this->Html->link("Atnaujinti",array('action'=>'getCalls'),array('class'=>'btn btn-info pull-right', 'id'=>'calls-get'));
+	echo $this->Html->link("Nesuvestos konsultacijos",array('action'=>'index',true),array('class'=>'btn btn-info pull-right'));
+	echo $this->Html->link("Visi",array('action'=>'index'),array('class'=>'btn btn-info pull-right'));
+	 ?>
 <table class="table">
 	<tr>
 		<th><?php echo $this->Paginator->sort('number', 'Tel. nr.');?></th>

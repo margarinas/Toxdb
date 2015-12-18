@@ -16,12 +16,12 @@ define(["jquery","utils/pagination","utils/getElement","utils/modal","app/event/
 		// });
 		$('.add-related-event-btn').click(function(event) {
 			modal.set(options, function() {
-				events.init({container:".modal-body",hideControls:true,limit:10});
+				events.init({container:"#add-related-event .modal-body",hideControls:true,limit:10});
 				// row.init(".event_row",".modal-body", function(target) {
 
 				// });
 
-				$(".modal-body .event_row").click(function(){
+				$("#add-related-event .modal-body").on('click',' .event_row',function(){
 					target = this;
 									new_related_event = related_event.clone();
 					$('.events-related').append(new_related_event);

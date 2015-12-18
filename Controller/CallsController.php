@@ -19,13 +19,18 @@ public function beforeFilter() {
 	$this->Auth->allow('getCalls');
 }
 
-public function index() {
+public function index($withoutEvent=false) {
 	$this->Call->recursive = 0;
 	if($this->request->is('ajax'))
 		$this->paginate['Call']['limit']=7;
 
+	// $this->paginate['Call'] = 
+	$params = array();
+	if($withoutEvent)
+		$params = array('Call.event_id'=>0);
+
 	$this->paginate['Call']['order'] = 'Call.created DESC';
-	$this->set('calls', $this->paginate('Call'));
+	$this->set('calls', $this->paginate('Call',$params));
 }
 
 public function getCalls() {
@@ -137,10 +142,10 @@ public function delete($id = null) {
 	}
 	if ($this->Call->delete()) {
 		$this->Session->setFlash(__('Sėkmingai ištrintas'),'success');
-		$this->redirect(array('action' => 'index'));
+		$this->redirect($this->referer());
 	}
 	$this->Session->setFlash(__('Ištrinti nepavyko'),'failure');
-	$this->redirect(array('action' => 'index'));
+	$this->redirect($this->referer());
 }
 
 public function removeEvent($id = null) {

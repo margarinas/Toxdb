@@ -27,6 +27,7 @@
 					<?php
 					if($this->Session->read('Auth.User'))
 						echo $this->Menu->menuList(array(
+							'/calls' => array('title'=>__('Skambučiai')),
 							'/events/add' => array('title'=>__('Naujas Atvejis'),'exact'=>true),
 							'/events' => array('title'=>__('Atvejai'),'exact'=>true),
 							'/substances' => array('title'=>__('Produktai')),

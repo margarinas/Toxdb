@@ -44,8 +44,8 @@ public function index() {
 		);
 
 
-	// $events = $this->paginate();
-	$events = array();
+	$events = $this->paginate();
+	// $events = array();
 
 	$showSearch = (!empty($this->data['Event']) || empty($events))?'in':false;
 	$this->set('showSearch',$showSearch);

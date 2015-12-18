@@ -54,6 +54,7 @@ define(['jquery',"utils/modal","utils/pagination"], function($,modal,pagination)
                     container:"#add_call .modal-body",
                     history:false   
             });
+            $('.attach_call').removeClass('disabled');
             $('.call_row').click( function() {
                 $('.attach_call').removeClass('disabled');
             });
